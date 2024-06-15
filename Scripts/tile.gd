@@ -18,6 +18,7 @@ signal left_click
 func set_farmtype(value):
 	_farmType = value
 	updateTileImage()
+	
 
 func updateTileImage():
 	tileSprite.set_animation(str(_farmType))
@@ -29,7 +30,6 @@ func _ready():
 	selectedSprite.hide()
 	updateTileImage()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if hovered:
@@ -40,10 +40,10 @@ func _process(delta):
 
 
 func _on_mouse_entered():
-	hovered = true
-	hoverSprite.show()
-	hoverSprite.play()
-
+	if not Global.menu_mode:
+		hovered = true
+		hoverSprite.show()
+		hoverSprite.play()
 
 func _on_mouse_exited():
 	hovered = false
@@ -52,5 +52,6 @@ func _on_mouse_exited():
 func selected(boo):
 	if boo:
 		selectedSprite.show()
+		selectedSprite.play()
 	else:
 		selectedSprite.hide()

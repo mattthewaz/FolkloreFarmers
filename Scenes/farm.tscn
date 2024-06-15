@@ -144,11 +144,17 @@ offset_right = 310.0
 offset_bottom = 231.0
 item_count = 6
 item_0/text = "Demolish"
+item_0/selectable = false
 item_1/text = "Wheat Farm"
+item_1/selectable = false
 item_2/text = "Shrine"
+item_2/selectable = false
 item_3/text = "Vegetable Farm"
+item_3/selectable = false
 item_4/text = "Pasture"
+item_4/selectable = false
 item_5/text = "Return"
+item_5/selectable = false
 
 [node name="EndDayButton" type="Button" parent="."]
 offset_left = 552.0
