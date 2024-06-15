@@ -142,11 +142,11 @@ offset_right = 117.0
 offset_bottom = 42.0
 text = "Day 1"
 
-[node name="Button" type="Button" parent="."]
+[node name="EndDayButton" type="Button" parent="."]
 offset_left = 552.0
 offset_top = 16.0
 offset_right = 623.0
 offset_bottom = 47.0
 text = "End Day"
 
-[connection signal="pressed" from="Button" to="." method="new_day"]
+[connection signal="pressed" from="EndDayButton" to="." method="new_day"]
