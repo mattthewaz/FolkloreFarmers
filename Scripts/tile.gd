@@ -15,11 +15,6 @@ signal left_click
 		_farmType = value
 		updateTileImage()
 
-func set_farmtype(value):
-	_farmType = value
-	updateTileImage()
-	
-
 func updateTileImage():
 	tileSprite.set_animation(str(_farmType))
 
