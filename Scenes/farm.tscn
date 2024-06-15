@@ -9,122 +9,122 @@ script = ExtResource("1_ovusw")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(320, 240)
-scale = Vector2(0.25, 0.267857)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_t8oub")
 
 [node name="TileA1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(64, 83)
+position = Vector2(64, 96)
 
 [node name="TileB1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(128, 83)
+position = Vector2(128, 96)
 
 [node name="TileC1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(192, 83)
+position = Vector2(192, 96)
 
 [node name="TileD1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(256, 83)
+position = Vector2(256, 96)
 
 [node name="TileE1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(320, 83)
+position = Vector2(320, 96)
 
 [node name="TileF1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(384, 83)
+position = Vector2(384, 96)
 
 [node name="TileA2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(64, 147)
+position = Vector2(64, 160)
 
 [node name="TileB2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(128, 147)
+position = Vector2(128, 160)
 
 [node name="TileC2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(192, 147)
+position = Vector2(192, 160)
 
 [node name="TileD2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(256, 147)
+position = Vector2(256, 160)
 
 [node name="TileE2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(320, 147)
+position = Vector2(320, 160)
 
 [node name="TileF2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(384, 147)
+position = Vector2(384, 160)
 
 [node name="TileG2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(448, 147)
+position = Vector2(448, 160)
 
 [node name="TileH2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(512, 147)
+position = Vector2(512, 160)
 
 [node name="TileA3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(64, 211)
+position = Vector2(64, 224)
 
 [node name="TileB3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(128, 211)
+position = Vector2(128, 224)
 
 [node name="TileC3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(192, 211)
+position = Vector2(192, 224)
 
 [node name="TileD3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(256, 211)
+position = Vector2(256, 224)
 
 [node name="TileE3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(320, 211)
+position = Vector2(320, 224)
 
 [node name="TileF3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(384, 211)
+position = Vector2(384, 224)
 
 [node name="TileG3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(448, 211)
+position = Vector2(448, 224)
 
 [node name="TileH3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(512, 211)
+position = Vector2(512, 224)
 
 [node name="TileA4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(64, 275)
+position = Vector2(64, 288)
 
 [node name="TileB4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(128, 275)
+position = Vector2(128, 288)
 
 [node name="TileC4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(192, 275)
+position = Vector2(192, 288)
 
 [node name="TileD4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(256, 275)
+position = Vector2(256, 288)
 
 [node name="TileE4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(320, 275)
+position = Vector2(320, 288)
 
 [node name="TileF4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(384, 275)
+position = Vector2(384, 288)
 
 [node name="TileG4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(448, 275)
+position = Vector2(448, 288)
 
 [node name="TileH4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(512, 275)
+position = Vector2(512, 288)
 
 [node name="TileA5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(64, 339)
+position = Vector2(64, 352)
 
 [node name="TileB5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(128, 339)
+position = Vector2(128, 352)
 
 [node name="TileC5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(192, 339)
+position = Vector2(192, 352)
 
 [node name="TileD5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(256, 339)
+position = Vector2(256, 352)
 
 [node name="TileE5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(320, 339)
+position = Vector2(320, 352)
 
 [node name="TileF5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(384, 339)
+position = Vector2(384, 352)
 
 [node name="TileG5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(448, 339)
+position = Vector2(448, 352)
 
 [node name="TileH5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(512, 339)
+position = Vector2(512, 352)
 
 [node name="DayCounter" type="RichTextLabel" parent="."]
 unique_name_in_owner = true

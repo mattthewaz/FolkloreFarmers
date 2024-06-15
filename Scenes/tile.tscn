@@ -64,4 +64,4 @@ script = ExtResource("1_68wa1")
 position = Vector2(32, 32)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_magg0")
-animation = &"2"
+animation = &"0"
