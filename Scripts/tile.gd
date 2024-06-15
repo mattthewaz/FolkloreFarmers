@@ -8,19 +8,9 @@ var _farmType: Global.FarmType = Global.FarmType.Empty
 		_farmType = value
 		updateTileImage()
 
-
 func updateTileImage():
-	var rect: ColorRect = get_node("ColorRect")
-	if _farmType == Global.FarmType.Empty:
-		rect.color = Color(0.5, 0.25, 0, 1.0)
-	if _farmType == Global.FarmType.Wheat:
-		rect.color = Color(1.0, 1.0, 0, 1.0)
-	if _farmType == Global.FarmType.Shrine:
-		rect.color = Color(1.0, 1.0, 1.0, 1.0)
-	if _farmType == Global.FarmType.Vegetable:
-		rect.color = Color(1.0, 0.5, 0, 1.0)
-	if _farmType == Global.FarmType.Pasture:
-		rect.color = Color(0, 1.0, 0, 1.0)
+	var tileSprite: AnimatedSprite2D = get_node("TileSprite")
+	tileSprite.frame = _farmType
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
