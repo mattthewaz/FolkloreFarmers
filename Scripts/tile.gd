@@ -1,6 +1,8 @@
 extends Node2D
 
 var _farmType: Global.FarmType = Global.FarmType.Empty
+@onready var tileSprite: AnimatedSprite2D = get_node("TileSprite")
+
 @export var farmType: Global.FarmType:
 	get:
 		return _farmType
@@ -9,11 +11,11 @@ var _farmType: Global.FarmType = Global.FarmType.Empty
 		updateTileImage()
 
 func updateTileImage():
-	var tileSprite: AnimatedSprite2D = get_node("TileSprite")
-	tileSprite.frame = _farmType
+	tileSprite.set_animation(str(_farmType))
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	tileSprite.play()
 	updateTileImage()
 
 
