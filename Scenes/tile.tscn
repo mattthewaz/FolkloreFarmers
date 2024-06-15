@@ -94,5 +94,10 @@ position = Vector2(32, 32)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_6e43g")
 
+[node name="SelectedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 32)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_6e43g")
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

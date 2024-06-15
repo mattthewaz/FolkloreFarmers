@@ -3,7 +3,10 @@ extends Node2D
 var _farmType: Global.FarmType = Global.FarmType.Empty
 @onready var tileSprite: AnimatedSprite2D = get_node("TileSprite")
 @onready var hoverSprite: AnimatedSprite2D = get_node("HoverSprite")
+@onready var selectedSprite: AnimatedSprite2D = get_node("SelectedSprite")
 var hovered = false
+signal right_click
+signal left_click
 
 @export var farmType: Global.FarmType:
 	get:
@@ -12,6 +15,10 @@ var hovered = false
 		_farmType = value
 		updateTileImage()
 
+func set_farmtype(value):
+	_farmType = value
+	updateTileImage()
+
 func updateTileImage():
 	tileSprite.set_animation(str(_farmType))
 
@@ -19,6 +26,7 @@ func updateTileImage():
 func _ready():
 	tileSprite.play()
 	hoverSprite.hide()
+	selectedSprite.hide()
 	updateTileImage()
 
 
@@ -26,9 +34,9 @@ func _ready():
 func _process(delta):
 	if hovered:
 		if Input.is_action_just_released('RightClick'):
-			print("right click" + str(_farmType))
+			emit_signal('right_click')
 		elif Input.is_action_just_released('LeftClick'):
-			print("left click" + str(_farmType))
+			emit_signal('left_click')
 
 
 func _on_mouse_entered():
@@ -40,3 +48,9 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	hovered = false
 	hoverSprite.hide()
+	
+func selected(boo):
+	if boo:
+		selectedSprite.show()
+	else:
+		selectedSprite.hide()
