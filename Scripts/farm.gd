@@ -36,19 +36,24 @@ func _right_clicked(tile):
 		Global.menu_mode = true
 		activeTile = tile
 		tile.selected(true)
-		tileOptions.position = tile.position + Vector2(30,30)
+		tileOptions.position = tile.position + Vector2(30,10)
+		if tileOptions.position.y > 314:
+			tileOptions.position.y = 314
+		if tileOptions.position.x > 506:
+			tileOptions.position.x = 506
 		tileOptions.set_item_disabled(tile.farmType,true)
 		tileOptions.show()
 
 func _left_clicked(tile):
-	pass
+	print(tile.farmType)
 
-func _on_tile_options_item_clicked(index, at_position, mouse_button_index):
-	tileOptions.set_item_disabled(activeTile.farmType,false)
-	if index != 5:
-		activeTile.farmType = index
-		new_day()
-	activeTile.selected(false)
-	activeTile = null
-	tileOptions.hide()
-	Global.menu_mode = false
+func _on_tile_options_item_clicked(index, _at_position, mouse_button_index):
+	if mouse_button_index == 1:
+		tileOptions.set_item_disabled(activeTile.farmType,false)
+		if index != 5:
+			activeTile.farmType = index
+			new_day()
+		activeTile.selected(false)
+		activeTile = null
+		tileOptions.hide()
+		Global.menu_mode = false

@@ -138,10 +138,10 @@ text = "Day 1"
 
 [node name="TileOptions" type="ItemList" parent="."]
 z_index = 100
-offset_left = 506.0
-offset_top = 317.0
-offset_right = 648.0
-offset_bottom = 489.0
+offset_left = 168.0
+offset_top = 59.0
+offset_right = 310.0
+offset_bottom = 231.0
 item_count = 6
 item_0/text = "Demolish"
 item_0/selectable = false
@@ -151,7 +151,7 @@ item_2/text = "Shrine"
 item_2/selectable = false
 item_3/text = "Vegetable Farm"
 item_3/selectable = false
-item_4/text = "Bear Habitat"
+item_4/text = "Pasture"
 item_4/selectable = false
 item_5/text = "Return"
 item_5/selectable = false
