@@ -1,0 +1,33 @@
+Wild Jam 70
+0 - Folklore
+	"Folklore happens" - exploring the idea of folklore
+
+1 - Recursion thing aka "turtles all the way down"
+
+2 - Character swap
+
+3 - Actions have consequences through playthroughs
+
+Waz idea - farm sim, ruins of old farm. minutes-long playthrough. Decisions affect next farm.
+	Matters what you build - rebuilding shrine gives discount? other thing gives religious bonus?
+
+Anneke idea - each character grandchild, story about urban legend - story could be affected by gameplay
+
+	Lord of the forest idea, working with or against "yokai", could change direction
+		farming to bring back power to nature spirit
+
+Patrick idea - farm to protect from folklore things
+
+farm sim
+grandchild clause
+tech vs nature plot
+
+
+tile-based, top-down, stationary camera, small space
+intro, outro
+scale - house is 2 tiles? crop tile is like a small garden size
+Characters represented by a portrait in the corner
+
+Tile types: vegetables, wheat (animal feed), pasture (animals), shrine
+
+

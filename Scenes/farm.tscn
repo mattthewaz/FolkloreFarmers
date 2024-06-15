@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjs0lrog84upx"]
+[gd_scene load_steps=4 format=3 uid="uid://cjs0lrog84upx"]
 
-[ext_resource type="Texture2D" uid="uid://odxi3eoy4alf" path="res://Sprites/farm.png" id="1_t8oub"]
+[ext_resource type="Script" path="res://Scripts/farm.gd" id="1_ovusw"]
+[ext_resource type="Texture2D" uid="uid://odxi3eoy4alf" path="res://sprites/farm.png" id="1_t8oub"]
 [ext_resource type="PackedScene" uid="uid://d3seiysyma2im" path="res://Scenes/tile.tscn" id="2_fvoba"]
 
 [node name="Farm" type="Node2D"]
+script = ExtResource("1_ovusw")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(320, 240)
@@ -11,123 +13,132 @@ scale = Vector2(0.25, 0.267857)
 texture = ExtResource("1_t8oub")
 
 [node name="TileA1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(64, 64)
-farmType = 1
+position = Vector2(64, 83)
 
 [node name="TileB1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(128, 64)
+position = Vector2(128, 83)
 
 [node name="TileC1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(192, 64)
+position = Vector2(192, 83)
 
 [node name="TileD1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(256, 64)
-farmType = 2
+position = Vector2(256, 83)
 
 [node name="TileE1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(320, 64)
+position = Vector2(320, 83)
 
 [node name="TileF1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(384, 64)
-
-[node name="TileG1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(448, 64)
-
-[node name="TileH1" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(512, 64)
+position = Vector2(384, 83)
 
 [node name="TileA2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(64, 128)
+position = Vector2(64, 147)
 
 [node name="TileB2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(128, 128)
+position = Vector2(128, 147)
 
 [node name="TileC2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(192, 128)
+position = Vector2(192, 147)
 
 [node name="TileD2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(256, 128)
+position = Vector2(256, 147)
 
 [node name="TileE2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(320, 128)
+position = Vector2(320, 147)
 
 [node name="TileF2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(384, 128)
+position = Vector2(384, 147)
 
 [node name="TileG2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(448, 128)
+position = Vector2(448, 147)
 
 [node name="TileH2" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(512, 128)
+position = Vector2(512, 147)
 
 [node name="TileA3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(64, 192)
+position = Vector2(64, 211)
 
 [node name="TileB3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(128, 192)
+position = Vector2(128, 211)
 
 [node name="TileC3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(192, 192)
+position = Vector2(192, 211)
 
 [node name="TileD3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(256, 192)
+position = Vector2(256, 211)
 
 [node name="TileE3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(320, 192)
+position = Vector2(320, 211)
 
 [node name="TileF3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(384, 192)
+position = Vector2(384, 211)
 
 [node name="TileG3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(448, 192)
+position = Vector2(448, 211)
 
 [node name="TileH3" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(512, 192)
+position = Vector2(512, 211)
 
 [node name="TileA4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(64, 256)
+position = Vector2(64, 275)
 
 [node name="TileB4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(128, 256)
+position = Vector2(128, 275)
 
 [node name="TileC4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(192, 256)
+position = Vector2(192, 275)
 
 [node name="TileD4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(256, 256)
+position = Vector2(256, 275)
 
 [node name="TileE4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(320, 256)
+position = Vector2(320, 275)
 
 [node name="TileF4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(384, 256)
+position = Vector2(384, 275)
 
 [node name="TileG4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(448, 256)
+position = Vector2(448, 275)
 
 [node name="TileH4" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(512, 256)
+position = Vector2(512, 275)
 
 [node name="TileA5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(64, 320)
+position = Vector2(64, 339)
 
 [node name="TileB5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(128, 320)
+position = Vector2(128, 339)
 
 [node name="TileC5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(192, 320)
+position = Vector2(192, 339)
 
 [node name="TileD5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(256, 320)
+position = Vector2(256, 339)
 
 [node name="TileE5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(320, 320)
+position = Vector2(320, 339)
 
 [node name="TileF5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(384, 320)
+position = Vector2(384, 339)
 
 [node name="TileG5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(448, 320)
+position = Vector2(448, 339)
 
 [node name="TileH5" parent="." instance=ExtResource("2_fvoba")]
-position = Vector2(512, 320)
+position = Vector2(512, 339)
+
+[node name="DayCounter" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 117.0
+offset_bottom = 42.0
+text = "Day 1"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 552.0
+offset_top = 16.0
+offset_right = 623.0
+offset_bottom = 47.0
+text = "End Day"
+
+[connection signal="pressed" from="Button" to="." method="new_day"]
