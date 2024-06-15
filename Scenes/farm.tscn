@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjs0lrog84upx"]
+[gd_scene load_steps=4 format=3 uid="uid://cjs0lrog84upx"]
 
+[ext_resource type="Script" path="res://Scripts/farm.gd" id="1_ovusw"]
 [ext_resource type="Texture2D" uid="uid://odxi3eoy4alf" path="res://Sprites/farm.png" id="1_t8oub"]
 [ext_resource type="PackedScene" uid="uid://d3seiysyma2im" path="res://Scenes/tile.tscn" id="2_fvoba"]
 
 [node name="Farm" type="Node2D"]
+script = ExtResource("1_ovusw")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(320, 240)
@@ -131,3 +133,11 @@ position = Vector2(448, 320)
 
 [node name="TileH5" parent="." instance=ExtResource("2_fvoba")]
 position = Vector2(512, 320)
+
+[node name="DayCounter" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 117.0
+offset_bottom = 42.0
+text = "Day 1"
