@@ -1,9 +1,7 @@
 extends Node2D
 
-enum FarmType { Empty, Wheat, Shrine }
-
-var _farmType: FarmType = FarmType.Empty
-@export var farmType: FarmType:
+var _farmType: Global.FarmType = Global.FarmType.Empty
+@export var farmType: Global.FarmType:
 	get:
 		return _farmType
 	set(value):
@@ -13,12 +11,16 @@ var _farmType: FarmType = FarmType.Empty
 
 func updateTileImage():
 	var rect: ColorRect = get_node("ColorRect")
-	if _farmType == FarmType.Empty:
+	if _farmType == Global.FarmType.Empty:
 		rect.color = Color(0.5, 0.25, 0, 1.0)
-	if _farmType == FarmType.Wheat:
+	if _farmType == Global.FarmType.Wheat:
 		rect.color = Color(1.0, 1.0, 0, 1.0)
-	if _farmType == FarmType.Shrine:
+	if _farmType == Global.FarmType.Shrine:
 		rect.color = Color(1.0, 1.0, 1.0, 1.0)
+	if _farmType == Global.FarmType.Vegetable:
+		rect.color = Color(1.0, 0.5, 0, 1.0)
+	if _farmType == Global.FarmType.Pasture:
+		rect.color = Color(0, 1.0, 0, 1.0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
