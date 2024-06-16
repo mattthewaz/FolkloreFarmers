@@ -49,7 +49,7 @@ script = ExtResource("1_ovusw")
 position = Vector2(320, 240)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_og66k")
-animation = &"Winter"
+animation = &"Summer"
 
 [node name="FarmTiles" type="Node" parent="."]
 
@@ -173,14 +173,24 @@ offset_left = 24.0
 offset_top = 16.0
 offset_right = 216.0
 offset_bottom = 42.0
-text = "Summer 1830"
+text = "Summer 1824"
+
+[node name="ShrineRepair" type="ItemList" parent="."]
+z_index = 100
+offset_left = 669.0
+offset_top = 216.0
+offset_right = 812.0
+offset_bottom = 283.0
+item_count = 2
+item_0/text = "Repair"
+item_1/text = "Return"
 
 [node name="TileOptions" type="ItemList" parent="."]
 z_index = 100
-offset_left = 506.0
-offset_top = 317.0
-offset_right = 648.0
-offset_bottom = 489.0
+offset_left = 668.0
+offset_top = 35.0
+offset_right = 810.0
+offset_bottom = 207.0
 item_count = 6
 item_0/text = "Demolish"
 item_0/selectable = false
@@ -202,5 +212,6 @@ offset_right = 623.0
 offset_bottom = 47.0
 text = "End Day"
 
+[connection signal="item_clicked" from="ShrineRepair" to="." method="_on_shrine_repair_item_clicked"]
 [connection signal="item_clicked" from="TileOptions" to="." method="_on_tile_options_item_clicked"]
 [connection signal="pressed" from="EndDayButton" to="." method="new_day"]

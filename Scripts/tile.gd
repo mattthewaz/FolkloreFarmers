@@ -5,6 +5,8 @@ var _farmType: Global.FarmType = Global.FarmType.Empty
 @onready var hoverSprite: AnimatedSprite2D = get_node("HoverSprite")
 @onready var selectedSprite: AnimatedSprite2D = get_node("SelectedSprite")
 var hovered = false
+var fertility = 1
+var spirituality = 1
 signal right_click
 signal left_click
 
