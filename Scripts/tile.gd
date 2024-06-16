@@ -35,7 +35,6 @@ func _process(_delta):
 		elif Input.is_action_just_released('LeftClick'):
 			emit_signal('left_click')
 
-
 func _on_mouse_entered():
 	if not Global.menu_mode:
 		hovered = true
@@ -45,7 +44,7 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	hovered = false
 	hoverSprite.hide()
-	
+
 func selected(boo):
 	if boo:
 		selectedSprite.show()

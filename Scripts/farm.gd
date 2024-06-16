@@ -3,6 +3,7 @@ extends Node2D
 @onready var tileOptions: ItemList = $TileOptions
 @onready var shrineRepair: ItemList = $ShrineRepair
 @onready var farmTiles = $FarmTiles
+var gold = 30
 var activeTile = null
 var seasons = ['Spring','Summer','Fall','Winter']
 var season = 'Summer'
@@ -82,7 +83,6 @@ func _on_tile_options_item_clicked(index, _at_position, mouse_button_index):
 		activeTile.selected(false)
 		activeTile = null
 		Global.menu_mode = false
-
 
 func _on_shrine_repair_item_clicked(index, at_position, mouse_button_index):
 	if mouse_button_index == 1:
