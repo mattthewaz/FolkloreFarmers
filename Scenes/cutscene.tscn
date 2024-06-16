@@ -1,16 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://btrx7r5krcqtr"]
+[gd_scene load_steps=8 format=3 uid="uid://b7klsenp17yl"]
 
-[ext_resource type="Script" path="res://cutscene.gd" id="1_cgemk"]
-[ext_resource type="Texture2D" uid="uid://dq3oxs842u3sw" path="res://sprites/shrine_broken_cutscene1.png" id="1_yvg35"]
-[ext_resource type="Texture2D" uid="uid://cxgt0vfheyh21" path="res://sprites/shrine_broken_cutscene2.png" id="2_4ubdf"]
-[ext_resource type="Texture2D" uid="uid://bnt3kxrbeba41" path="res://sprites/shrine_broken_cutscene3.png" id="3_6c2qo"]
-[ext_resource type="Texture2D" uid="uid://bxd0mb3s6fv8c" path="res://sprites/shrine_broken_cutscene4.png" id="4_6ykul"]
+[ext_resource type="Script" path="res://Scripts/cutscene.gd" id="1_nfe7p"]
+[ext_resource type="Texture2D" uid="uid://dq3oxs842u3sw" path="res://sprites/shrine_broken_cutscene1.png" id="2_laikb"]
+[ext_resource type="Texture2D" uid="uid://cxgt0vfheyh21" path="res://sprites/shrine_broken_cutscene2.png" id="3_2d0er"]
+[ext_resource type="Texture2D" uid="uid://bnt3kxrbeba41" path="res://sprites/shrine_broken_cutscene3.png" id="4_e80fu"]
+[ext_resource type="Texture2D" uid="uid://bxd0mb3s6fv8c" path="res://sprites/shrine_broken_cutscene4.png" id="5_g2gxl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_35is7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_yvg35")
+"texture": ExtResource("2_laikb")
 }],
 "loop": true,
 "name": &"rock_1",
@@ -18,16 +18,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_4ubdf")
+"texture": ExtResource("3_2d0er")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_6c2qo")
+"texture": ExtResource("4_e80fu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_6ykul")
+"texture": ExtResource("5_g2gxl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_6c2qo")
+"texture": ExtResource("4_e80fu")
 }],
 "loop": true,
 "name": &"rock_2",
@@ -37,7 +37,7 @@ animations = [{
 [sub_resource type="Theme" id="Theme_3jpq3"]
 
 [node name="cutscene" type="Node2D"]
-script = ExtResource("1_cgemk")
+script = ExtResource("1_nfe7p")
 
 [node name="cutscene_animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(319, 240)

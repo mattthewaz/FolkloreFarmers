@@ -58,114 +58,179 @@ position = Vector2(64, 96)
 
 [node name="TileB1" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(128, 96)
+col = 1
 
 [node name="TileC1" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(192, 96)
+col = 2
 
 [node name="TileD1" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(256, 96)
+col = 3
 
 [node name="TileE1" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(320, 96)
+col = 4
 
 [node name="TileF1" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(384, 96)
+col = 5
 
 [node name="TileA2" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(64, 160)
+row = 1
 
 [node name="TileB2" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(128, 160)
+col = 1
+row = 1
 
 [node name="TileC2" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(192, 160)
+col = 2
+row = 1
 
 [node name="TileD2" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(256, 160)
+col = 3
+row = 1
 
 [node name="TileE2" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(320, 160)
+col = 4
+row = 1
 
 [node name="TileF2" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(384, 160)
+col = 5
+row = 1
 
 [node name="TileG2" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(448, 160)
+col = 6
+row = 1
 
 [node name="TileH2" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(512, 160)
+col = 7
+row = 1
 
 [node name="TileA3" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(64, 224)
+row = 2
 
 [node name="TileB3" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(128, 224)
+col = 1
+row = 2
 
 [node name="TileC3" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(192, 224)
+col = 2
+row = 2
 
 [node name="TileD3" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(256, 224)
+col = 3
+row = 2
 
 [node name="TileE3" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(320, 224)
+col = 4
+row = 2
 
 [node name="TileF3" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(384, 224)
+col = 5
+row = 2
 
 [node name="TileG3" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(448, 224)
+col = 6
+row = 2
 
 [node name="TileH3" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(512, 224)
+col = 7
+row = 2
 
 [node name="TileA4" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(64, 288)
+row = 3
 
 [node name="TileB4" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(128, 288)
+col = 1
+row = 3
 
 [node name="TileC4" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(192, 288)
+col = 2
+row = 3
 
 [node name="TileD4" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(256, 288)
+col = 3
+row = 3
 
 [node name="TileE4" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(320, 288)
+col = 4
+row = 3
 
 [node name="TileF4" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(384, 288)
+col = 5
+row = 3
 
 [node name="TileG4" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(448, 288)
+col = 6
+row = 3
 
 [node name="TileH4" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(512, 288)
+col = 7
+row = 3
 
 [node name="TileA5" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(64, 352)
+row = 4
 
 [node name="TileB5" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(128, 352)
+col = 1
+row = 4
 
 [node name="TileC5" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(192, 352)
+col = 2
+row = 4
 
 [node name="TileD5" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(256, 352)
+col = 3
+row = 4
 
 [node name="TileE5" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(320, 352)
+col = 4
+row = 4
 
 [node name="TileF5" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(384, 352)
+col = 5
+row = 4
 
 [node name="TileG5" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(448, 352)
+col = 6
+row = 4
 
 [node name="TileH5" parent="FarmTiles" instance=ExtResource("2_fvoba")]
 position = Vector2(512, 352)
+col = 7
+row = 4
 
 [node name="DayCounter" type="RichTextLabel" parent="."]
 unique_name_in_owner = true

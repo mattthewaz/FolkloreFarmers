@@ -109,16 +109,11 @@ script = ExtResource("1_68wa1")
 position = Vector2(32, 32)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_magg0")
-animation = &"5"
+animation = &"0"
 
 [node name="CursorDetector" type="CollisionShape2D" parent="."]
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_17ktp")
-
-[node name="HoverSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(32, 32)
-scale = Vector2(0.25, 0.25)
-sprite_frames = SubResource("SpriteFrames_6e43g")
 
 [node name="SelectedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(32, 32)

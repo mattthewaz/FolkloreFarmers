@@ -1,15 +1,18 @@
 extends Node2D
 
-var _farmType: Global.FarmType = Global.FarmType.Empty
-@onready var tileSprite: AnimatedSprite2D = get_node("TileSprite")
-@onready var hoverSprite: AnimatedSprite2D = get_node("HoverSprite")
-@onready var selectedSprite: AnimatedSprite2D = get_node("SelectedSprite")
-var hovered = false
+@export var col: int
+@export var row: int
+
 var fertility = 1
 var spirituality = 1
-signal right_click
-signal left_click
 
+@onready var tileSprite: AnimatedSprite2D = get_node("TileSprite")
+@onready var selectedSprite: AnimatedSprite2D = get_node("SelectedSprite")
+signal tileActivated
+signal tileSelected
+signal tileUnselected
+
+var _farmType: Global.FarmType = Global.FarmType.Empty
 @export var farmType: Global.FarmType:
 	get:
 		return _farmType
@@ -17,37 +20,40 @@ signal left_click
 		_farmType = value
 		updateTileImage()
 
+var _selected: bool = false
+var selected: bool:
+	get:
+		return _selected
+	set(value):
+		if _selected == value:
+			return
+		_selected = value
+		if value:
+			selectedSprite.show()
+			selectedSprite.play()
+			emit_signal('tileSelected')
+		else:
+			selectedSprite.hide()
+			emit_signal('tileUnselected')
+
 func updateTileImage():
 	tileSprite.set_animation(str(_farmType))
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tileSprite.play()
-	hoverSprite.hide()
 	selectedSprite.hide()
 	updateTileImage()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if hovered:
-		if Input.is_action_just_released('RightClick'):
-			emit_signal('right_click')
-		elif Input.is_action_just_released('LeftClick'):
-			emit_signal('left_click')
+func _input(event):
+	if _selected && !Global.menu_mode:
+		if Input.is_action_just_pressed('Activated'):
+			emit_signal('tileActivated')
 
 func _on_mouse_entered():
 	if not Global.menu_mode:
-		hovered = true
-		hoverSprite.show()
-		hoverSprite.play()
+		selected = true
 
 func _on_mouse_exited():
-	hovered = false
-	hoverSprite.hide()
-
-func selected(boo):
-	if boo:
-		selectedSprite.show()
-		selectedSprite.play()
-	else:
-		selectedSprite.hide()
+	if not Global.menu_mode:
+		selected = false
