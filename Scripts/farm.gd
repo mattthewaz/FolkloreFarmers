@@ -7,7 +7,7 @@ var gold = 30
 var activeTile = null
 var seasons = ['Spring','Summer','Fall','Winter']
 var season = 'Summer'
-var day = 1
+var day = 0
 var year = 1824
 
 func new_day():
@@ -16,7 +16,7 @@ func new_day():
 	$Background.play(season)
 	if season == 'Spring':
 		year += 1
-	%DayCounter.text = season + ' ' + str(year)
+	%DayCounter.text = season + ', ' + str(year)
 
 func skip_time(days):
 	Global.menu_mode = true
@@ -26,7 +26,7 @@ func skip_time(days):
 		$Background.play(season)
 		if season == 'Spring':
 			year += 1
-		%DayCounter.text = season + ' ' + str(year)
+		%DayCounter.text = season + ', ' + str(year)
 		await get_tree().create_timer(1.0).timeout
 	Global.menu_mode = false
 
@@ -43,7 +43,7 @@ func testTiles():
 	A5.farmType = Global.FarmType.Pasture
 
 func _ready():
-	#pass
+	new_day()
 	$FarmTiles/TileF4.farmType = Global.FarmType.BrokenShrine
 	tileOptions.hide()
 	shrineRepair.hide()

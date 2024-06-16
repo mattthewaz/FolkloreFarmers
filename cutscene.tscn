@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://btrx7r5krcqtr"]
+[gd_scene load_steps=8 format=3 uid="uid://btrx7r5krcqtr"]
 
 [ext_resource type="Script" path="res://cutscene.gd" id="1_cgemk"]
 [ext_resource type="Texture2D" uid="uid://dq3oxs842u3sw" path="res://sprites/shrine_broken_cutscene1.png" id="1_yvg35"]
@@ -34,20 +34,30 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Theme" id="Theme_3jpq3"]
+
 [node name="cutscene" type="Node2D"]
 script = ExtResource("1_cgemk")
 
 [node name="cutscene_animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(319, 240)
-scale = Vector2(0.45, 0.45)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_35is7")
 animation = &"rock_1"
 
 [node name="button" type="Button" parent="."]
-offset_left = 418.0
-offset_top = 28.0
-offset_right = 531.0
-offset_bottom = 68.0
+offset_left = 484.0
+offset_top = 417.0
+offset_right = 597.0
+offset_bottom = 457.0
 text = "Continue"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 83.0
+offset_top = 47.0
+offset_right = 568.0
+offset_bottom = 221.0
+theme = SubResource("Theme_3jpq3")
+text = "It was the first major snow, and the few straggler crops that hadn't already succumbed to the frost were now buried. Now, without plants to tend, I went to sit by the strange stone and admire the fearsome beauty that now coated the ground. I wondered at this rock, with the near-perfectly circular hole through the center. As I traced the line with a chilly finger, something odd happened..."
 
 [connection signal="pressed" from="button" to="." method="_on_button_pressed"]
