@@ -1,16 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjs0lrog84upx"]
+[gd_scene load_steps=8 format=3 uid="uid://cjs0lrog84upx"]
 
 [ext_resource type="Script" path="res://Scripts/farm.gd" id="1_ovusw"]
-[ext_resource type="Texture2D" uid="uid://odxi3eoy4alf" path="res://sprites/farm.png" id="1_t8oub"]
 [ext_resource type="PackedScene" uid="uid://d3seiysyma2im" path="res://Scenes/tile.tscn" id="2_fvoba"]
+[ext_resource type="Texture2D" uid="uid://c3wlpkcmee8vo" path="res://sprites/farm1.png" id="3_xgd3u"]
+[ext_resource type="Texture2D" uid="uid://45glx5813lv" path="res://sprites/farm3.png" id="4_3jc4k"]
+[ext_resource type="Texture2D" uid="uid://c2j44or7htcfw" path="res://sprites/farm2.png" id="4_ekj4q"]
+[ext_resource type="Texture2D" uid="uid://cotbeqadniw44" path="res://sprites/farm4.png" id="5_i02ad"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_og66k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3jc4k")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xgd3u")
+}],
+"loop": true,
+"name": &"Spring",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ekj4q")
+}],
+"loop": true,
+"name": &"Summer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_i02ad")
+}],
+"loop": true,
+"name": &"Winter",
+"speed": 5.0
+}]
 
 [node name="Farm" type="Node2D"]
 script = ExtResource("1_ovusw")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="AnimatedSprite2D" parent="."]
 position = Vector2(320, 240)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_t8oub")
+sprite_frames = SubResource("SpriteFrames_og66k")
+animation = &"Winter"
 
 [node name="FarmTiles" type="Node" parent="."]
 
@@ -132,9 +171,9 @@ position = Vector2(512, 352)
 unique_name_in_owner = true
 offset_left = 24.0
 offset_top = 16.0
-offset_right = 117.0
+offset_right = 216.0
 offset_bottom = 42.0
-text = "Day 1"
+text = "Summer 1830"
 
 [node name="TileOptions" type="ItemList" parent="."]
 z_index = 100

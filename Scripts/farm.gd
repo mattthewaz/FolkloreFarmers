@@ -4,12 +4,18 @@ extends Node2D
 @onready var tileOptions: ItemList = $TileOptions
 @onready var farmTiles = $FarmTiles
 var activeTile = null
-
+var seasons = ['Spring','Summer','Fall','Winter']
 var day = 1
+var year = 1830
 
 func new_day():
 	day+=1
-	%DayCounter.text = "Day " + str(day)
+	var season = seasons[day % 4]
+	$Background.play(season)
+	if season == 'Spring':
+		year += 1
+	%DayCounter.text = season + ' ' + str(year)
+	
 
 func testTiles():
 	var A1 = get_node("FarmTiles/TileA1")
