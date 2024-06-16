@@ -1,0 +1,27 @@
+Takes place over 5 different characters over time
+	story explores attitudes toward folklore/tradition over generations
+
+Resources - money, vegetables, spiritual energy
+	money - gotten from wheat, veg. used for building/planting
+	vegetables - used for building and maintaining bears
+	spiritual energy - accumulated over time, score - maybe used for other things? healthy lifespan?
+	vitality - influenced by time and spiritual energy
+Tile resource fertility - reduced by crops, increased by bears
+
+Buildings:
+	Shrine - 100g, 2 season build/20g, 1 season restore - creates spiritual energy (1), buffs adjacent bears(x2)
+	Bears - 3 veg build - maintain w/ 1 vegetable, produuces spiritual energy (1), increases fertility(2)
+	Tilled Soil - 1 season to till - ???
+	Wheat - 20g plant - sells for 10gxfertility (minimum value), reduces fertility (1?)
+	Vegetables - 30g plant - yields 1-3 veg based on fertility, can sell for low gold, sets fertility to 2-3?
+	irrigation? - adds fertility around tile? acts as multiplier?
+
+Game ends with score, and 2-3 ending possibilities
+
+?Each generation might add a new building/mechanic
+	some generation adds taking multiple actions w/ advanced tools
+	a river comes in at a generation, with ability to irrigate
+
+new generation explains previous feature in journal/story entry
+
+??new playthrough takes information from the previous end state for its starting state
