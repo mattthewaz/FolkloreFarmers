@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://btrx7r5krcqtr"]
+
+[ext_resource type="Script" path="res://cutscene.gd" id="1_cgemk"]
+[ext_resource type="Texture2D" uid="uid://dq3oxs842u3sw" path="res://sprites/shrine_broken_cutscene1.png" id="1_yvg35"]
+[ext_resource type="Texture2D" uid="uid://cxgt0vfheyh21" path="res://sprites/shrine_broken_cutscene2.png" id="2_4ubdf"]
+[ext_resource type="Texture2D" uid="uid://bnt3kxrbeba41" path="res://sprites/shrine_broken_cutscene3.png" id="3_6c2qo"]
+[ext_resource type="Texture2D" uid="uid://bxd0mb3s6fv8c" path="res://sprites/shrine_broken_cutscene4.png" id="4_6ykul"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_35is7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yvg35")
+}],
+"loop": true,
+"name": &"rock_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4ubdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6c2qo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6ykul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6c2qo")
+}],
+"loop": true,
+"name": &"rock_2",
+"speed": 5.0
+}]
+
+[node name="cutscene" type="Node2D"]
+script = ExtResource("1_cgemk")
+
+[node name="cutscene_animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(319, 240)
+scale = Vector2(0.45, 0.45)
+sprite_frames = SubResource("SpriteFrames_35is7")
+animation = &"rock_1"
+
+[node name="button" type="Button" parent="."]
+offset_left = 418.0
+offset_top = 28.0
+offset_right = 531.0
+offset_bottom = 68.0
+text = "Continue"
+
+[connection signal="pressed" from="button" to="." method="_on_button_pressed"]
