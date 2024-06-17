@@ -46,7 +46,7 @@ func _ready():
 		tile.tileSelected.connect(_tile_selected.bind(tile))
 		tile.tileUnselected.connect(_tile_unselected.bind(tile))
 
-enum MenuOption { Demolish, Wheat, Vegetable, Shrine, RepairShrine, Bear } 
+enum MenuOption { Demolish, Wheat, Vegetable, Shrine, RepairShrine, Bear, Till } 
 
 func _on_tile_menu_close():
 	Global.menu_mode = false
@@ -65,20 +65,25 @@ func _on_tile_menu_item(id):
 				selectedTile.farmType = Global.FarmType.Shrine
 			MenuOption.RepairShrine:
 				selectedTile.farmType = Global.FarmType.Shrine
-			MenuOption.RepairShrine:
+			MenuOption.Bear:
 				selectedTile.farmType = Global.FarmType.Pasture
+			MenuOption.Till:
+				selectedTile.farmType = Global.FarmType.TilledSoil
 	tileMenu.hide()
 
 func _update_tile_menu(tile):
 	tileMenu.clear()
-	tileMenu.add_item("Demolish", MenuOption.Demolish)
-	tileMenu.add_item("Wheat Field", MenuOption.Wheat)
-	tileMenu.add_item("Vegetable Patch", MenuOption.Vegetable)
-	if tile.farmType != Global.FarmType.BrokenShrine:
+	if tile.farmType == Global.FarmType.TilledSoil:
+		tileMenu.add_item("Wheat Field", MenuOption.Wheat)
+		tileMenu.add_item("Vegetable Patch", MenuOption.Vegetable)
+	if tile.farmType == Global.FarmType.Empty:
+		tileMenu.add_item("Till Soil", MenuOption.Till)		
 		tileMenu.add_item("Shrine", MenuOption.Shrine)
+		tileMenu.add_item("Bear Habitat", MenuOption.Bear)
 	if tile.farmType == Global.FarmType.BrokenShrine:
 		tileMenu.add_item("Repair Shrine", MenuOption.RepairShrine)
-	tileMenu.add_item("Bear Habitat", MenuOption.Bear)
+	if tile.farmType != Global.FarmType.Empty:
+		tileMenu.add_item("Demolish", MenuOption.Demolish)
 
 func _show_tile_menu(tile):
 	Global.menu_mode = true
@@ -87,7 +92,6 @@ func _show_tile_menu(tile):
 		tileMenu.position.y = tile.position.y - tileMenu.size.y + 64
 	if tileMenu.position.x + tileMenu.size.x > get_viewport().get_visible_rect().size.x:
 		tileMenu.position.x = tile.position.x - tileMenu.size.x
-	tileMenu.set_item_disabled(tile.farmType,true)
 	_update_tile_menu(tile)
 	tileMenu.show()
 	

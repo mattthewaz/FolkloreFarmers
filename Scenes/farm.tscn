@@ -248,7 +248,7 @@ offset_bottom = 47.0
 text = "End Day"
 
 [node name="TileMenu" type="PopupMenu" parent="."]
-size = Vector2i(101, 100)
+size = Vector2i(101, 10)
 visible = true
 hide_on_item_selection = false
 hide_on_checkable_item_selection = false
