@@ -5,7 +5,7 @@ enum FarmType { Empty, Wheat, Shrine, Vegetable, Pasture, BrokenShrine, TilledSo
 var menu_mode = false
 
 #[ gold_change, vegetable_change, energy_change ]
-var daily_upkeep_constants = {
+const daily_upkeep_constants = {
 	FarmType.Empty : [0, 0, 0],
 	FarmType.Wheat : [10, 0, 0],
 	FarmType.Shrine : [0, 0, 1],
@@ -16,7 +16,7 @@ var daily_upkeep_constants = {
 	}
 
 #[ gold_cost, vegetable_cost, action_cost]
-var cost_constants = {
+const cost_constants = {
 	'till': [0, 0, 1],
 	'build_shrine': [100, 0, 1],
 	'repair_shrine': [20, 0, 1],
@@ -27,7 +27,7 @@ var cost_constants = {
 	}
 
 #[ winter_change_to, newgame_change_to ]
-var farmtype_changes = {
+const farmtype_changes = {
 	FarmType.Empty : [null, null],
 	FarmType.Wheat : [FarmType.TilledSoil, FarmType.Empty],
 	FarmType.Shrine : [null, FarmType.BrokenShrine],
@@ -38,10 +38,10 @@ var farmtype_changes = {
 	}
 
 func winter_farmtype_changes(farmType):
-	return farmtype_changes[0]
+	return farmtype_changes[farmType][0]
 
 func newgame_farmtype_changes(farmType):
-	return farmtype_changes[1]
+	return farmtype_changes[farmType][1]
 
 # returns [ gold_change, vegetable_change, energy_change ]
 func daily_update(farmType):
