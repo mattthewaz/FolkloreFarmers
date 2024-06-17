@@ -57,3 +57,5 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	if not Global.menu_mode:
 		selected = false
+func upkeep():
+	pass
