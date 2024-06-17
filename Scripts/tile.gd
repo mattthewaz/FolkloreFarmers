@@ -45,7 +45,7 @@ func _ready():
 	selectedSprite.hide()
 	updateTileImage()
 
-func _input(event):
+func _unhandled_input(event):
 	if _selected && !Global.menu_mode:
 		if Input.is_action_just_pressed('Activated'):
 			emit_signal('tileActivated')

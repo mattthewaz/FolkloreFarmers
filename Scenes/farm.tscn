@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/farm.gd" id="1_ovusw"]
 [ext_resource type="PackedScene" uid="uid://d3seiysyma2im" path="res://Scenes/tile.tscn" id="2_fvoba"]
-[ext_resource type="Texture2D" uid="uid://bired55a8et4b" path="res://sprites/farm1.png" id="3_xgd3u"]
-[ext_resource type="Texture2D" uid="uid://brlg00tl5sn5" path="res://sprites/farm3.png" id="4_3jc4k"]
-[ext_resource type="Texture2D" uid="uid://capnor7st2fem" path="res://sprites/farm2.png" id="4_ekj4q"]
-[ext_resource type="Texture2D" uid="uid://b8rv66bict83p" path="res://sprites/farm4.png" id="5_i02ad"]
+[ext_resource type="Texture2D" uid="uid://pujgcjyho5li" path="res://sprites/farm1.png" id="3_xgd3u"]
+[ext_resource type="Texture2D" uid="uid://3o24yteoo8n7" path="res://sprites/farm3.png" id="4_3jc4k"]
+[ext_resource type="Texture2D" uid="uid://c054cwah1une0" path="res://sprites/farm2.png" id="4_ekj4q"]
+[ext_resource type="Texture2D" uid="uid://8ifd4djpy3an" path="res://sprites/farm4.png" id="5_i02ad"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_og66k"]
 animations = [{
@@ -240,36 +240,6 @@ offset_right = 216.0
 offset_bottom = 42.0
 text = "Summer 1824"
 
-[node name="ShrineRepair" type="ItemList" parent="."]
-z_index = 100
-offset_left = 669.0
-offset_top = 216.0
-offset_right = 812.0
-offset_bottom = 283.0
-item_count = 2
-item_0/text = "Repair"
-item_1/text = "Return"
-
-[node name="TileOptions" type="ItemList" parent="."]
-z_index = 100
-offset_left = 668.0
-offset_top = 35.0
-offset_right = 810.0
-offset_bottom = 207.0
-item_count = 6
-item_0/text = "Demolish"
-item_0/selectable = false
-item_1/text = "Wheat Farm"
-item_1/selectable = false
-item_2/text = "Shrine"
-item_2/selectable = false
-item_3/text = "Vegetable Farm"
-item_3/selectable = false
-item_4/text = "Bear Habitat"
-item_4/selectable = false
-item_5/text = "Return"
-item_5/selectable = false
-
 [node name="EndDayButton" type="Button" parent="."]
 offset_left = 552.0
 offset_top = 16.0
@@ -277,6 +247,10 @@ offset_right = 623.0
 offset_bottom = 47.0
 text = "End Day"
 
-[connection signal="item_clicked" from="ShrineRepair" to="." method="_on_shrine_repair_item_clicked"]
-[connection signal="item_clicked" from="TileOptions" to="." method="_on_tile_options_item_clicked"]
+[node name="TileMenu" type="PopupMenu" parent="."]
+size = Vector2i(101, 100)
+visible = true
+hide_on_item_selection = false
+hide_on_checkable_item_selection = false
+
 [connection signal="pressed" from="EndDayButton" to="." method="new_day"]

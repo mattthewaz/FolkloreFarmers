@@ -1,7 +1,6 @@
 extends Node2D
 
-@onready var tileOptions: ItemList = $TileOptions
-@onready var shrineRepair: ItemList = $ShrineRepair
+@onready var tileMenu: PopupMenu = $TileMenu
 @onready var farmTiles = $FarmTiles
 var gold = 30
 var selectedTile = null
@@ -39,28 +38,61 @@ func _ready():
 	new_day()
 	_initializeTileMap()
 	tileMap[Vector2(5,3)].farmType = Global.FarmType.BrokenShrine
-	tileOptions.hide()
-	shrineRepair.hide()
+	tileMenu.hide()
+	tileMenu.popup_hide.connect(_on_tile_menu_close)
+	tileMenu.id_pressed.connect(_on_tile_menu_item)
 	for tile in $FarmTiles.get_children():
 		tile.tileActivated.connect(_tile_activated.bind(tile))
 		tile.tileSelected.connect(_tile_selected.bind(tile))
 		tile.tileUnselected.connect(_tile_unselected.bind(tile))
 
-func _tile_activated(tile):
-	Global.menu_mode = true
+enum MenuOption { Demolish, Wheat, Vegetable, Shrine, RepairShrine, Bear } 
+
+func _on_tile_menu_close():
+	Global.menu_mode = false
+	selectedTile.selected = false
+
+func _on_tile_menu_item(id):
+	if selectedTile != null:
+		match id:
+			MenuOption.Demolish:
+				selectedTile.farmType = Global.FarmType.Empty
+			MenuOption.Wheat:
+				selectedTile.farmType = Global.FarmType.Wheat
+			MenuOption.Vegetable:
+				selectedTile.farmType = Global.FarmType.Vegetable
+			MenuOption.Shrine:
+				selectedTile.farmType = Global.FarmType.Shrine
+			MenuOption.RepairShrine:
+				selectedTile.farmType = Global.FarmType.Shrine
+			MenuOption.RepairShrine:
+				selectedTile.farmType = Global.FarmType.Pasture
+	tileMenu.hide()
+
+func _update_tile_menu(tile):
+	tileMenu.clear()
+	tileMenu.add_item("Demolish", MenuOption.Demolish)
+	tileMenu.add_item("Wheat Field", MenuOption.Wheat)
+	tileMenu.add_item("Vegetable Patch", MenuOption.Vegetable)
 	if tile.farmType != Global.FarmType.BrokenShrine:
-		tileOptions.position = tile.position + Vector2(30,10)
-		if tileOptions.position.y > 314:
-			tileOptions.position.y = 314
-		if tileOptions.position.x > 506:
-			tileOptions.position.x = 506
-		tileOptions.set_item_disabled(tile.farmType,true)
-		tileOptions.show()
-	else:
-		shrineRepair.position = tile.position + Vector2(30,10)
-		if shrineRepair.position.x > 506:
-			shrineRepair.position.x = 506
-		shrineRepair.show()
+		tileMenu.add_item("Shrine", MenuOption.Shrine)
+	if tile.farmType == Global.FarmType.BrokenShrine:
+		tileMenu.add_item("Repair Shrine", MenuOption.RepairShrine)
+	tileMenu.add_item("Bear Habitat", MenuOption.Bear)
+
+func _show_tile_menu(tile):
+	Global.menu_mode = true
+	tileMenu.position = tile.position + Vector2(64,0)
+	if tileMenu.position.y + tileMenu.size.y > get_viewport().get_visible_rect().size.y:
+		tileMenu.position.y = tile.position.y - tileMenu.size.y + 64
+	if tileMenu.position.x + tileMenu.size.x > get_viewport().get_visible_rect().size.x:
+		tileMenu.position.x = tile.position.x - tileMenu.size.x
+	tileMenu.set_item_disabled(tile.farmType,true)
+	_update_tile_menu(tile)
+	tileMenu.show()
+	
+func _tile_activated(tile):
+	_show_tile_menu(tile)
 
 func _tile_selected(tile): 
 	if selectedTile != tile:
@@ -72,24 +104,3 @@ func _tile_selected(tile):
 func _tile_unselected(tile):
 	if selectedTile == tile:
 		selectedTile = null
-
-func _on_tile_options_item_clicked(index, _at_position, mouse_button_index):
-	if mouse_button_index == 1:
-		tileOptions.hide()
-		tileOptions.set_item_disabled(selectedTile.farmType,false)
-		if index != 5:
-			selectedTile.farmType = index
-			new_day()
-		selectedTile.selected = false
-		selectedTile = null
-		Global.menu_mode = false
-
-func _on_shrine_repair_item_clicked(index, at_position, mouse_button_index):
-	if mouse_button_index == 1:
-		shrineRepair.hide()
-		if index == 0:
-			new_day()
-			selectedTile.farmType = Global.FarmType.Shrine
-		selectedTile.selected = false
-		selectedTile = null
-		Global.menu_mode = false
