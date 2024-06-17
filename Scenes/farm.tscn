@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/farm.gd" id="1_ovusw"]
 [ext_resource type="PackedScene" uid="uid://d3seiysyma2im" path="res://Scenes/tile.tscn" id="2_fvoba"]
-[ext_resource type="Texture2D" uid="uid://c3wlpkcmee8vo" path="res://sprites/farm1.png" id="3_xgd3u"]
-[ext_resource type="Texture2D" uid="uid://45glx5813lv" path="res://sprites/farm3.png" id="4_3jc4k"]
-[ext_resource type="Texture2D" uid="uid://c2j44or7htcfw" path="res://sprites/farm2.png" id="4_ekj4q"]
-[ext_resource type="Texture2D" uid="uid://cotbeqadniw44" path="res://sprites/farm4.png" id="5_i02ad"]
+[ext_resource type="Texture2D" uid="uid://bired55a8et4b" path="res://sprites/farm1.png" id="3_xgd3u"]
+[ext_resource type="Texture2D" uid="uid://brlg00tl5sn5" path="res://sprites/farm3.png" id="4_3jc4k"]
+[ext_resource type="Texture2D" uid="uid://capnor7st2fem" path="res://sprites/farm2.png" id="4_ekj4q"]
+[ext_resource type="Texture2D" uid="uid://b8rv66bict83p" path="res://sprites/farm4.png" id="5_i02ad"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_og66k"]
 animations = [{
