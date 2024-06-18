@@ -13,7 +13,7 @@ config_version=5
 config/name="FolkloreFarmers"
 run/main_scene="res://Scenes/farm.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://sprites/shrine_broken_cutscene1.png"
+config/icon="res://sprites/bear.png"
 
 [autoload]
 
