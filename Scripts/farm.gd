@@ -103,6 +103,12 @@ func _ready():
 func _on_tile_menu_close():
 	Global.menu_mode = false
 	selectedTile.selected = false
+	var mousePos = get_viewport().get_mouse_position()
+	for tile in $FarmTiles.get_children():
+		var rect = Rect2(tile.position, Vector2(64, 64))
+		if rect.has_point(mousePos):
+			tile.selected = true
+			break
 
 func _on_tile_menu_item_pressed(id):
 	if selectedTile != null:
