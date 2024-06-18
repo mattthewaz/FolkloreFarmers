@@ -2,10 +2,10 @@ extends Node2D
 
 @onready var tileMenu: PopupMenu = $TileMenu
 @onready var farmTiles = $FarmTiles
-var gold = 30
+
 var selectedTile = null
 var seasons = ['Spring','Summer','Fall','Winter']
-var season = 'Summer'
+var season = 'Spring'
 var day = 0
 var endDay = 60 #should get replaced
 var year = 1824
@@ -17,6 +17,11 @@ func _initializeTileMap():
 	for tile in $FarmTiles.get_children():
 		tileMap[Vector2(tile.col,tile.row)] = tile
 
+func get_tile_at(col,row):
+	if !tileMap.has(Vector2(col,row)):
+		return null
+	return tileMap[Vector2(col,row)]
+
 #starts a new day - triggered by NewDayButton
 func new_day():
 	day+=1
@@ -25,12 +30,13 @@ func new_day():
 	if season == 'Spring':
 		year += 1
 	for t in farmTiles.get_children():
-		t.upkeep(adjacent_shrine_search(t.row,t.col))
+		t.upkeep(adjacent_shrine_search(t.col,t.row))
 		if season == 'Winter' and Global.winter_farmtype_changes(t.farmType) != null:
 			t.farmType = Global.winter_farmtype_changes(t.farmType)
 			
 	#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
 	if day >= endDay: new_life()
+	Global.energy = 1
 	
 	update_display()
 
@@ -64,16 +70,25 @@ func update_display(target = "all"):
 				tile.tempFertilityDisplay.text = str(tile.fertility)
 	
 #returns number of adjacent shrines
-func adjacent_shrine_search(row,col):
+func adjacent_shrine_search(col,row):
 	var shrines = 0
-	for t in farmTiles.get_children():
-		if t.farmType==Global.FarmType.Shrine and ((((t.row==row+1) or (t.row==row-1)) and t.col==col) or (((t.col==col+1) or (t.col==col-1)) and t.row==row)):
-			shrines += 1
+	var northTile = get_tile_at(col,row-1)
+	if northTile != null && northTile.farmType==Global.FarmType.Shrine:
+		shrines += 1
+	var southTile = get_tile_at(col,row+1)
+	if southTile != null && southTile.farmType==Global.FarmType.Shrine:
+		shrines += 1
+	var eastTile = get_tile_at(col+1,row)
+	if eastTile != null && eastTile.farmType==Global.FarmType.Shrine:
+		shrines += 1
+	var westTile = get_tile_at(col-1,row)
+	if westTile != null && westTile.farmType==Global.FarmType.Shrine:
+		shrines += 1
 	return shrines
 
 func _ready():
-	new_day()
 	_initializeTileMap()
+	update_display()
 	tileMap[Vector2(5,3)].farmType = Global.FarmType.BrokenShrine
 	tileMenu.hide()
 	tileMenu.popup_hide.connect(_on_tile_menu_close)
@@ -83,7 +98,6 @@ func _ready():
 		tile.tileSelected.connect(_tile_selected.bind(tile))
 		tile.tileUnselected.connect(_tile_unselected.bind(tile))
 
-enum MenuOption { Demolish, Wheat, Vegetable, Shrine, RepairShrine, Bear, Till } 
 
 func _on_tile_menu_close():
 	Global.menu_mode = false
@@ -93,46 +107,45 @@ func _on_tile_menu_item(id):
 	if selectedTile != null:
 		var action_name = ''
 		match id:
-			MenuOption.Demolish:
+			Global.FarmActions.Demolish:
 				selectedTile.farmType = Global.FarmType.Empty
-				action_name = 'demolish'
-			MenuOption.Wheat:
+			Global.FarmActions.Wheat:
 				selectedTile.farmType = Global.FarmType.Wheat
-				action_name = 'plant_wheat'
-			MenuOption.Vegetable:
+			Global.FarmActions.Vegetable:
 				selectedTile.farmType = Global.FarmType.Vegetable
-				action_name = 'plant_vegetable'
-			MenuOption.Shrine:
+			Global.FarmActions.Shrine:
 				selectedTile.farmType = Global.FarmType.Shrine
-				action_name = 'build_shrine'
-			MenuOption.RepairShrine:
+			Global.FarmActions.RepairShrine:
 				selectedTile.farmType = Global.FarmType.Shrine
-				action_name = 'repair_shrine'
-			MenuOption.Bear:
+			Global.FarmActions.Bear:
 				selectedTile.farmType = Global.FarmType.Pasture
-				action_name = 'bear'
-			MenuOption.Till:
+			Global.FarmActions.Till:
 				selectedTile.farmType = Global.FarmType.TilledSoil
-				action_name = 'till'
-		var costs = Global.cost(action_name)
+		var costs = Global.cost(id)
 		Global.gold -= costs[0]
 		Global.vegetables -= costs[1]
+		Global.energy -= costs[2]
 	update_display("currency")
 	tileMenu.hide()
+
+func _addFarmAction(action):
+	tileMenu.add_item(Global.farm_action_names[action], action)
+	if !Global.canAfford(action):
+		tileMenu.set_item_disabled(tileMenu.get_item_index(action), true)
 
 func _update_tile_menu(tile):
 	tileMenu.clear()
 	if tile.farmType == Global.FarmType.TilledSoil:
-		tileMenu.add_item("Wheat Field", MenuOption.Wheat)
-		tileMenu.add_item("Vegetable Patch", MenuOption.Vegetable)
+		_addFarmAction(Global.FarmActions.Wheat)
+		_addFarmAction(Global.FarmActions.Vegetable)
 	if tile.farmType == Global.FarmType.Empty:
-		tileMenu.add_item("Till Soil", MenuOption.Till)		
-		tileMenu.add_item("Shrine", MenuOption.Shrine)
-		tileMenu.add_item("Bear Habitat", MenuOption.Bear)
+		_addFarmAction(Global.FarmActions.Till)		
+		_addFarmAction(Global.FarmActions.Shrine)
+		_addFarmAction(Global.FarmActions.Bear)
 	if tile.farmType == Global.FarmType.BrokenShrine:
-		tileMenu.add_item("Repair Shrine", MenuOption.RepairShrine)
+		_addFarmAction(Global.FarmActions.RepairShrine)
 	if tile.farmType != Global.FarmType.Empty:
-		tileMenu.add_item("Demolish", MenuOption.Demolish)
+		_addFarmAction(Global.FarmActions.Demolish)
 
 func _show_tile_menu(tile):
 	Global.menu_mode = true
