@@ -7,25 +7,32 @@ var selectedTile = null
 var seasons = ['Spring','Summer','Fall','Winter']
 var season = 'Summer'
 var day = 0
+var endDay = 60 #should get replaced
 var year = 1824
+var starting_year = 1824
+var generation = 0
 
 var tileMap: Dictionary
 func _initializeTileMap():
 	for tile in $FarmTiles.get_children():
 		tileMap[Vector2(tile.col,tile.row)] = tile
 
+#starts a new day - triggered by NewDayButton
 func new_day():
 	day+=1
+	#print(day)
 	season = seasons[day % 4]
-	$Background.play(season)
 	if season == 'Spring':
 		year += 1
 	for t in farmTiles.get_children():
 		t.upkeep(adjacent_shrine_search(t.row,t.col))
 		if season == 'Winter' and Global.winter_farmtype_changes(t.farmType) != null:
 			t.farmType = Global.winter_farmtype_changes(t.farmType)
-	%DayCounter.text = season + ', ' + str(year)
-	%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.energy) + ' energy'
+			
+	#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
+	if day >= endDay: new_life()
+	
+	update_display()
 
 func skip_time(days):
 	Global.menu_mode = true
@@ -38,7 +45,24 @@ func skip_time(days):
 		%DayCounter.text = season + ', ' + str(year)
 		await get_tree().create_timer(1.0).timeout
 	Global.menu_mode = false
-
+	
+#updates displayed information - optionally, use a string to update one thing only
+func update_display(target = "all"):
+	match target:
+		"background": $Background.play(season)
+		"day": %DayCounter.text = season + ', ' + str(year)
+		"currency": %currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.energy) + ' energy'
+		"fertility":
+			for tile in $FarmTiles.get_children():
+				tile.tempFertilityDisplay.text = str(tile.fertility)
+				
+		"all":
+			$Background.play(season)
+			%DayCounter.text = season + ', ' + str(year)
+			%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.energy) + ' energy'
+			for tile in $FarmTiles.get_children():
+				tile.tempFertilityDisplay.text = str(tile.fertility)
+	
 #returns number of adjacent shrines
 func adjacent_shrine_search(row,col):
 	var shrines = 0
@@ -93,6 +117,7 @@ func _on_tile_menu_item(id):
 		var costs = Global.cost(action_name)
 		Global.gold -= costs[0]
 		Global.vegetables -= costs[1]
+	update_display("currency")
 	tileMenu.hide()
 
 func _update_tile_menu(tile):
@@ -132,3 +157,23 @@ func _tile_selected(tile):
 func _tile_unselected(tile):
 	if selectedTile == tile:
 		selectedTile = null
+
+#resets stats and sets up the game for a replay
+func new_life():
+	#set time data for a new game
+	day = 0
+	generation+=1
+	year = starting_year + 50 * generation
+	
+	#address tiles
+	for tile in $FarmTiles.get_children():
+		var oldType = tile.farmType
+		var newType = Global.newgame_farmtype_changes(oldType)
+		
+		#handle value changes
+		if oldType == Global.FarmType.Pasture: tile.fertility += 1
+			
+		#change the tile if it needs to
+		if newType != null: tile.farmType = newType
+	
+	new_day()

@@ -7,6 +7,7 @@ var fertility = 1
 
 @onready var tileSprite: AnimatedSprite2D = get_node("TileSprite")
 @onready var selectedSprite: AnimatedSprite2D = get_node("SelectedSprite")
+@onready var tempFertilityDisplay = $TempFertilityDisplay
 signal tileActivated
 signal tileSelected
 signal tileUnselected

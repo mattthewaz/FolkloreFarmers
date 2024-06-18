@@ -261,4 +261,12 @@ offset_right = 304.0
 offset_bottom = 80.0
 text = "$0, 0 veggies, 0 energy"
 
+[node name="ResetTestButton" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 16.0
+offset_right = 541.0
+offset_bottom = 48.0
+text = "New Game"
+
 [connection signal="pressed" from="EndDayButton" to="." method="new_day"]
+[connection signal="pressed" from="ResetTestButton" to="." method="new_life"]
