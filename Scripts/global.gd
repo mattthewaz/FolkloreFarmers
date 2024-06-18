@@ -4,8 +4,9 @@ enum FarmType { Empty, Wheat, Shrine, Vegetable, Pasture, BrokenShrine, TilledSo
 enum FarmActions { Demolish, Wheat, Vegetable, Shrine, RepairShrine, Bear, Till } 
 
 var gold = 30
-var energy = 1
+var energy = 0
 var vegetables = 0
+var actionPoints = 1
 
 var menu_mode = false
 
@@ -20,6 +21,26 @@ const daily_upkeep_constants = {
 	FarmType.TilledSoil : [0, 0, 0]
 	}
 
+const farm_tile_names = {
+	FarmType.Empty : "Open Field",
+	FarmType.Wheat : "Wheat Field",
+	FarmType.Shrine : "Shrine",
+	FarmType.Vegetable : "Vegetable Patch",
+	FarmType.Pasture : "Bear Habitat",
+	FarmType.BrokenShrine : "Broken Shrine",
+	FarmType.TilledSoil: "Tilled Soil"
+}
+
+const farm_tile_descriptions = {
+	FarmType.Empty : "Can build new buildings on this land",
+	FarmType.Wheat : "Generates money based on fertility",
+	FarmType.Shrine : "Allows bear habitats to be built nearby",
+	FarmType.Vegetable : "Generates vegetables based on fertility",
+	FarmType.Pasture : "Feed bears vegetables to generate spiritual power",
+	FarmType.BrokenShrine : "Can be repaired; cheaper than building a new shrine",
+	FarmType.TilledSoil: "Field ready to be planted upon"
+}
+
 #[ gold_cost, vegetable_cost, action_cost]
 const cost_constants = {
 	FarmActions.Till: [0, 0, 1],
@@ -33,12 +54,22 @@ const cost_constants = {
 
 const farm_action_names = {
 	FarmActions.Demolish: "Demolish",
-	FarmActions.Wheat: "Wheat Field",
-	FarmActions.Vegetable: "Vegetable Patch",
+	FarmActions.Wheat: "Plant Wheat",
+	FarmActions.Vegetable: "Plant Vegetables",
 	FarmActions.Shrine: "Build Shrine",
 	FarmActions.RepairShrine: "Repair Shrine",
-	FarmActions.Bear: "Bear Habitat",
+	FarmActions.Bear: "Build Bear Habitat",
 	FarmActions.Till: "Till Soil"
+}
+
+const farm_action_descriptions = {
+	FarmActions.Demolish: "Convert tile to open space",
+	FarmActions.Wheat: "Plant wheat for steady income",
+	FarmActions.Vegetable: "Plant vegetable patch to earn vegetables",
+	FarmActions.Shrine: "Build shrine",
+	FarmActions.RepairShrine: "Repair broken shrine",
+	FarmActions.Bear: "Build Bear Habitat",
+	FarmActions.Till: "Till the soil to prepare to plant crops"
 }
 
 #[ winter_change_to, newgame_change_to ]
@@ -67,4 +98,4 @@ func cost(action):
 	return cost_constants[action]
 
 func canAfford(action):
-	return gold >= cost(action)[0] && vegetables >= cost(action)[1] && energy >= cost(action)[2]
+	return gold >= cost(action)[0] && vegetables >= cost(action)[1] && actionPoints >= cost(action)[2]

@@ -36,7 +36,7 @@ func new_day():
 			
 	#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
 	if day >= endDay: new_life()
-	Global.energy = 1
+	Global.actionPoints = 1
 	
 	update_display()
 
@@ -57,7 +57,7 @@ func update_display(target = "all"):
 	match target:
 		"background": $Background.play(season)
 		"day": %DayCounter.text = season + ', ' + str(year)
-		"currency": %currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.energy) + ' energy'
+		"currency": %currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
 		"fertility":
 			for tile in $FarmTiles.get_children():
 				tile.tempFertilityDisplay.text = str(tile.fertility)
@@ -65,7 +65,7 @@ func update_display(target = "all"):
 		"all":
 			$Background.play(season)
 			%DayCounter.text = season + ', ' + str(year)
-			%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.energy) + ' energy'
+			%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
 			for tile in $FarmTiles.get_children():
 				tile.tempFertilityDisplay.text = str(tile.fertility)
 	
@@ -92,7 +92,8 @@ func _ready():
 	tileMap[Vector2(5,3)].farmType = Global.FarmType.BrokenShrine
 	tileMenu.hide()
 	tileMenu.popup_hide.connect(_on_tile_menu_close)
-	tileMenu.id_pressed.connect(_on_tile_menu_item)
+	tileMenu.id_pressed.connect(_on_tile_menu_item_pressed)
+	tileMenu.window_input.connect(_on_tile_menu_item_focused)
 	for tile in $FarmTiles.get_children():
 		tile.tileActivated.connect(_tile_activated.bind(tile))
 		tile.tileSelected.connect(_tile_selected.bind(tile))
@@ -103,7 +104,7 @@ func _on_tile_menu_close():
 	Global.menu_mode = false
 	selectedTile.selected = false
 
-func _on_tile_menu_item(id):
+func _on_tile_menu_item_pressed(id):
 	if selectedTile != null:
 		var action_name = ''
 		match id:
@@ -124,9 +125,16 @@ func _on_tile_menu_item(id):
 		var costs = Global.cost(id)
 		Global.gold -= costs[0]
 		Global.vegetables -= costs[1]
-		Global.energy -= costs[2]
+		Global.actionPoints -= costs[2]
 	update_display("currency")
 	tileMenu.hide()
+
+func _on_tile_menu_item_focused(event):
+	var focusedIndex = tileMenu.get_focused_item()
+	if focusedIndex == -1:
+		%ContextInfo.text = ""
+		return
+	_show_action_context_info(tileMenu.get_item_id(focusedIndex))
 
 func _addFarmAction(action):
 	tileMenu.add_item(Global.farm_action_names[action], action)
@@ -166,10 +174,27 @@ func _tile_selected(tile):
 			selectedTile.selected = false
 		tile.selected = true
 		selectedTile = tile
+		_show_tile_context_info(selectedTile)
 
 func _tile_unselected(tile):
 	if selectedTile == tile:
 		selectedTile = null
+		%ContextInfo.text = ""
+
+func _show_tile_context_info(tile):
+	%ContextInfo.text = Global.farm_tile_names[tile.farmType] + ": " + Global.farm_tile_descriptions[tile.farmType] + "\n" + "Fertility: " + str(tile.fertility)
+
+func _show_action_context_info(action):
+	%ContextInfo.text = Global.farm_action_names[action] + ": " + Global.farm_action_descriptions[action] + "\n"
+	%ContextInfo.text += "Cost: "
+	var costs = []
+	if Global.cost(action)[2] > 0:
+		costs.append(str(Global.cost(action)[2]) + " action")
+	if Global.cost(action)[0] > 0:
+		costs.append("$" + str(Global.cost(action)[0]))
+	if Global.cost(action)[1] > 0:
+		costs.append(str(Global.cost(action)[1]) + " vegetables")
+	%ContextInfo.text += ", ".join(costs)
 
 #resets stats and sets up the game for a replay
 func new_life():
