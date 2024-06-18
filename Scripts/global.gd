@@ -26,7 +26,7 @@ const cost_constants = {
 	'repair_shrine': [20, 0, 1],
 	'plant_wheat': [5, 0, 0],
 	'plant_vegetable': [30, 0, 0],
-	'attract_bears': [0, 3, 1],
+	'bear': [0, 3, 1],
 	'demolish': [0, 0, 1]
 	}
 

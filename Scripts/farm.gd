@@ -67,21 +67,32 @@ func _on_tile_menu_close():
 
 func _on_tile_menu_item(id):
 	if selectedTile != null:
+		var action_name = ''
 		match id:
 			MenuOption.Demolish:
 				selectedTile.farmType = Global.FarmType.Empty
+				action_name = 'demolish'
 			MenuOption.Wheat:
 				selectedTile.farmType = Global.FarmType.Wheat
+				action_name = 'plant_wheat'
 			MenuOption.Vegetable:
 				selectedTile.farmType = Global.FarmType.Vegetable
+				action_name = 'plant_vegetable'
 			MenuOption.Shrine:
 				selectedTile.farmType = Global.FarmType.Shrine
+				action_name = 'build_shrine'
 			MenuOption.RepairShrine:
 				selectedTile.farmType = Global.FarmType.Shrine
+				action_name = 'repair_shrine'
 			MenuOption.Bear:
 				selectedTile.farmType = Global.FarmType.Pasture
+				action_name = 'bear'
 			MenuOption.Till:
 				selectedTile.farmType = Global.FarmType.TilledSoil
+				action_name = 'till'
+		var costs = Global.cost(action_name)
+		Global.gold -= costs[0]
+		Global.vegetables -= costs[1]
 	tileMenu.hide()
 
 func _update_tile_menu(tile):
