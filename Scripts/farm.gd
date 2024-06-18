@@ -22,6 +22,8 @@ func new_day():
 		year += 1
 	for t in farmTiles.get_children():
 		t.upkeep(adjacent_shrine_search(t.row,t.col))
+		if season == 'Winter' and Global.winter_farmtype_changes(t.farmType) != null:
+			t.farmType = Global.winter_farmtype_changes(t.farmType)
 	%DayCounter.text = season + ', ' + str(year)
 	%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.energy) + ' energy'
 
