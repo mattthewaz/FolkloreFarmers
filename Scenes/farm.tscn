@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjs0lrog84upx"]
+[gd_scene load_steps=11 format=3 uid="uid://cjs0lrog84upx"]
 
 [ext_resource type="Script" path="res://Scripts/farm.gd" id="1_ovusw"]
 [ext_resource type="PackedScene" uid="uid://d3seiysyma2im" path="res://Scenes/tile.tscn" id="2_fvoba"]
-[ext_resource type="Texture2D" uid="uid://pujgcjyho5li" path="res://sprites/farm1.png" id="3_xgd3u"]
-[ext_resource type="Texture2D" uid="uid://3o24yteoo8n7" path="res://sprites/farm3.png" id="4_3jc4k"]
-[ext_resource type="Texture2D" uid="uid://c054cwah1une0" path="res://sprites/farm2.png" id="4_ekj4q"]
-[ext_resource type="Texture2D" uid="uid://8ifd4djpy3an" path="res://sprites/farm4.png" id="5_i02ad"]
+[ext_resource type="Texture2D" uid="uid://bired55a8et4b" path="res://sprites/farm1.png" id="3_xgd3u"]
+[ext_resource type="Texture2D" uid="uid://brlg00tl5sn5" path="res://sprites/farm3.png" id="4_3jc4k"]
+[ext_resource type="Texture2D" uid="uid://capnor7st2fem" path="res://sprites/farm2.png" id="4_ekj4q"]
+[ext_resource type="Texture2D" uid="uid://b8rv66bict83p" path="res://sprites/farm4.png" id="5_i02ad"]
+[ext_resource type="Texture2D" uid="uid://b1f77jbt6kl2t" path="res://sprites/icon1.png" id="6_c0enb"]
 [ext_resource type="Theme" uid="uid://dmn7v863jgw31" path="res://themes/main.tres" id="7_4bmbk"]
+[ext_resource type="Texture2D" uid="uid://dtujo7bl25ieu" path="res://sprites/icon2.png" id="7_8gekr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_og66k"]
 animations = [{
@@ -51,6 +53,16 @@ position = Vector2(320, 240)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_og66k")
 animation = &"Summer"
+
+[node name="VeggieIcon" type="Sprite2D" parent="."]
+position = Vector2(139, 56)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_c0enb")
+
+[node name="GoldIcon" type="Sprite2D" parent="."]
+position = Vector2(36, 59)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("7_8gekr")
 
 [node name="FarmTiles" type="Node" parent="."]
 
@@ -259,10 +271,10 @@ hide_on_checkable_item_selection = false
 
 [node name="currency" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
-offset_left = 22.0
-offset_top = 39.0
-offset_right = 304.0
-offset_bottom = 80.0
+offset_left = 327.0
+offset_top = 53.0
+offset_right = 609.0
+offset_bottom = 94.0
 theme = ExtResource("7_4bmbk")
 text = "$0, 0 veggies, 1 actions"
 

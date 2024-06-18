@@ -8,8 +8,8 @@ var seasons = ['Spring','Summer','Fall','Winter']
 var season = 'Spring'
 var day = 0
 var endDay = 60 #should get replaced
-var year = 1824
 var starting_year = 1824
+var year = starting_year
 var generation = 0
 
 var tileMap: Dictionary
