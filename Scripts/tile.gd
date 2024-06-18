@@ -65,6 +65,6 @@ func upkeep(adjacent_shrines):
 	else:
 		Global.vegetables += daily[1] + fertility
 	if farmType == Global.FarmType.Pasture and adjacent_shrines > 0:
-		Global.energy += (adjacent_shrines * 2 * daily[2])
+		Global.energy += (2 ** adjacent_shrines * daily[2])
 	else:
 		Global.energy += daily[2]
