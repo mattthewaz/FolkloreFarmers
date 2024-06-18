@@ -20,7 +20,10 @@ func new_day():
 	$Background.play(season)
 	if season == 'Spring':
 		year += 1
+	for t in farmTiles.get_children():
+		t.upkeep(adjacent_shrine_search(t.row,t.col))
 	%DayCounter.text = season + ', ' + str(year)
+	%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.energy) + ' energy'
 
 func skip_time(days):
 	Global.menu_mode = true
@@ -33,6 +36,14 @@ func skip_time(days):
 		%DayCounter.text = season + ', ' + str(year)
 		await get_tree().create_timer(1.0).timeout
 	Global.menu_mode = false
+
+#returns number of adjacent shrines
+func adjacent_shrine_search(row,col):
+	var shrines = 0
+	for t in farmTiles.get_children():
+		if t.farmType==Global.FarmType.Shrine and ((((t.row==row+1) or (t.row==row-1)) and t.col==col) or (((t.col==col+1) or (t.col==col-1)) and t.row==row)):
+			shrines += 1
+	return shrines
 
 func _ready():
 	new_day()

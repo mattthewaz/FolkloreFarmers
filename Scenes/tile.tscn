@@ -1,22 +1,22 @@
 [gd_scene load_steps=21 format=3 uid="uid://d3seiysyma2im"]
 
 [ext_resource type="Script" path="res://Scripts/tile.gd" id="1_68wa1"]
-[ext_resource type="Texture2D" uid="uid://djp2b6ithuub8" path="res://sprites/wheat1.png" id="2_ipofp"]
-[ext_resource type="Texture2D" uid="uid://dbyyna2yp1mst" path="res://sprites/grass1.png" id="2_qww30"]
-[ext_resource type="Texture2D" uid="uid://dq3swpb21hfqj" path="res://sprites/veggies1.png" id="2_thn3r"]
-[ext_resource type="Texture2D" uid="uid://srbn30jyg2js" path="res://sprites/veggies2.png" id="3_58tah"]
-[ext_resource type="Texture2D" uid="uid://dmx36381dj6nr" path="res://sprites/wheat2.png" id="3_ia3nc"]
-[ext_resource type="Texture2D" uid="uid://d2m3gantkho2x" path="res://sprites/grass2.png" id="3_spbaq"]
-[ext_resource type="Texture2D" uid="uid://cmltept55d37u" path="res://sprites/shrine1.png" id="6_ltc03"]
-[ext_resource type="Texture2D" uid="uid://bb5nbt10idn5f" path="res://sprites/shrine2.png" id="7_ofy4n"]
-[ext_resource type="Texture2D" uid="uid://mawo3mm41moj" path="res://sprites/hover1.png" id="10_53lh3"]
-[ext_resource type="Texture2D" uid="uid://c42nw4l5lbnsr" path="res://sprites/pasture1.png" id="10_e0g5w"]
-[ext_resource type="Texture2D" uid="uid://e1hoglbo2ci8" path="res://sprites/hover2.png" id="11_2be7a"]
-[ext_resource type="Texture2D" uid="uid://b4egdc4x54cd1" path="res://sprites/pasture2.png" id="11_xdblq"]
-[ext_resource type="Texture2D" uid="uid://q02033s2bngo" path="res://sprites/shrine_broken1.png" id="12_jjykf"]
-[ext_resource type="Texture2D" uid="uid://dxede4fcof3va" path="res://sprites/shrine_broken2.png" id="13_pe6h3"]
-[ext_resource type="Texture2D" uid="uid://bsx6dgup2sgrk" path="res://sprites/tilled1.png" id="14_ulap4"]
-[ext_resource type="Texture2D" uid="uid://ckktbskk16666" path="res://sprites/tilled2.png" id="15_2u5xr"]
+[ext_resource type="Texture2D" uid="uid://fl05r44b663d" path="res://sprites/wheat1.png" id="2_ipofp"]
+[ext_resource type="Texture2D" uid="uid://r5hevsm1qcff" path="res://sprites/grass1.png" id="2_qww30"]
+[ext_resource type="Texture2D" uid="uid://c341r6o4c4ymf" path="res://sprites/veggies1.png" id="2_thn3r"]
+[ext_resource type="Texture2D" uid="uid://b7v01qdwwcl8i" path="res://sprites/veggies2.png" id="3_58tah"]
+[ext_resource type="Texture2D" uid="uid://be3d8m0go7nqf" path="res://sprites/wheat2.png" id="3_ia3nc"]
+[ext_resource type="Texture2D" uid="uid://dgvfib6qkn6mx" path="res://sprites/grass2.png" id="3_spbaq"]
+[ext_resource type="Texture2D" uid="uid://lkjx14uk8qre" path="res://sprites/shrine1.png" id="6_ltc03"]
+[ext_resource type="Texture2D" uid="uid://c4yreyb21ivck" path="res://sprites/shrine2.png" id="7_ofy4n"]
+[ext_resource type="Texture2D" uid="uid://bpr70kc6iq2yw" path="res://sprites/hover1.png" id="10_53lh3"]
+[ext_resource type="Texture2D" uid="uid://ivfxy0he04vl" path="res://sprites/pasture1.png" id="10_e0g5w"]
+[ext_resource type="Texture2D" uid="uid://bn67dohrdhvys" path="res://sprites/hover2.png" id="11_2be7a"]
+[ext_resource type="Texture2D" uid="uid://dq30kk3cp0vnk" path="res://sprites/pasture2.png" id="11_xdblq"]
+[ext_resource type="Texture2D" uid="uid://dhuoqhjohk554" path="res://sprites/shrine_broken1.png" id="12_jjykf"]
+[ext_resource type="Texture2D" uid="uid://vdbidye2c7og" path="res://sprites/shrine_broken2.png" id="13_pe6h3"]
+[ext_resource type="Texture2D" uid="uid://cekoaujhsg2h6" path="res://sprites/tilled1.png" id="14_ulap4"]
+[ext_resource type="Texture2D" uid="uid://77c1lyeulpe5" path="res://sprites/tilled2.png" id="15_2u5xr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_magg0"]
 animations = [{
@@ -95,7 +95,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"6",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17ktp"]

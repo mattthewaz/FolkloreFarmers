@@ -2,6 +2,10 @@ extends Node
 
 enum FarmType { Empty, Wheat, Shrine, Vegetable, Pasture, BrokenShrine, TilledSoil }
 
+var gold = 0
+var energy = 0
+var vegetables = 0
+
 var menu_mode = false
 
 #[ gold_change, vegetable_change, energy_change ]

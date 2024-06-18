@@ -4,7 +4,6 @@ extends Node2D
 @export var row: int
 
 var fertility = 1
-var spirituality = 1
 
 @onready var tileSprite: AnimatedSprite2D = get_node("TileSprite")
 @onready var selectedSprite: AnimatedSprite2D = get_node("SelectedSprite")
@@ -57,5 +56,15 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	if not Global.menu_mode:
 		selected = false
-func upkeep():
-	pass
+		
+func upkeep(adjacent_shrines):
+	var daily = Global.daily_update(farmType)
+	Global.gold += fertility * daily[0]
+	if farmType != Global.FarmType.Vegetable:
+		Global.vegetables += daily[1]
+	else:
+		Global.vegetables += daily[1] + fertility
+	if farmType == Global.FarmType.Pasture and adjacent_shrines > 0:
+		Global.energy += (adjacent_shrines * 2 * daily[2])
+	else:
+		Global.energy += daily[2]
