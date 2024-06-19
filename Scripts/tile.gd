@@ -3,7 +3,7 @@ extends Node2D
 @export var col: int
 @export var row: int
 
-var fertility = 1
+var fertility = int(randf_range(1.0,2.2))
 
 @onready var tileSprite: AnimatedSprite2D = get_node("TileSprite")
 @onready var selectedSprite: AnimatedSprite2D = get_node("SelectedSprite")

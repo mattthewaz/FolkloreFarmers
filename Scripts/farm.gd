@@ -38,6 +38,7 @@ func new_day():
 	if day >= endDay: new_life()
 	Global.actionPoints = 1
 	$ActionIcon.play('1')
+	$Town.show()
 	update_display()
 
 func skip_time(days):
@@ -68,6 +69,8 @@ func update_display(target = "all"):
 			%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
 			for tile in $FarmTiles.get_children():
 				tile.tempFertilityDisplay.text = str(tile.fertility)
+			if Global.actionPoints == 0:
+				$ActionIcon.play('0')
 	
 #returns number of adjacent shrines
 func adjacent_shrine_search(col,row):
@@ -98,7 +101,14 @@ func _ready():
 		tile.tileActivated.connect(_tile_activated.bind(tile))
 		tile.tileSelected.connect(_tile_selected.bind(tile))
 		tile.tileUnselected.connect(_tile_unselected.bind(tile))
+	$Town.to_town.connect(_to_town.bind())
 
+
+func _to_town():
+	Global.actionPoints -= 1
+	Global.gold += 5
+	update_display()
+	$Town.hide()
 
 func _on_tile_menu_close():
 	Global.menu_mode = false
@@ -132,8 +142,6 @@ func _on_tile_menu_item_pressed(id):
 		Global.gold -= costs[0]
 		Global.vegetables -= costs[1]
 		Global.actionPoints -= costs[2]
-		if Global.actionPoints == 0:
-			$ActionIcon.play('0')
 	update_display("currency")
 	tileMenu.hide()
 

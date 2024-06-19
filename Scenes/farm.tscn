@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjs0lrog84upx"]
+[gd_scene load_steps=15 format=3 uid="uid://cjs0lrog84upx"]
 
 [ext_resource type="Script" path="res://Scripts/farm.gd" id="1_ovusw"]
 [ext_resource type="PackedScene" uid="uid://d3seiysyma2im" path="res://Scenes/tile.tscn" id="2_fvoba"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dtujo7bl25ieu" path="res://sprites/icon2.png" id="7_8gekr"]
 [ext_resource type="Texture2D" uid="uid://d241t6qg44q6b" path="res://sprites/icon4.png" id="8_4x1bd"]
 [ext_resource type="Texture2D" uid="uid://bbxgdq4um6m62" path="res://sprites/icon3.png" id="9_43or6"]
+[ext_resource type="PackedScene" uid="uid://bf0tj6dk84si2" path="res://town.tscn" id="10_i2t70"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_og66k"]
 animations = [{
@@ -90,6 +91,9 @@ position = Vector2(250, 57)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_40jma")
 animation = &"1"
+
+[node name="Town" parent="." instance=ExtResource("10_i2t70")]
+position = Vector2(614, 134)
 
 [node name="FarmTiles" type="Node" parent="."]
 
