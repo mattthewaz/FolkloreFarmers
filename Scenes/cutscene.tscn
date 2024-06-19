@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://b7klsenp17yl"]
 
 [ext_resource type="Script" path="res://Scripts/cutscene.gd" id="1_nfe7p"]
-[ext_resource type="Texture2D" uid="uid://c1lo81o8l4jx6" path="res://sprites/shrine_broken_cutscene1.png" id="2_laikb"]
-[ext_resource type="Texture2D" uid="uid://benbdglj1uah0" path="res://sprites/shrine_broken_cutscene2.png" id="3_2d0er"]
-[ext_resource type="Texture2D" uid="uid://cqnr5mn3bl3bs" path="res://sprites/shrine_broken_cutscene3.png" id="4_e80fu"]
-[ext_resource type="Texture2D" uid="uid://dxo27qxdikd1x" path="res://sprites/shrine_broken_cutscene4.png" id="5_g2gxl"]
+[ext_resource type="Texture2D" uid="uid://bbt1gdm5ruwv0" path="res://sprites/shrine_broken_cutscene1.png" id="2_laikb"]
+[ext_resource type="Texture2D" uid="uid://cglsvedelqwax" path="res://sprites/shrine_broken_cutscene2.png" id="3_2d0er"]
+[ext_resource type="Texture2D" uid="uid://ca2b7416xxv21" path="res://sprites/shrine_broken_cutscene3.png" id="4_e80fu"]
+[ext_resource type="Texture2D" uid="uid://cj08o33d4cnby" path="res://sprites/shrine_broken_cutscene4.png" id="5_g2gxl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_35is7"]
 animations = [{
