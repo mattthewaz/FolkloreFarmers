@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjs0lrog84upx"]
+[gd_scene load_steps=14 format=3 uid="uid://cjs0lrog84upx"]
 
 [ext_resource type="Script" path="res://Scripts/farm.gd" id="1_ovusw"]
 [ext_resource type="PackedScene" uid="uid://d3seiysyma2im" path="res://Scenes/tile.tscn" id="2_fvoba"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b1f77jbt6kl2t" path="res://sprites/icon1.png" id="6_c0enb"]
 [ext_resource type="Theme" uid="uid://dmn7v863jgw31" path="res://themes/main.tres" id="7_4bmbk"]
 [ext_resource type="Texture2D" uid="uid://dtujo7bl25ieu" path="res://sprites/icon2.png" id="7_8gekr"]
+[ext_resource type="Texture2D" uid="uid://d241t6qg44q6b" path="res://sprites/icon4.png" id="8_4x1bd"]
+[ext_resource type="Texture2D" uid="uid://bbxgdq4um6m62" path="res://sprites/icon3.png" id="9_43or6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_og66k"]
 animations = [{
@@ -45,6 +47,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_40jma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_43or6")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_4x1bd")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}]
+
 [node name="Farm" type="Node2D"]
 script = ExtResource("1_ovusw")
 
@@ -55,14 +76,20 @@ sprite_frames = SubResource("SpriteFrames_og66k")
 animation = &"Summer"
 
 [node name="VeggieIcon" type="Sprite2D" parent="."]
-position = Vector2(139, 56)
+position = Vector2(143, 57)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_c0enb")
 
 [node name="GoldIcon" type="Sprite2D" parent="."]
-position = Vector2(36, 59)
-scale = Vector2(0.23, 0.23)
+position = Vector2(36, 57)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_8gekr")
+
+[node name="ActionIcon" type="AnimatedSprite2D" parent="."]
+position = Vector2(250, 57)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_40jma")
+animation = &"1"
 
 [node name="FarmTiles" type="Node" parent="."]
 

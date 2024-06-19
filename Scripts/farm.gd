@@ -37,7 +37,7 @@ func new_day():
 	#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
 	if day >= endDay: new_life()
 	Global.actionPoints = 1
-	
+	$ActionIcon.play('1')
 	update_display()
 
 func skip_time(days):
@@ -132,6 +132,8 @@ func _on_tile_menu_item_pressed(id):
 		Global.gold -= costs[0]
 		Global.vegetables -= costs[1]
 		Global.actionPoints -= costs[2]
+		if Global.actionPoints == 0:
+			$ActionIcon.play('0')
 	update_display("currency")
 	tileMenu.hide()
 
