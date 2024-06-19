@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d3seiysyma2im"]
+[gd_scene load_steps=23 format=3 uid="uid://d3seiysyma2im"]
 
 [ext_resource type="Script" path="res://Scripts/tile.gd" id="1_68wa1"]
 [ext_resource type="Texture2D" uid="uid://fl05r44b663d" path="res://sprites/wheat1.png" id="2_ipofp"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://vdbidye2c7og" path="res://sprites/shrine_broken2.png" id="13_pe6h3"]
 [ext_resource type="Texture2D" uid="uid://cekoaujhsg2h6" path="res://sprites/tilled1.png" id="14_ulap4"]
 [ext_resource type="Texture2D" uid="uid://77c1lyeulpe5" path="res://sprites/tilled2.png" id="15_2u5xr"]
+[ext_resource type="Texture2D" uid="uid://c6wmsrjyj254n" path="res://sprites/rubble1.png" id="16_dve0t"]
+[ext_resource type="Texture2D" uid="uid://dg2qs1ccwn33s" path="res://sprites/rubble2.png" id="17_vpe84"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_magg0"]
 animations = [{
@@ -96,6 +98,17 @@ animations = [{
 "loop": true,
 "name": &"6",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_dve0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_vpe84")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17ktp"]
@@ -122,7 +135,7 @@ script = ExtResource("1_68wa1")
 position = Vector2(32, 32)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_magg0")
-animation = &"6"
+animation = &"7"
 
 [node name="CursorDetector" type="CollisionShape2D" parent="."]
 position = Vector2(32, 32)

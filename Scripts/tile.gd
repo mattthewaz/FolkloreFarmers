@@ -3,7 +3,7 @@ extends Node2D
 @export var col: int
 @export var row: int
 
-var fertility = int(randf_range(1.0,2.2))
+var fertility = 1
 
 @onready var tileSprite: AnimatedSprite2D = get_node("TileSprite")
 @onready var selectedSprite: AnimatedSprite2D = get_node("SelectedSprite")
@@ -41,6 +41,13 @@ func updateTileImage():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if Global.rubble_count > 0:
+		var rubble_check = randi_range(1,Global.tiles_ungenned)
+		if rubble_check <= 2:
+			farmType = Global.FarmType.Rubble
+			Global.rubble_count -= 1
+			fertility = 2
+		Global.tiles_ungenned -= 1
 	tileSprite.play()
 	selectedSprite.hide()
 	updateTileImage()

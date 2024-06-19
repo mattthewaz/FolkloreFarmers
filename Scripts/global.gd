@@ -1,12 +1,15 @@
 extends Node
 
-enum FarmType { Empty, Wheat, Shrine, Vegetable, Pasture, BrokenShrine, TilledSoil }
+enum FarmType { Empty, Wheat, Shrine, Vegetable, Pasture, BrokenShrine, TilledSoil, Rubble }
 enum FarmActions { Demolish, Wheat, Vegetable, Shrine, RepairShrine, Bear, Till } 
 
 var gold = 30
 var energy = 0
 var vegetables = 0
 var actionPoints = 1
+var tiles_ungenned = 38
+
+var rubble_count = 4
 
 var menu_mode = false
 
@@ -18,7 +21,8 @@ const daily_upkeep_constants = {
 	FarmType.Vegetable : [0, 1, 0],
 	FarmType.Pasture : [0, -1, 1],
 	FarmType.BrokenShrine : [0, 0, 0],
-	FarmType.TilledSoil : [0, 0, 0]
+	FarmType.TilledSoil : [0, 0, 0],
+	FarmType.Rubble: [0, 0, 0]
 	}
 
 const farm_tile_names = {
@@ -28,7 +32,8 @@ const farm_tile_names = {
 	FarmType.Vegetable : "Vegetable Patch",
 	FarmType.Pasture : "Bear Habitat",
 	FarmType.BrokenShrine : "Broken Shrine",
-	FarmType.TilledSoil: "Tilled Soil"
+	FarmType.TilledSoil: "Tilled Soil",
+	FarmType.Rubble: "Rubble"
 }
 
 const farm_tile_descriptions = {
@@ -38,7 +43,8 @@ const farm_tile_descriptions = {
 	FarmType.Vegetable : "Generates vegetables based on fertility",
 	FarmType.Pasture : "Feed bears vegetables to generate spiritual power",
 	FarmType.BrokenShrine : "Can be repaired; cheaper than building a new shrine",
-	FarmType.TilledSoil: "Field ready to be planted upon"
+	FarmType.TilledSoil: "Field ready to be planted upon",
+	FarmType.Rubble: "Rocks that can be removed to access the rich soil beneath"
 }
 
 #[ gold_cost, vegetable_cost, action_cost]
@@ -80,7 +86,8 @@ const farmtype_changes = {
 	FarmType.Vegetable : [FarmType.TilledSoil, FarmType.Empty],
 	FarmType.Pasture : [null, FarmType.Empty],
 	FarmType.BrokenShrine : [null, null],
-	FarmType.TilledSoil : [null, FarmType.Empty]	
+	FarmType.TilledSoil : [null, FarmType.Empty],
+	FarmType.Rubble: [null,null]
 	}
 
 func winter_farmtype_changes(farmType):
