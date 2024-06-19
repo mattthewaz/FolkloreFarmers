@@ -58,7 +58,11 @@ func update_display(target = "all"):
 	match target:
 		"background": $Background.play(season)
 		"day": %DayCounter.text = season + ', ' + str(year)
-		"currency": %currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
+		"currency": 
+			%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
+			if Global.actionPoints <= 0:
+				$ActionIcon.play('0')
+				$Town.hide()
 		"fertility":
 			for tile in $FarmTiles.get_children():
 				tile.tempFertilityDisplay.text = str(tile.fertility)
@@ -69,8 +73,6 @@ func update_display(target = "all"):
 			%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
 			for tile in $FarmTiles.get_children():
 				tile.tempFertilityDisplay.text = str(tile.fertility)
-			if Global.actionPoints == 0:
-				$ActionIcon.play('0')
 	
 #returns number of adjacent shrines
 func adjacent_shrine_search(col,row):
@@ -108,7 +110,6 @@ func _to_town():
 	Global.actionPoints -= 1
 	Global.gold += 5
 	update_display()
-	$Town.hide()
 
 func _on_tile_menu_close():
 	Global.menu_mode = false
