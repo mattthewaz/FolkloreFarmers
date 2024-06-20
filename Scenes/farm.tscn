@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjs0lrog84upx"]
+[gd_scene load_steps=16 format=3 uid="uid://cjs0lrog84upx"]
 
 [ext_resource type="Script" path="res://Scripts/farm.gd" id="1_ovusw"]
 [ext_resource type="PackedScene" uid="uid://d3seiysyma2im" path="res://Scenes/tile.tscn" id="2_fvoba"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://capnor7st2fem" path="res://sprites/farm2.png" id="4_ekj4q"]
 [ext_resource type="Texture2D" uid="uid://b8rv66bict83p" path="res://sprites/farm4.png" id="5_i02ad"]
 [ext_resource type="Texture2D" uid="uid://b1f77jbt6kl2t" path="res://sprites/icon1.png" id="6_c0enb"]
+[ext_resource type="Texture2D" uid="uid://7wyljtcv3qn" path="res://sprites/icon7.png" id="6_ft2uk"]
 [ext_resource type="Theme" uid="uid://dmn7v863jgw31" path="res://themes/main.tres" id="7_4bmbk"]
 [ext_resource type="Texture2D" uid="uid://dtujo7bl25ieu" path="res://sprites/icon2.png" id="7_8gekr"]
 [ext_resource type="Texture2D" uid="uid://d241t6qg44q6b" path="res://sprites/icon4.png" id="8_4x1bd"]
@@ -76,6 +77,11 @@ scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_og66k")
 animation = &"Summer"
 
+[node name="Energy" type="Sprite2D" parent="."]
+position = Vector2(250, 57)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_ft2uk")
+
 [node name="VeggieIcon" type="Sprite2D" parent="."]
 position = Vector2(143, 57)
 scale = Vector2(0.25, 0.25)
@@ -87,7 +93,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_8gekr")
 
 [node name="ActionIcon" type="AnimatedSprite2D" parent="."]
-position = Vector2(250, 57)
+position = Vector2(467, 453)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_40jma")
 animation = &"1"
@@ -363,14 +369,27 @@ autowrap_mode = 0
 [node name="Actions" type="RichTextLabel" parent="Resources"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 250.0
-offset_top = -388.0
-offset_right = 371.0
-offset_bottom = -367.0
+offset_left = 467.0
+offset_top = 8.0
+offset_right = 588.0
+offset_bottom = 29.0
 theme = ExtResource("7_4bmbk")
 theme_override_font_sizes/normal_font_size = 16
 text = "Actions: 1"
 scroll_active = false
+
+[node name="Energy" type="RichTextLabel" parent="Resources"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 253.0
+offset_top = -384.0
+offset_right = 316.0
+offset_bottom = -367.0
+theme = ExtResource("7_4bmbk")
+theme_override_font_sizes/normal_font_size = 16
+text = "10000"
+scroll_active = false
+autowrap_mode = 0
 
 [connection signal="pressed" from="EndDayButton" to="." method="new_day"]
 [connection signal="pressed" from="ResetTestButton" to="." method="new_life"]

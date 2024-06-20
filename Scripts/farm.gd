@@ -73,7 +73,7 @@ func update_display(target = "all"):
 			%Gold.text = str(Global.gold)
 			%Veggies.text = str(Global.vegetables)
 			%Actions.text = 'Actions: ' + str(Global.actionPoints)
-			
+			%Energy.text = str(Global.energy)
 			if Global.actionPoints <= 0:
 				$ActionIcon.play('0')
 				$Town.hide()
@@ -89,6 +89,7 @@ func update_display(target = "all"):
 			%Gold.text = str(Global.gold)
 			%Veggies.text = str(Global.vegetables)
 			%Actions.text = 'Actions: ' + str(Global.actionPoints)
+			%Energy.text = str(Global.energy)
 			for tile in $FarmTiles.get_children():
 				tile.tempFertilityDisplay.text = str(tile.fertility)
 	

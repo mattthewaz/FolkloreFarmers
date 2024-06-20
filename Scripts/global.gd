@@ -3,7 +3,7 @@ extends Node
 enum FarmType { Empty, Wheat, Shrine, Vegetable, Pasture, BrokenShrine, TilledSoil, Rubble }
 enum FarmActions { Demolish, Wheat, Vegetable, Shrine, RepairShrine, Bear, Till } 
 
-var gold_initial = 30
+var gold_initial = 25
 var gold = gold_initial
 var energy = 0
 var vegetables = 0
