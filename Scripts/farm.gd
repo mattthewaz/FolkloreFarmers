@@ -25,7 +25,7 @@ func get_tile_at(col,row):
 #starts a new day - triggered by NewDayButton
 func new_day():
 	day+=1
-	#print(day)
+	#print(find_tiles(Global.FarmType.Empty).size())
 	season = seasons[day % 4]
 	if season == 'Spring':
 		year += 1
@@ -33,6 +33,16 @@ func new_day():
 		t.upkeep(adjacent_shrine_search(t.col,t.row))
 		if season == 'Winter' and Global.winter_farmtype_changes(t.farmType) != null:
 			t.farmType = Global.winter_farmtype_changes(t.farmType)
+			
+	#resolve negative veggies
+	if Global.vegetables < 0:
+		var bears = find_tiles(Global.FarmType.Pasture)
+		var removal_number = Global.vegetables*-1
+		bears.shuffle()
+		
+		while Global.vegetables < 0:
+			bears[Global.vegetables+removal_number].farmType = Global.FarmType.Empty
+			Global.vegetables += 1
 			
 	#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
 	if day >= endDay: new_life()
@@ -66,8 +76,9 @@ func update_display(target = "all"):
 		"fertility":
 			for tile in $FarmTiles.get_children():
 				tile.tempFertilityDisplay.text = str(tile.fertility)
-				
-		"all":
+		
+		#Update Everything if called without a valid argument
+		_:
 			$Background.play(season)
 			%DayCounter.text = season + ', ' + str(year)
 			%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
@@ -90,6 +101,13 @@ func adjacent_shrine_search(col,row):
 	if westTile != null && westTile.farmType==Global.FarmType.Shrine:
 		shrines += 1
 	return shrines
+
+#returns a list of all the tiles of the given type
+func find_tiles(type):
+	var results = []
+	for tile in farmTiles.get_children():
+		if tile.farmType == type:results.append(tile)
+	return results
 
 func _ready():
 	_initializeTileMap()
