@@ -5,6 +5,7 @@ extends Node2D
 
 var fertility = 1
 
+@onready var popup = $ResourcePopup
 @onready var tileSprite: AnimatedSprite2D = get_node("TileSprite")
 @onready var selectedSprite: AnimatedSprite2D = get_node("SelectedSprite")
 @onready var tempFertilityDisplay = $TempFertilityDisplay
@@ -51,6 +52,7 @@ func _ready():
 	tileSprite.play()
 	selectedSprite.hide()
 	updateTileImage()
+	
 
 func _unhandled_input(event):
 	if _selected && !Global.menu_mode:
@@ -72,7 +74,15 @@ func upkeep(adjacent_shrines):
 		Global.vegetables += daily[1]
 	else:
 		Global.vegetables += daily[1] + fertility
+		await popup.play(daily[1] + fertility,'vegetable')
 	if farmType == Global.FarmType.Pasture and adjacent_shrines > 0:
 		Global.energy += (2 ** adjacent_shrines * daily[2])
+		await popup.play(daily[1],'vegetable',(2 ** adjacent_shrines * daily[2]),'energy')
 	else:
 		Global.energy += daily[2]
+	if farmType == Global.FarmType.Wheat:
+		await popup.play(fertility * daily[0],'gold')
+	elif farmType == Global.FarmType.Shrine:
+		await popup.play(fertility * daily[0],'gold')
+	elif farmType == Global.FarmType.Pasture and adjacent_shrines == 0:
+		await popup.play(daily[1],'vegetable',daily[2],'energy')

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d3seiysyma2im"]
+[gd_scene load_steps=24 format=3 uid="uid://d3seiysyma2im"]
 
 [ext_resource type="Script" path="res://Scripts/tile.gd" id="1_68wa1"]
 [ext_resource type="Texture2D" uid="uid://fl05r44b663d" path="res://sprites/wheat1.png" id="2_ipofp"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://77c1lyeulpe5" path="res://sprites/tilled2.png" id="15_2u5xr"]
 [ext_resource type="Texture2D" uid="uid://c6wmsrjyj254n" path="res://sprites/rubble1.png" id="16_dve0t"]
 [ext_resource type="Texture2D" uid="uid://dg2qs1ccwn33s" path="res://sprites/rubble2.png" id="17_vpe84"]
+[ext_resource type="PackedScene" uid="uid://cfyph372pvdif" path="res://resource_popup.tscn" id="20_gyc8n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_magg0"]
 animations = [{
@@ -155,6 +156,9 @@ text = "1"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="ResourcePopup" parent="." instance=ExtResource("20_gyc8n")]
+position = Vector2(-20, 7)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

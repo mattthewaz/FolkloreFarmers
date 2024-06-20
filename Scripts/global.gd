@@ -9,9 +9,10 @@ var energy = 0
 var vegetables = 0
 var actionPoints = 1
 var tiles_ungenned = 38
-
+var current_character
+var generation = 0
 var rubble_count = 4
-
+var story = 'start'
 var menu_mode = false
 
 #[ gold_change, vegetable_change, energy_change ]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfyph372pvdif"]
+
+[ext_resource type="Theme" uid="uid://dmn7v863jgw31" path="res://themes/main.tres" id="1_0pd8p"]
+[ext_resource type="Script" path="res://resource_popup.gd" id="1_ln2ac"]
+[ext_resource type="Texture2D" uid="uid://dtujo7bl25ieu" path="res://sprites/icon2.png" id="2_domcl"]
+[ext_resource type="Texture2D" uid="uid://b1f77jbt6kl2t" path="res://sprites/icon1.png" id="3_ffewx"]
+[ext_resource type="Texture2D" uid="uid://7wyljtcv3qn" path="res://sprites/icon7.png" id="3_sb36y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q3o41"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sb36y")
+}],
+"loop": true,
+"name": &"energy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_domcl")
+}],
+"loop": true,
+"name": &"gold",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ffewx")
+}],
+"loop": true,
+"name": &"vegetable",
+"speed": 5.0
+}]
+
+[node name="ResourcePopup" type="Node2D"]
+script = ExtResource("1_ln2ac")
+
+[node name="Text" type="RichTextLabel" parent="."]
+offset_right = 60.0
+offset_bottom = 26.0
+theme = ExtResource("1_0pd8p")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+
+[node name="Icon" type="AnimatedSprite2D" parent="."]
+position = Vector2(71, 11)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_q3o41")
+animation = &"energy"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.41
