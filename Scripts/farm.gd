@@ -5,9 +5,9 @@ extends Node2D
 
 var selectedTile = null
 var seasons = ['Spring','Summer','Fall','Winter']
-var season = 'Spring'
-var day = 0
-var endDay = 60 #should get replaced
+var season = 'Summer'
+var day = 1
+var endDay = 19 #should get replaced
 var starting_year = 1824
 var year = starting_year
 var generation = 0
@@ -69,7 +69,11 @@ func update_display(target = "all"):
 		"background": $Background.play(season)
 		"day": %DayCounter.text = season + ', ' + str(year)
 		"currency": 
-			%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
+			#%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
+			%Gold.text = str(Global.gold)
+			%Veggies.text = str(Global.vegetables)
+			%Actions.text = 'Actions: ' + str(Global.actionPoints)
+			
 			if Global.actionPoints <= 0:
 				$ActionIcon.play('0')
 				$Town.hide()
@@ -81,7 +85,10 @@ func update_display(target = "all"):
 		_:
 			$Background.play(season)
 			%DayCounter.text = season + ', ' + str(year)
-			%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
+			#%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
+			%Gold.text = str(Global.gold)
+			%Veggies.text = str(Global.vegetables)
+			%Actions.text = 'Actions: ' + str(Global.actionPoints)
 			for tile in $FarmTiles.get_children():
 				tile.tempFertilityDisplay.text = str(tile.fertility)
 	
@@ -173,8 +180,14 @@ func _on_tile_menu_item_focused(event):
 
 func _addFarmAction(action):
 	tileMenu.add_item(Global.farm_action_names[action], action)
+	
 	if !Global.canAfford(action):
 		tileMenu.set_item_disabled(tileMenu.get_item_index(action), true)
+	#if the action is afforable, disable if it is not apporpriate for the season
+	elif season == 'Winter': 
+		if action == Global.FarmActions.Wheat || action == Global.FarmActions.Vegetable || action == Global.FarmActions.Till:
+			tileMenu.set_item_disabled(tileMenu.get_item_index(action), true)
+			
 
 func _update_tile_menu(tile):
 	tileMenu.clear()
@@ -248,5 +261,10 @@ func new_life():
 			
 		#change the tile if it needs to
 		if newType != null: tile.farmType = newType
+	
+	#reset resources
+	Global.gold = Global.gold_initial
+	Global.vegetables = 0
+	Global.energy = 0
 	
 	new_day()
