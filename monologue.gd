@@ -16,7 +16,7 @@ const text0 = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var image = Image.load_from_file("res://sprites/Portraits/farmer_maybe" + str(randi_range(1,28)) + ".png")
+	var image = Image.load_from_file("res://sprites/Portraits/farmer_maybe" + str(randi_range(1,30)) + ".png")
 	portrait.texture = ImageTexture.create_from_image(image)
 	line = 0
 	box.text = text0[line]
