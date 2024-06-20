@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var portrait = $Portrait
 @onready var box = $SpeechBox
 @onready var cont = $Continue
 var line = 0
@@ -15,6 +16,8 @@ const text0 = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var image = Image.load_from_file("res://sprites/Portraits/farmer_maybe" + str(randi_range(1,28)) + ".png")
+	portrait.texture = ImageTexture.create_from_image(image)
 	line = 0
 	box.text = text0[line]
 
