@@ -83,6 +83,6 @@ func upkeep(adjacent_shrines):
 	if farmType == Global.FarmType.Wheat:
 		await popup.play(fertility * daily[0],'gold')
 	elif farmType == Global.FarmType.Shrine:
-		await popup.play(fertility * daily[0],'gold')
+		await popup.play(daily[2],'energy')
 	elif farmType == Global.FarmType.Pasture and adjacent_shrines == 0:
 		await popup.play(daily[1],'vegetable',daily[2],'energy')

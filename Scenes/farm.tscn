@@ -285,11 +285,12 @@ row = 4
 [node name="DayCounter" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 offset_left = 24.0
-offset_top = 16.0
-offset_right = 216.0
-offset_bottom = 42.0
+offset_top = 11.0
+offset_right = 247.0
+offset_bottom = 39.0
 theme = ExtResource("7_4bmbk")
-text = "Summer 1824"
+theme_override_font_sizes/normal_font_size = 20
+text = "Summer, 1824"
 
 [node name="EndDayButton" type="Button" parent="."]
 offset_left = 536.0
@@ -348,7 +349,7 @@ offset_top = -384.0
 offset_right = 99.0
 offset_bottom = -367.0
 theme = ExtResource("7_4bmbk")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 18
 text = "10000"
 scroll_active = false
 autowrap_mode = 0
@@ -356,12 +357,12 @@ autowrap_mode = 0
 [node name="Veggies" type="RichTextLabel" parent="Resources"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 144.0
+offset_left = 142.0
 offset_top = -384.0
-offset_right = 202.0
+offset_right = 200.0
 offset_bottom = -367.0
 theme = ExtResource("7_4bmbk")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 18
 text = "1000"
 scroll_active = false
 autowrap_mode = 0
@@ -381,12 +382,12 @@ scroll_active = false
 [node name="Energy" type="RichTextLabel" parent="Resources"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 253.0
+offset_left = 249.0
 offset_top = -384.0
-offset_right = 316.0
+offset_right = 312.0
 offset_bottom = -367.0
 theme = ExtResource("7_4bmbk")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 18
 text = "10000"
 scroll_active = false
 autowrap_mode = 0
