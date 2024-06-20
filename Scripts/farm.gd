@@ -5,9 +5,9 @@ extends Node2D
 
 var selectedTile = null
 var seasons = ['Spring','Summer','Fall','Winter']
-var season = 'Spring'
-var day = 0
-var endDay = 60 #should get replaced
+var season = 'Summer'
+var day = 1
+var endDay = 19 #should get replaced
 var starting_year = 1824
 var year = starting_year
 var generation = 0
@@ -25,7 +25,7 @@ func get_tile_at(col,row):
 #starts a new day - triggered by NewDayButton
 func new_day():
 	day+=1
-	#print(day)
+	#print(find_tiles(Global.FarmType.Empty).size())
 	season = seasons[day % 4]
 	if season == 'Spring':
 		year += 1
@@ -33,6 +33,16 @@ func new_day():
 		t.upkeep(adjacent_shrine_search(t.col,t.row))
 		if season == 'Winter' and Global.winter_farmtype_changes(t.farmType) != null:
 			t.farmType = Global.winter_farmtype_changes(t.farmType)
+			
+	#resolve negative veggies
+	if Global.vegetables < 0:
+		var bears = find_tiles(Global.FarmType.Pasture)
+		var removal_number = Global.vegetables*-1
+		bears.shuffle()
+		
+		while Global.vegetables < 0:
+			bears[Global.vegetables+removal_number].farmType = Global.FarmType.Empty
+			Global.vegetables += 1
 			
 	#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
 	if day >= endDay: new_life()
@@ -59,18 +69,26 @@ func update_display(target = "all"):
 		"background": $Background.play(season)
 		"day": %DayCounter.text = season + ', ' + str(year)
 		"currency": 
-			%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
+			#%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
+			%Gold.text = str(Global.gold)
+			%Veggies.text = str(Global.vegetables)
+			%Actions.text = 'Actions: ' + str(Global.actionPoints)
+			
 			if Global.actionPoints <= 0:
 				$ActionIcon.play('0')
 				$Town.hide()
 		"fertility":
 			for tile in $FarmTiles.get_children():
 				tile.tempFertilityDisplay.text = str(tile.fertility)
-				
-		"all":
+		
+		#Update Everything if called without a valid argument
+		_:
 			$Background.play(season)
 			%DayCounter.text = season + ', ' + str(year)
-			%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
+			#%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
+			%Gold.text = str(Global.gold)
+			%Veggies.text = str(Global.vegetables)
+			%Actions.text = 'Actions: ' + str(Global.actionPoints)
 			for tile in $FarmTiles.get_children():
 				tile.tempFertilityDisplay.text = str(tile.fertility)
 	
@@ -90,6 +108,13 @@ func adjacent_shrine_search(col,row):
 	if westTile != null && westTile.farmType==Global.FarmType.Shrine:
 		shrines += 1
 	return shrines
+
+#returns a list of all the tiles of the given type
+func find_tiles(type):
+	var results = []
+	for tile in farmTiles.get_children():
+		if tile.farmType == type:results.append(tile)
+	return results
 
 func _ready():
 	_initializeTileMap()
@@ -155,8 +180,14 @@ func _on_tile_menu_item_focused(event):
 
 func _addFarmAction(action):
 	tileMenu.add_item(Global.farm_action_names[action], action)
+	
 	if !Global.canAfford(action):
 		tileMenu.set_item_disabled(tileMenu.get_item_index(action), true)
+	#if the action is afforable, disable if it is not apporpriate for the season
+	elif season == 'Winter': 
+		if action == Global.FarmActions.Wheat || action == Global.FarmActions.Vegetable || action == Global.FarmActions.Till:
+			tileMenu.set_item_disabled(tileMenu.get_item_index(action), true)
+			
 
 func _update_tile_menu(tile):
 	tileMenu.clear()
@@ -230,5 +261,10 @@ func new_life():
 			
 		#change the tile if it needs to
 		if newType != null: tile.farmType = newType
+	
+	#reset resources
+	Global.gold = Global.gold_initial
+	Global.vegetables = 0
+	Global.energy = 0
 	
 	new_day()
