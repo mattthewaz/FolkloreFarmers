@@ -7,7 +7,7 @@ var selectedTile = null
 var seasons = ['Spring','Summer','Fall','Winter']
 var season = 'Summer'
 var day = 1
-var endDay = 19 #should get replaced
+var endDay = 15 #should get replaced
 var starting_year = 1824
 var year = starting_year
 var generation = 0
@@ -24,32 +24,33 @@ func get_tile_at(col,row):
 
 #starts a new day - triggered by NewDayButton
 func new_day():
-	day+=1
-	#print(find_tiles(Global.FarmType.Empty).size())
-	season = seasons[day % 4]
-	if season == 'Spring':
-		year += 1
-	for t in farmTiles.get_children():
-		t.upkeep(adjacent_shrine_search(t.col,t.row))
-		if season == 'Winter' and Global.winter_farmtype_changes(t.farmType) != null:
-			t.farmType = Global.winter_farmtype_changes(t.farmType)
+	if not Global.menu_mode:
+		day+=1
+		#print(find_tiles(Global.FarmType.Empty).size())
+		season = seasons[day % 4]
+		if season == 'Spring':
+			year += 1
+		for t in farmTiles.get_children():
+			t.upkeep(adjacent_shrine_search(t.col,t.row))
+			if season == 'Winter' and Global.winter_farmtype_changes(t.farmType) != null:
+				t.farmType = Global.winter_farmtype_changes(t.farmType)
+				
+		#resolve negative veggies
+		if Global.vegetables < 0:
+			var bears = find_tiles(Global.FarmType.Pasture)
+			var removal_number = Global.vegetables*-1
+			bears.shuffle()
 			
-	#resolve negative veggies
-	if Global.vegetables < 0:
-		var bears = find_tiles(Global.FarmType.Pasture)
-		var removal_number = Global.vegetables*-1
-		bears.shuffle()
-		
-		while Global.vegetables < 0:
-			bears[Global.vegetables+removal_number].farmType = Global.FarmType.Empty
-			Global.vegetables += 1
-			
-	#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
-	if day >= endDay: new_life()
-	Global.actionPoints = 1
-	$ActionIcon.play('1')
-	$Town.show()
-	update_display()
+			while Global.vegetables < 0:
+				bears[Global.vegetables+removal_number].farmType = Global.FarmType.Empty
+				Global.vegetables += 1
+				
+		#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
+		if day >= endDay: play_monologue()
+		Global.actionPoints = 1
+		$ActionIcon.play('1')
+		$Town.show()
+		update_display()
 
 func skip_time(days):
 	Global.menu_mode = true
@@ -245,6 +246,10 @@ func _show_action_context_info(action):
 		costs.append(str(Global.cost(action)[1]) + " vegetables")
 	%ContextInfo.text += ", ".join(costs)
 
+func play_monologue():
+	$Monologue.show()
+	$Monologue.play()
+
 #resets stats and sets up the game for a replay
 func new_life():
 	#set time data for a new game
@@ -269,3 +274,9 @@ func new_life():
 	Global.energy = 0
 	
 	new_day()
+
+
+func _on_monologue_monologue_over():
+	new_life()
+	await get_tree().create_timer(1.0).timeout
+	play_monologue()

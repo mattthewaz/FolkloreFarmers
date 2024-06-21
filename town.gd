@@ -23,3 +23,4 @@ func _unhandled_input(event):
 	if !Global.menu_mode:
 		if hovered and Input.is_action_just_pressed('Activated') and Global.actionPoints > 0:
 			emit_signal('to_town')
+			hide()

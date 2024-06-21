@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjs0lrog84upx"]
+[gd_scene load_steps=17 format=3 uid="uid://cjs0lrog84upx"]
 
 [ext_resource type="Script" path="res://Scripts/farm.gd" id="1_ovusw"]
 [ext_resource type="PackedScene" uid="uid://d3seiysyma2im" path="res://Scenes/tile.tscn" id="2_fvoba"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://d241t6qg44q6b" path="res://sprites/icon4.png" id="8_4x1bd"]
 [ext_resource type="Texture2D" uid="uid://bbxgdq4um6m62" path="res://sprites/icon3.png" id="9_43or6"]
 [ext_resource type="PackedScene" uid="uid://bf0tj6dk84si2" path="res://town.tscn" id="10_i2t70"]
+[ext_resource type="PackedScene" uid="uid://coa58a8fdsybh" path="res://Scenes/monologue.tscn" id="14_f1saq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_og66k"]
 animations = [{
@@ -93,7 +94,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_8gekr")
 
 [node name="ActionIcon" type="AnimatedSprite2D" parent="."]
-position = Vector2(467, 453)
+position = Vector2(373, 25)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_40jma")
 animation = &"1"
@@ -285,20 +286,20 @@ row = 4
 [node name="DayCounter" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 offset_left = 24.0
-offset_top = 11.0
+offset_top = 9.0
 offset_right = 247.0
-offset_bottom = 39.0
+offset_bottom = 37.0
 theme = ExtResource("7_4bmbk")
 theme_override_font_sizes/normal_font_size = 20
 text = "Summer, 1824"
 
 [node name="EndDayButton" type="Button" parent="."]
-offset_left = 536.0
+offset_left = 522.0
 offset_top = 16.0
-offset_right = 627.0
+offset_right = 632.0
 offset_bottom = 47.0
 theme = ExtResource("7_4bmbk")
-text = "End Day"
+text = "End Season"
 
 [node name="TileMenu" type="PopupMenu" parent="."]
 size = Vector2i(101, 25)
@@ -320,8 +321,8 @@ text = "$0, 0 veggies, 1 actions"
 [node name="ResetTestButton" type="Button" parent="."]
 offset_left = 424.0
 offset_top = 16.0
-offset_right = 528.0
-offset_bottom = 48.0
+offset_right = 515.0
+offset_bottom = 47.0
 theme = ExtResource("7_4bmbk")
 text = "New Game"
 
@@ -370,10 +371,10 @@ autowrap_mode = 0
 [node name="Actions" type="RichTextLabel" parent="Resources"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 467.0
-offset_top = 8.0
-offset_right = 588.0
-offset_bottom = 29.0
+offset_left = 210.0
+offset_top = -420.0
+offset_right = 331.0
+offset_bottom = -399.0
 theme = ExtResource("7_4bmbk")
 theme_override_font_sizes/normal_font_size = 16
 text = "Actions: 1"
@@ -392,5 +393,9 @@ text = "10000"
 scroll_active = false
 autowrap_mode = 0
 
+[node name="Monologue" parent="." instance=ExtResource("14_f1saq")]
+z_index = 1000
+
 [connection signal="pressed" from="EndDayButton" to="." method="new_day"]
 [connection signal="pressed" from="ResetTestButton" to="." method="new_life"]
+[connection signal="monologue_over" from="Monologue" to="." method="_on_monologue_monologue_over"]

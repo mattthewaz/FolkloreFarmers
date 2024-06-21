@@ -1,30 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://coa58a8fdsybh"]
+[gd_scene load_steps=5 format=3 uid="uid://coa58a8fdsybh"]
 
 [ext_resource type="Script" path="res://monologue.gd" id="1_3t1mj"]
+[ext_resource type="Texture2D" uid="uid://gqoa6uc6ngkx" path="res://sprites/Portraits/farmer_maybe22.png" id="2_htw1v"]
 [ext_resource type="Texture2D" uid="uid://c4n6qsn10cen2" path="res://sprites/textbox.png" id="3_n2l2t"]
+[ext_resource type="Theme" uid="uid://dmn7v863jgw31" path="res://themes/main.tres" id="3_rdojv"]
 
 [node name="Monologue" type="Node2D"]
 script = ExtResource("1_3t1mj")
 
 [node name="Portrait" type="Sprite2D" parent="."]
-position = Vector2(175, 177)
+position = Vector2(171, 177)
+texture = ExtResource("2_htw1v")
 
 [node name="Box" type="Sprite2D" parent="."]
-position = Vector2(285, 393)
-scale = Vector2(1.3, 1)
+position = Vector2(317, 390)
+scale = Vector2(1.5, 1)
 texture = ExtResource("3_n2l2t")
 
 [node name="SpeechBox" type="RichTextLabel" parent="."]
 offset_left = 59.0
-offset_top = 349.0
-offset_right = 517.0
-offset_bottom = 438.0
+offset_top = 346.0
+offset_right = 573.0
+offset_bottom = 435.0
+theme = ExtResource("3_rdojv")
+theme_override_font_sizes/normal_font_size = 14
+text = "Bears with glowin’ eyes, he said. Every night. He said it was a curse, but I think it was guilt. I'd feel bad too if I found out some bears accidentally died in the fire I started."
 
 [node name="Continue" type="Button" parent="."]
-offset_left = 337.0
-offset_top = 281.0
-offset_right = 429.0
-offset_bottom = 312.0
+offset_left = 488.0
+offset_top = 412.0
+offset_right = 580.0
+offset_bottom = 437.0
+theme = ExtResource("3_rdojv")
 text = "Continue..."
 
 [connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]

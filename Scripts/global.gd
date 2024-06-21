@@ -14,6 +14,7 @@ var generation = 0
 var rubble_count = 4
 var story = 'start'
 var menu_mode = false
+var monologue_mode = false
 
 #[ gold_change, vegetable_change, energy_change ]
 const daily_upkeep_constants = {
