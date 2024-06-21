@@ -6,6 +6,7 @@ Anneke requested work on disabling stuff (message incoming on Discord)
 Anneke requested work on a framework for some of the UI/artsy stuff to work from
 
 Must happen:
+Workshop names.
 Lifespan indicator.
 Working title screen.
 Directly tie in the cutscene to new generation transition.
@@ -17,3 +18,5 @@ Set up final mechanism for determining new generation start (vitality? set numbe
 Tooltip on go town arrow
 
 Music/sounds
+
+Customize game pages / screenshots / web stuff
