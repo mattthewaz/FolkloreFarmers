@@ -1,0 +1,19 @@
+Anneke making cutsceney stuff that she's not married to.
+Anneke making tutorial.
+
+Anneke requested work on disabling stuff (message incoming on Discord)
+
+Anneke requested work on a framework for some of the UI/artsy stuff to work from
+
+Must happen:
+Lifespan indicator.
+Working title screen.
+Directly tie in the cutscene to new generation transition.
+Refine new game change - black screen?
+Score screen.
+Adjust resolution, text readability.
+Finish fertility mechanic for new generation.
+Set up final mechanism for determining new generation start (vitality? set number?)
+Tooltip on go town arrow
+
+Music/sounds
