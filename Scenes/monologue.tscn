@@ -34,4 +34,6 @@ offset_bottom = 437.0
 theme = ExtResource("3_rdojv")
 text = "Continue..."
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
 [connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]

@@ -4,8 +4,8 @@ extends Node2D
 @onready var farmTiles = $FarmTiles
 
 var selectedTile = null
-var seasons = ['Spring','Summer','Fall','Winter']
-var season = 'Summer'
+var seasons = ['Fall','Winter','Spring','Summer']
+var season = 'Winter'
 var day = 1
 var endDay = 15 #should get replaced
 var starting_year = 1824
@@ -26,6 +26,16 @@ func get_tile_at(col,row):
 func new_day():
 	if not Global.menu_mode:
 		day+=1
+		if day == 2:
+			play_monologue('wheat')
+		if day == 3:
+			play_monologue('rubble')
+		if day == 5:
+			play_monologue('shrine')
+		if day == 6:
+			play_monologue('veggies')
+		if day == 8:
+			play_monologue('bears')
 		#print(find_tiles(Global.FarmType.Empty).size())
 		season = seasons[day % 4]
 		if season == 'Spring':
@@ -46,7 +56,7 @@ func new_day():
 				Global.vegetables += 1
 				
 		#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
-		if day >= endDay: play_monologue()
+		if day >= endDay: play_monologue('end')
 		Global.actionPoints = 1
 		$ActionIcon.play('1')
 		$Town.show()
@@ -246,9 +256,9 @@ func _show_action_context_info(action):
 		costs.append(str(Global.cost(action)[1]) + " vegetables")
 	%ContextInfo.text += ", ".join(costs)
 
-func play_monologue():
+func play_monologue(dialogue):
 	$Monologue.show()
-	$Monologue.play()
+	$Monologue.play(dialogue)
 
 #resets stats and sets up the game for a replay
 func new_life():
@@ -279,4 +289,4 @@ func new_life():
 func _on_monologue_monologue_over():
 	new_life()
 	await get_tree().create_timer(1.0).timeout
-	play_monologue()
+	play_monologue('start')
