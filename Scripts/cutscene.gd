@@ -1,5 +1,6 @@
 extends Node2D
 
+var times_clicked = 0
 @onready var animation = $cutscene_animation
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,5 +13,8 @@ func _process(delta):
 
 
 func _on_button_pressed():
-	animation.play("rock_2")
-	$button.hide()
+	times_clicked += 1
+	if times_clicked == 1:
+		animation.play("rock_2")
+	else:
+		queue_free()

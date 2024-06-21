@@ -19,7 +19,8 @@ const rubble_text = [
 const shrine_text = [
 	"Gettin' cold again already, huh? I guess it's been a whole year. Ground's too cold to till, and all the crops have died.",
 	"Maybe I'll go sit by that weird ol' rock in the field.",
-	"Huh?"
+	"Huh?",
+	"I wonder what'd happen if I repaired this shrine. Seems'ta have some sorta power."
 	]
 
 const veggie_text = [
@@ -56,6 +57,7 @@ const end_text = [[
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$cutscene.hide()
 	play('start')
 
 func play(dialogue):
@@ -82,6 +84,9 @@ func play(dialogue):
 	elif dialogue == 'veggie':
 		box.text = veggie_text[0]
 		story = 'rubble'
+	elif dialogue == 'shrine':
+		box.text = shrine_text[0]
+		story = 'shrine'
 	var image = Image.load_from_file("res://sprites/Portraits/farmer_maybe" + str(Global.current_character) + ".png")
 	portrait.texture = ImageTexture.create_from_image(image)
 
@@ -108,7 +113,7 @@ func _on_continue_pressed():
 		Global.monologue_mode = false
 		Global.menu_mode = false
 	elif story == 'rubble':
-		if line < (len("rubble_text")-1):
+		if line < (len(rubble_text)-1):
 			line += 1
 			box.text = rubble_text[line]
 		else:
@@ -116,10 +121,23 @@ func _on_continue_pressed():
 			Global.monologue_mode = false
 			Global.menu_mode = false
 	elif story == 'bear':
-		if line < (len("bear_text")-1):
+		if line < (len(bear_text)-1):
 			line += 1
 			box.text = bear_text[line]
 		else:
 			hide()
 			Global.monologue_mode = false
 			Global.menu_mode = false
+	elif story == 'shrine':
+		if line < 2:
+			line += 1
+			box.text = shrine_text[line]
+		elif line == 2:
+			$cutscene.show()
+			box.text = shrine_text[3]
+		else:
+			hide()
+			Global.monologue_mode = false
+			Global.menu_mode = false
+		
+		

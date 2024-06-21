@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7klsenp17yl"]
+[gd_scene load_steps=7 format=3 uid="uid://b7klsenp17yl"]
 
 [ext_resource type="Script" path="res://Scripts/cutscene.gd" id="1_nfe7p"]
 [ext_resource type="Texture2D" uid="uid://bbt1gdm5ruwv0" path="res://sprites/shrine_broken_cutscene1.png" id="2_laikb"]
@@ -34,8 +34,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Theme" id="Theme_3jpq3"]
-
 [node name="cutscene" type="Node2D"]
 script = ExtResource("1_nfe7p")
 
@@ -51,14 +49,5 @@ offset_top = 417.0
 offset_right = 597.0
 offset_bottom = 457.0
 text = "Continue"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-visible = false
-offset_left = 83.0
-offset_top = 47.0
-offset_right = 568.0
-offset_bottom = 221.0
-theme = SubResource("Theme_3jpq3")
-text = "It was the first major snow, and the few straggler crops that hadn't already succumbed to the frost were now buried. Now, without plants to tend, I went to sit by the strange stone and admire the fearsome beauty that now coated the ground. I wondered at this rock, with the near-perfectly circular hole through the center. As I traced the line with a chilly finger, something odd happened..."
 
 [connection signal="pressed" from="button" to="." method="_on_button_pressed"]

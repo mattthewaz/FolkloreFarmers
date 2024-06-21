@@ -103,6 +103,9 @@ func update_display(target = "all"):
 			%Energy.text = str(Global.energy)
 			for tile in $FarmTiles.get_children():
 				tile.tempFertilityDisplay.text = str(tile.fertility)
+			if Global.actionPoints <= 0:
+				$ActionIcon.play('0')
+				$Town.hide()
 	
 #returns number of adjacent shrines
 func adjacent_shrine_search(col,row):
