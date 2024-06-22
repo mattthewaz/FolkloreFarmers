@@ -17,9 +17,9 @@ class PlantFirstWheat extends OnTileActionEvent:
 		return (!Global.eventFlags.has("PlantFirstWheat") || Global.eventFlags["PlantFirstWheat"] == false) && action == Global.FarmActions.Wheat
 	
 	func onAfterTileAction(farm, tile, action):
-		var EndDayButton: Button = farm.get_node("EndDayButton")
-		EndDayButton.visible = true
+		farm.endDayButton.visible = true
 		Global.eventFlags["PlantFirstWheat"] = true
+		Global.flags.town = Global.FeatureMode.Show
 
 class DestroyFirstRock extends OnTileActionEvent:
 	func canRun(farm, tile: Tile, action):
@@ -30,18 +30,20 @@ class DestroyFirstRock extends OnTileActionEvent:
 			return true #cancel action
 	
 	func onAfterTileAction(farm, tile: Tile, action):
-		var EndDayButton: Button = farm.get_node("EndDayButton")
-		EndDayButton.visible = true
+		farm.endDayButton.visible = true
 		Global.eventFlags["DestroyFirstRock"] = true
+		Global.flags.town = Global.FeatureMode.Show
+		Global.flags.actions[Global.FarmActions.Till] = Global.FeatureMode.Show
+		Global.flags.actions[Global.FarmActions.Wheat] = Global.FeatureMode.Show
 
 class RepairFirstShrine extends OnTileActionEvent:
 	func canRun(farm, tile: Tile, action):
 		return (!Global.eventFlags.has("RepairFirstShrine") || Global.eventFlags["RepairFirstShrine"] == false) && action == Global.FarmActions.RepairShrine
 	
 	func onAfterTileAction(farm, tile: Tile, action):
-		var EndDayButton: Button = farm.get_node("EndDayButton")
-		EndDayButton.visible = true
+		farm.endDayButton.visible = true
 		Global.eventFlags["RepairFirstShrine"] = true
+		Global.flags.town = Global.FeatureMode.Show
 
 static var OnTileActionEvents: Array[OnTileActionEvent] = [
 	PlantFirstWheat.new(),

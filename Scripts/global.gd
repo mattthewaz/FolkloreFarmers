@@ -26,7 +26,8 @@ var flags = {
 		FarmActions.Bear: FeatureMode.Hide,
 		FarmActions.Demolish: FeatureMode.Hide
 	},
-	actionMenu = FeatureMode.Hide
+	actionMenu = FeatureMode.Hide,
+	town = FeatureMode.Show
 }
 
 var eventFlags: Dictionary
