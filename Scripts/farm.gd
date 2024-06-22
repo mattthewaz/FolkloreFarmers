@@ -72,7 +72,9 @@ func skip_time(days):
 func update_display(target = "all"):
 	match target:
 		"background": $Background.play(season)
-		"day": %DayCounter.text = season + ', ' + str(year)
+		"day":
+			%DayCounter.text = season + ', ' + str(year)
+			%RemSeas.text = "Remaining Seasons: " + str(endDay - day)
 		"currency": 
 			#%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
 			%Gold.text = str(Global.gold)
@@ -90,6 +92,7 @@ func update_display(target = "all"):
 		_:
 			$Background.play(season)
 			%DayCounter.text = season + ', ' + str(year)
+			%RemSeas.text = "Remaining Seasons: " + str(endDay - day)
 			#%currency.text = '$' + str(Global.gold) + ', ' + str(Global.vegetables) + ' veggies, ' + str(Global.actionPoints) + ' actions'
 			%Gold.text = str(Global.gold)
 			%Veggies.text = str(Global.vegetables)

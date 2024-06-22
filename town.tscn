@@ -1,8 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf0tj6dk84si2"]
+[gd_scene load_steps=18 format=3 uid="uid://bf0tj6dk84si2"]
 
 [ext_resource type="Texture2D" uid="uid://b1m7a5g8wst13" path="res://sprites/icon5.png" id="1_78am1"]
 [ext_resource type="Script" path="res://town.gd" id="1_hplrn"]
 [ext_resource type="Texture2D" uid="uid://c24wa3rbitja5" path="res://sprites/icon6.png" id="2_yxfqx"]
+[ext_resource type="Texture2D" uid="uid://ci5wxcl65pbxu" path="res://sprites/town1.png" id="4_hw36e"]
+[ext_resource type="Texture2D" uid="uid://cpfvumyjafbqa" path="res://sprites/town2.png" id="5_skee5"]
+[ext_resource type="Texture2D" uid="uid://ce4flxj6sk76r" path="res://sprites/town3.png" id="6_8ul7w"]
+[ext_resource type="Texture2D" uid="uid://br57vo8qlwf7b" path="res://sprites/town4.png" id="7_cjwp0"]
+[ext_resource type="Texture2D" uid="uid://cb2xex3kgq03a" path="res://sprites/town5.png" id="8_ntyx8"]
+[ext_resource type="Texture2D" uid="uid://cm6oc762tmum6" path="res://sprites/town6.png" id="9_7wpq0"]
+[ext_resource type="Texture2D" uid="uid://bk2mn3a6pc1bf" path="res://sprites/town7.png" id="10_43qoe"]
+[ext_resource type="Texture2D" uid="uid://jrrtxt68t03q" path="res://sprites/town8.png" id="11_c2pnq"]
+[ext_resource type="Texture2D" uid="uid://cimh7yc6ibcm3" path="res://sprites/town9.png" id="12_cugwu"]
+[ext_resource type="Texture2D" uid="uid://b4lah2j5syk8a" path="res://sprites/town10.png" id="13_pvvoy"]
+[ext_resource type="Texture2D" uid="uid://dkwnokhjysv06" path="res://sprites/town11.png" id="14_4de1n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k7u4q"]
 animations = [{
@@ -26,6 +37,53 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mees"]
 size = Vector2(32, 32)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_p5qml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hw36e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_skee5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8ul7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cjwp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ntyx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7wpq0")
+}, {
+"duration": 5.0,
+"texture": ExtResource("4_hw36e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_43qoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_c2pnq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cugwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pvvoy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4de1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hw36e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Town" type="Area2D"]
 script = ExtResource("1_hplrn")
 
@@ -38,5 +96,12 @@ animation = &"hovered"
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_0mees")
 
+[node name="animation" type="AnimatedSprite2D" parent="."]
+z_index = 500
+position = Vector2(-297, 134)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_p5qml")
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="animation_looped" from="animation" to="." method="_on_animation_animation_looped"]

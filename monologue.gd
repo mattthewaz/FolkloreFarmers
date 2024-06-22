@@ -81,9 +81,9 @@ func play(dialogue):
 	elif dialogue == 'bear':
 		box.text = bear_text[0]
 		story = 'bear'
-	elif dialogue == 'veggie':
+	elif dialogue == 'veggies':
 		box.text = veggie_text[0]
-		story = 'rubble'
+		story = 'veggie'
 	elif dialogue == 'shrine':
 		box.text = shrine_text[0]
 		story = 'shrine'
