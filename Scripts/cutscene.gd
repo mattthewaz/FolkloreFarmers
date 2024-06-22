@@ -17,4 +17,4 @@ func _on_button_pressed():
 	if times_clicked == 1:
 		animation.play("rock_2")
 	else:
-		queue_free()
+		hide()
