@@ -157,7 +157,7 @@ func _on_tile_menu_close():
 			break
 
 func _on_tile_menu_item_pressed(id):
-	if selectedTile != null:
+	if selectedTile != null && !EventHandler.runOnBeforeTileActionEvent(self, selectedTile, id):
 		var action_name = ''
 		match id:
 			Global.FarmActions.Demolish:
@@ -178,7 +178,7 @@ func _on_tile_menu_item_pressed(id):
 		Global.gold -= costs[0]
 		Global.vegetables -= costs[1]
 		Global.actionPoints -= costs[2]
-	EventHandler.runOnTileActionEvent(self, selectedTile)
+		EventHandler.runOnAfterTileActionEvent(self, selectedTile, id)
 	update_display("currency")
 	tileMenu.hide()
 

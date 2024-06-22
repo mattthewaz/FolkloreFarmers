@@ -28,6 +28,12 @@ class ExplainRubble extends AfterEndOfDayEvent:
 	
 	func onFire(farm):
 		farm.play_monologue('rubble')
+		Global.flags.actions[Global.FarmActions.Till] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.Wheat] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.Demolish] = Global.FeatureMode.Show
+		
+		var EndDayButton: Button = farm.get_node("EndDayButton")
+		EndDayButton.visible = false
 
 class IntroduceShrine extends AfterEndOfDayEvent:
 	func canRun(farm):
@@ -35,6 +41,11 @@ class IntroduceShrine extends AfterEndOfDayEvent:
 	
 	func onFire(farm):
 		farm.play_monologue('shrine')
+		Global.flags.actions[Global.FarmActions.RepairShrine] = Global.FeatureMode.Show
+		Global.flags.actions[Global.FarmActions.Demolish] = Global.FeatureMode.Hide
+		
+		var EndDayButton: Button = farm.get_node("EndDayButton")
+		EndDayButton.visible = false
 
 class IntroduceVegetables extends AfterEndOfDayEvent:
 	func canRun(farm):

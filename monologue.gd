@@ -13,7 +13,7 @@ const wheat_text = [
 
 const rubble_text = [
 	"Been havin' the same nightmares as Gramps. Every night. I wake up sweating, breathing heavily. Chased by bears. And the eyes… Those intense, glowing eyes…",
-	"ANyway, those big rocks are in the way. I heard once that the soil underneath rocks is more fertile. Maybe I'll take a pickaxe to one of those."
+	"Anyway, those big rocks are in the way. I heard once that the soil underneath rocks is more fertile. Maybe I'll take a pickaxe to one of those."
 	]
 
 const shrine_text = [
