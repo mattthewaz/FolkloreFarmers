@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Tile
+
 @export var col: int
 @export var row: int
 

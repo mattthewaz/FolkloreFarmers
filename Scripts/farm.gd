@@ -1,5 +1,9 @@
 extends Node2D
 
+class_name Farm
+
+const EventHandler = preload("res://Scripts/eventhandler.gd")
+
 @onready var tileMenu: PopupMenu = $TileMenu
 @onready var farmTiles = $FarmTiles
 
@@ -26,17 +30,7 @@ func get_tile_at(col,row):
 func new_day():
 	if not Global.menu_mode:
 		day+=1
-		if day == 2:
-			play_monologue('wheat')
-		if day == 3:
-			play_monologue('rubble')
-		if day == 5:
-			play_monologue('shrine')
-		if day == 6:
-			play_monologue('veggies')
-		if day == 8:
-			play_monologue('bears')
-		#print(find_tiles(Global.FarmType.Empty).size())
+		EventHandler.runAfterEndOfDayEvent(self)
 		season = seasons[day % 4]
 		if season == 'Spring':
 			year += 1
@@ -152,6 +146,7 @@ func _ready():
 func _to_town():
 	Global.actionPoints -= 1
 	Global.gold += 5
+	EventHandler.runOnGoToTownEvent(self)
 	update_display()
 
 func _on_tile_menu_close():
@@ -186,6 +181,7 @@ func _on_tile_menu_item_pressed(id):
 		Global.gold -= costs[0]
 		Global.vegetables -= costs[1]
 		Global.actionPoints -= costs[2]
+	EventHandler.runOnTileActionEvent(self, selectedTile)
 	update_display("currency")
 	tileMenu.hide()
 
