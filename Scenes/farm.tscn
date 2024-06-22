@@ -393,6 +393,16 @@ text = "10000"
 scroll_active = false
 autowrap_mode = 0
 
+[node name="RemSeas" type="RichTextLabel" parent="Resources"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 404.0
+offset_top = -381.0
+offset_right = 602.0
+offset_bottom = -357.0
+theme = ExtResource("7_4bmbk")
+text = "Remaining Seasons: 00"
+
 [node name="Monologue" parent="." instance=ExtResource("14_f1saq")]
 z_index = 1000
 
