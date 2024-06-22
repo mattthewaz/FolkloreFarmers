@@ -41,8 +41,10 @@ class IntroduceShrine extends AfterEndOfDayEvent:
 	
 	func onFire(farm):
 		farm.play_monologue('shrine')
-		Global.flags.actions[Global.FarmActions.RepairShrine] = Global.FeatureMode.Show
+		Global.flags.actions[Global.FarmActions.Till] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.Wheat] = Global.FeatureMode.Hide
 		Global.flags.actions[Global.FarmActions.Demolish] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.RepairShrine] = Global.FeatureMode.Show
 		Global.flags.town = Global.FeatureMode.Hide
 		
 		farm.endDayButton.visible = false
@@ -53,6 +55,15 @@ class IntroduceVegetables extends AfterEndOfDayEvent:
 	
 	func onFire(farm):
 		farm.play_monologue('veggies')
+		Global.gold += 20
+		Global.flags.actions[Global.FarmActions.Till] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.Wheat] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.Demolish] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.RepairShrine] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.Vegetable] = Global.FeatureMode.Show
+		Global.flags.town = Global.FeatureMode.Hide
+		
+		farm.endDayButton.visible = false
 
 class IntroduceBears extends AfterEndOfDayEvent:
 	func canRun(farm):
@@ -60,6 +71,15 @@ class IntroduceBears extends AfterEndOfDayEvent:
 	
 	func onFire(farm):
 		farm.play_monologue('bears')
+		Global.flags.actions[Global.FarmActions.Till] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.Wheat] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.Demolish] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.RepairShrine] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.Vegetable] = Global.FeatureMode.Hide
+		Global.flags.actions[Global.FarmActions.Bear] = Global.FeatureMode.Show
+		Global.flags.town = Global.FeatureMode.Hide
+		
+		farm.endDayButton.visible = false
 
 static var AfterEndOfDayEvents: Array[AfterEndOfDayEvent] = [
 	ExplainWheat.new(),
