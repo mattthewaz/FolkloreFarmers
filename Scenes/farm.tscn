@@ -403,6 +403,7 @@ offset_right = 602.0
 offset_bottom = -357.0
 theme = ExtResource("7_4bmbk")
 text = "Remaining Seasons: 00"
+scroll_active = false
 
 [node name="Monologue" parent="." instance=ExtResource("14_f1saq")]
 z_index = 1000
