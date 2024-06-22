@@ -27,6 +27,7 @@ class DestroyFirstRock extends OnTileActionEvent:
 	
 	func onBeforeTileAction(farm, tile: Tile, action):
 		if tile.farmType != Global.FarmType.Rubble:
+			tile.popup.playText("No")
 			return true #cancel action
 	
 	func onAfterTileAction(farm, tile: Tile, action):
@@ -81,6 +82,7 @@ class PreventNonRockDestruction extends OnTileActionEvent:
 		
 	func onBeforeTileAction(farm, tile: Tile, action):
 		if tile.farmType != Global.FarmType.Rubble:
+			tile.popup.playText("No")
 			return true #cancel action
 
 static var OnTileActionEvents: Array[OnTileActionEvent] = [
