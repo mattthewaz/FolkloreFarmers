@@ -74,6 +74,7 @@ class BuildFirstBears extends OnTileActionEvent:
 		Global.flags.actions[Global.FarmActions.Demolish] = Global.FeatureMode.Show
 		Global.flags.actions[Global.FarmActions.RepairShrine] = Global.FeatureMode.Show
 		Global.flags.actions[Global.FarmActions.Vegetable] = Global.FeatureMode.Show
+		Global.flags.actions[Global.FarmActions.Shrine] = Global.FeatureMode.Show
 
 class PreventNonRockDestruction extends OnTileActionEvent:
 	func canRun(farm, tile: Tile, action):

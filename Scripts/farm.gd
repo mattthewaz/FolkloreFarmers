@@ -139,6 +139,7 @@ func find_tiles(type):
 
 func _ready():
 	$music.play()
+	$music.set_volume_db(Global.volume_db)
 	_initializeTileMap()
 	update_display()
 	tileMap[Vector2(5,3)].farmType = Global.FarmType.BrokenShrine
@@ -282,6 +283,7 @@ func play_monologue(dialogue):
 func new_life():
 	#set time data for a new game
 	day = 0
+	endDay = baseEndDay
 	generation+=1
 	year = starting_year + 50 * generation
 	
