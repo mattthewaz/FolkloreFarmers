@@ -2,6 +2,7 @@ extends Node
 
 enum FarmType { Empty, Wheat, Shrine, Vegetable, Pasture, BrokenShrine, TilledSoil, Rubble }
 enum FarmActions { Demolish, Wheat, Vegetable, Shrine, RepairShrine, Bear, Till } 
+enum FeatureMode { Show, Hide, Disable }
 
 var gold_initial = 0
 var gold = gold_initial
@@ -14,6 +15,19 @@ var generation = 0
 var rubble_count = 4
 var menu_mode = false
 var monologue_mode = false
+
+var flags = {
+	actions = {
+		FarmActions.Till: FeatureMode.Hide,
+		FarmActions.Shrine: FeatureMode.Hide,
+		FarmActions.RepairShrine: FeatureMode.Hide,
+		FarmActions.Wheat: FeatureMode.Hide,
+		FarmActions.Vegetable: FeatureMode.Hide,
+		FarmActions.Bear: FeatureMode.Hide,
+		FarmActions.Demolish: FeatureMode.Hide
+	},
+	actionMenu = FeatureMode.Hide
+}
 
 #[ gold_change, vegetable_change, energy_change ]
 const daily_upkeep_constants = {

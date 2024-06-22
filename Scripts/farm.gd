@@ -194,9 +194,12 @@ func _on_tile_menu_item_focused(event):
 	_show_action_context_info(tileMenu.get_item_id(focusedIndex))
 
 func _addFarmAction(action):
+	if (Global.flags.actions[action] == Global.FeatureMode.Hide):
+		return
+	
 	tileMenu.add_item(Global.farm_action_names[action], action)
 	
-	if !Global.canAfford(action):
+	if !Global.canAfford(action) || Global.flags.actions[action] == Global.FeatureMode.Disable:
 		tileMenu.set_item_disabled(tileMenu.get_item_index(action), true)
 	#if the action is afforable, disable if it is not apporpriate for the season
 	elif season == 'Winter': 
@@ -219,6 +222,9 @@ func _update_tile_menu(tile):
 		_addFarmAction(Global.FarmActions.Demolish)
 
 func _show_tile_menu(tile):
+	if (Global.flags.actionMenu != Global.FeatureMode.Show):
+		return
+	
 	Global.menu_mode = true
 	tileMenu.position = tile.position + Vector2(64,0)
 	if tileMenu.position.y + tileMenu.size.y > get_viewport().get_visible_rect().size.y:
