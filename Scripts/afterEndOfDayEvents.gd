@@ -18,22 +18,22 @@ class ExplainWheat extends AfterEndOfDayEvent:
 		Global.flags.actionMenu = Global.FeatureMode.Show
 		Global.flags.actions[Global.FarmActions.Till] = Global.FeatureMode.Show
 		Global.flags.actions[Global.FarmActions.Wheat] = Global.FeatureMode.Show
+		Global.flags.town = Global.FeatureMode.Hide
 		
-		var EndDayButton: Button = farm.get_node("EndDayButton")
-		EndDayButton.visible = false
+		farm.endDayButton.visible = false
 
 class ExplainRubble extends AfterEndOfDayEvent:
 	func canRun(farm):
 		return farm.day == 3
 	
-	func onFire(farm):
+	func onFire(farm: Farm):
 		farm.play_monologue('rubble')
 		Global.flags.actions[Global.FarmActions.Till] = Global.FeatureMode.Hide
 		Global.flags.actions[Global.FarmActions.Wheat] = Global.FeatureMode.Hide
 		Global.flags.actions[Global.FarmActions.Demolish] = Global.FeatureMode.Show
+		Global.flags.town = Global.FeatureMode.Hide
 		
-		var EndDayButton: Button = farm.get_node("EndDayButton")
-		EndDayButton.visible = false
+		farm.endDayButton.visible = false
 
 class IntroduceShrine extends AfterEndOfDayEvent:
 	func canRun(farm):
@@ -43,9 +43,9 @@ class IntroduceShrine extends AfterEndOfDayEvent:
 		farm.play_monologue('shrine')
 		Global.flags.actions[Global.FarmActions.RepairShrine] = Global.FeatureMode.Show
 		Global.flags.actions[Global.FarmActions.Demolish] = Global.FeatureMode.Hide
+		Global.flags.town = Global.FeatureMode.Hide
 		
-		var EndDayButton: Button = farm.get_node("EndDayButton")
-		EndDayButton.visible = false
+		farm.endDayButton.visible = false
 
 class IntroduceVegetables extends AfterEndOfDayEvent:
 	func canRun(farm):

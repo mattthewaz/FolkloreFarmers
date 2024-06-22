@@ -6,6 +6,8 @@ const EventHandler = preload("res://Scripts/eventhandler.gd")
 
 @onready var tileMenu: PopupMenu = $TileMenu
 @onready var farmTiles = $FarmTiles
+@onready var endDayButton = $EndDayButton
+@onready var town = $Town
 
 var selectedTile = null
 var seasons = ['Fall','Winter','Spring','Summer']
@@ -52,8 +54,6 @@ func new_day():
 		#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
 		if day >= endDay: play_monologue('end')
 		Global.actionPoints = 1
-		$ActionIcon.play('1')
-		$Town.show()
 		update_display()
 
 func skip_time(days):
@@ -81,8 +81,10 @@ func update_display(target = "all"):
 			%Veggies.text = str(Global.vegetables)
 			%Actions.text = 'Actions: ' + str(Global.actionPoints)
 			%Energy.text = str(Global.energy)
-			if Global.actionPoints <= 0:
-				$ActionIcon.play('0')
+			$ActionIcon.play(str(Global.actionPoints))
+			if Global.flags.town == Global.FeatureMode.Show && Global.actionPoints > 0:
+				$Town.show()
+			else:
 				$Town.hide()
 		"fertility":
 			for tile in $FarmTiles.get_children():
@@ -100,8 +102,10 @@ func update_display(target = "all"):
 			%Energy.text = str(Global.energy)
 			for tile in $FarmTiles.get_children():
 				tile.tempFertilityDisplay.text = str(tile.fertility)
-			if Global.actionPoints <= 0:
-				$ActionIcon.play('0')
+			$ActionIcon.play(str(Global.actionPoints))
+			if Global.flags.town == Global.FeatureMode.Show && Global.actionPoints > 0:
+				$Town.show()
+			else:
 				$Town.hide()
 	
 #returns number of adjacent shrines

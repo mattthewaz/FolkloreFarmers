@@ -14,8 +14,7 @@ class FirstTownVisit extends OnGoToTownEvent:
 		return farm.day == 1
 	
 	func onFire(farm: Farm):
-		var EndDayButton: Button = farm.get_node("EndDayButton")
-		EndDayButton.visible = true
+		farm.endDayButton.visible = true
 
 static var OnGoToTownEvents: Array[OnGoToTownEvent] = [
 	FirstTownVisit.new()
