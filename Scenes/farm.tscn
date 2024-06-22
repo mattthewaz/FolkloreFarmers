@@ -1,19 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://cjs0lrog84upx"]
+[gd_scene load_steps=18 format=3 uid="uid://cjs0lrog84upx"]
 
 [ext_resource type="Script" path="res://Scripts/farm.gd" id="1_ovusw"]
 [ext_resource type="PackedScene" uid="uid://d3seiysyma2im" path="res://Scenes/tile.tscn" id="2_fvoba"]
-[ext_resource type="Texture2D" uid="uid://pujgcjyho5li" path="res://sprites/farm1.png" id="3_xgd3u"]
-[ext_resource type="Texture2D" uid="uid://3o24yteoo8n7" path="res://sprites/farm3.png" id="4_3jc4k"]
-[ext_resource type="Texture2D" uid="uid://c054cwah1une0" path="res://sprites/farm2.png" id="4_ekj4q"]
-[ext_resource type="Texture2D" uid="uid://8ifd4djpy3an" path="res://sprites/farm4.png" id="5_i02ad"]
-[ext_resource type="Texture2D" uid="uid://2w05ihcy8n55" path="res://sprites/icon1.png" id="6_c0enb"]
-[ext_resource type="Texture2D" uid="uid://sgw5puph08al" path="res://sprites/icon7.png" id="6_ft2uk"]
+[ext_resource type="Texture2D" uid="uid://bired55a8et4b" path="res://sprites/farm1.png" id="3_xgd3u"]
+[ext_resource type="Texture2D" uid="uid://brlg00tl5sn5" path="res://sprites/farm3.png" id="4_3jc4k"]
+[ext_resource type="Texture2D" uid="uid://capnor7st2fem" path="res://sprites/farm2.png" id="4_ekj4q"]
+[ext_resource type="Texture2D" uid="uid://b8rv66bict83p" path="res://sprites/farm4.png" id="5_i02ad"]
+[ext_resource type="Texture2D" uid="uid://b1f77jbt6kl2t" path="res://sprites/icon1.png" id="6_c0enb"]
+[ext_resource type="Texture2D" uid="uid://7wyljtcv3qn" path="res://sprites/icon7.png" id="6_ft2uk"]
 [ext_resource type="Theme" uid="uid://dmn7v863jgw31" path="res://themes/main.tres" id="7_4bmbk"]
-[ext_resource type="Texture2D" uid="uid://c6oiknt7ot4dy" path="res://sprites/icon2.png" id="7_8gekr"]
-[ext_resource type="Texture2D" uid="uid://dvquakl0ttfhg" path="res://sprites/icon4.png" id="8_4x1bd"]
-[ext_resource type="Texture2D" uid="uid://bnof7lmur5h17" path="res://sprites/icon3.png" id="9_43or6"]
-[ext_resource type="PackedScene" path="res://town.tscn" id="10_i2t70"]
+[ext_resource type="Texture2D" uid="uid://dtujo7bl25ieu" path="res://sprites/icon2.png" id="7_8gekr"]
+[ext_resource type="Texture2D" uid="uid://d241t6qg44q6b" path="res://sprites/icon4.png" id="8_4x1bd"]
+[ext_resource type="Texture2D" uid="uid://bbxgdq4um6m62" path="res://sprites/icon3.png" id="9_43or6"]
+[ext_resource type="PackedScene" uid="uid://bf0tj6dk84si2" path="res://town.tscn" id="10_i2t70"]
 [ext_resource type="PackedScene" uid="uid://coa58a8fdsybh" path="res://Scenes/monologue.tscn" id="14_f1saq"]
+[ext_resource type="AudioStream" uid="uid://dhr74ncdapi8u" path="res://music/Farmusic.wav" id="15_nntdt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_og66k"]
 animations = [{
@@ -408,6 +409,10 @@ scroll_active = false
 [node name="Monologue" parent="." instance=ExtResource("14_f1saq")]
 z_index = 1000
 
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_nntdt")
+
 [connection signal="pressed" from="EndDayButton" to="." method="new_day"]
 [connection signal="pressed" from="ResetTestButton" to="." method="new_life"]
 [connection signal="monologue_over" from="Monologue" to="." method="_on_monologue_monologue_over"]
+[connection signal="finished" from="music" to="." method="_on_music_finished"]
