@@ -129,6 +129,7 @@ func find_tiles(type):
 	return results
 
 func _ready():
+	$music.play()
 	_initializeTileMap()
 	update_display()
 	tileMap[Vector2(5,3)].farmType = Global.FarmType.BrokenShrine
@@ -298,3 +299,7 @@ func _on_monologue_monologue_over():
 	new_life()
 	await get_tree().create_timer(1.0).timeout
 	play_monologue('start')
+
+
+func _on_music_finished():
+	$music.play()
