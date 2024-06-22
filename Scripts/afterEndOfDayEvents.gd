@@ -70,7 +70,7 @@ class IntroduceBears extends AfterEndOfDayEvent:
 		return farm.day == 8
 	
 	func onFire(farm):
-		farm.play_monologue('bears')
+		farm.play_monologue('bear')
 		Global.flags.actions[Global.FarmActions.Till] = Global.FeatureMode.Hide
 		Global.flags.actions[Global.FarmActions.Wheat] = Global.FeatureMode.Hide
 		Global.flags.actions[Global.FarmActions.Demolish] = Global.FeatureMode.Hide
