@@ -37,6 +37,18 @@ func play(num,resource,num2=null,resource2=null):
 	hide()
 		
 
+func playText(text):
+	play_bool = true
+	$Text.text = '[right]' + text + '[/right]'
+	$Icon.hide()
+	position.y = starty
+	show()
+	$Timer.start(.7)
+	await $Timer.timeout
+	play_bool = false
+	position.y = starty
+	hide()
+
 func _process(delta):
 	if play_bool:
 		position.y -= delta *15
