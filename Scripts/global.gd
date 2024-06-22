@@ -29,6 +29,8 @@ var flags = {
 	actionMenu = FeatureMode.Hide
 }
 
+var eventFlags: Dictionary
+
 #[ gold_change, vegetable_change, energy_change ]
 const daily_upkeep_constants = {
 	FarmType.Empty : [0, 0, 0],
