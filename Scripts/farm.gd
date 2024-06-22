@@ -11,7 +11,8 @@ var selectedTile = null
 var seasons = ['Fall','Winter','Spring','Summer']
 var season = 'Winter'
 var day = 1
-var endDay = 15 #should get replaced
+var baseEndDay = 10
+var endDay = baseEndDay
 var starting_year = 1824
 var year = starting_year
 var generation = 0
@@ -51,6 +52,11 @@ func new_day():
 				
 		#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
 		if day >= endDay: play_monologue('end')
+		
+		#Sets the new end day
+		endDay = baseEndDay + sqrt(Global.energy)
+		print(endDay)
+		
 		Global.actionPoints = 1
 		$ActionIcon.play('1')
 		$Town.show()
@@ -292,7 +298,6 @@ func new_life():
 	Global.energy = 0
 	
 	new_day()
-
 
 func _on_monologue_monologue_over():
 	new_life()

@@ -133,6 +133,7 @@ func _on_continue_pressed():
 			line += 1
 			box.text = shrine_text[line]
 		elif line == 2:
+			line += 1
 			$cutscene.show()
 			box.text = shrine_text[3]
 		else:
