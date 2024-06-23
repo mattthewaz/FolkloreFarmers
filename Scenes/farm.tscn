@@ -324,6 +324,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "$0, 0 veggies, 1 actions"
 
 [node name="ResetTestButton" type="Button" parent="."]
+visible = false
 offset_left = 424.0
 offset_top = 16.0
 offset_right = 515.0
