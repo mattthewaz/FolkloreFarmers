@@ -40,6 +40,7 @@ script = ExtResource("1_ln2ac")
 offset_right = 60.0
 offset_bottom = 26.0
 theme = ExtResource("1_0pd8p")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 

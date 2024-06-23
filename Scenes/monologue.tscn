@@ -31,6 +31,7 @@ offset_top = 346.0
 offset_right = 573.0
 offset_bottom = 435.0
 theme = ExtResource("3_rdojv")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
 text = "Bears with glowin’ eyes, he said. Every night. He said it was a curse, but I think it was guilt. I'd feel bad too if I found out some bears accidentally died in the fire I started."
 

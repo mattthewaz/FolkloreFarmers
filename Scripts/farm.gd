@@ -51,12 +51,16 @@ func new_day():
 			while Global.vegetables < 0:
 				bears[Global.vegetables+removal_number].farmType = Global.FarmType.Empty
 				Global.vegetables += 1
-				
-		#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
-		if day >= endDay: play_monologue('end')
+		
 		
 		#Sets the new end day
-		endDay = baseEndDay + int(sqrt(Global.energy))
+		var newEndDay = baseEndDay + int(sqrt(Global.energy))
+		if newEndDay > endDay:
+			$Resources/RemSeas.set("theme_override_colors/default_color", Color(0, 1.0, 0, 1.0))
+		endDay = newEndDay
+		
+		#trigger a new generation if needed - eventually based off energy/vitality instead of a constant?
+		if day >= endDay: play_monologue('end')
 		
 		Global.actionPoints = 1
 		update_display()
@@ -293,9 +297,9 @@ func new_life():
 		var newType = Global.newgame_farmtype_changes(oldType)
 		
 		#handle value changes
-		if oldType == Global.FarmType.Pasture: tile.fertility += 2
+		if oldType == Global.FarmType.Pasture: tile.fertility += 1
 		if oldType == Global.FarmType.Wheat: tile.fertility = max(1, tile.fertility - 1)
-		if oldType == Global.FarmType.Vegetable: tile.fertility = 2
+		if oldType == Global.FarmType.Vegetable: tile.fertility = max(1, tile.fertility - 1)
 		if oldType == Global.FarmType.BrokenShrine: tile.fertility = 2
 		
 		#25% chance for tilled plots to remain tilled
@@ -319,7 +323,14 @@ func _on_monologue_monologue_over():
 	new_life()
 	await get_tree().create_timer(1.0).timeout
 	play_monologue('start')
+	update_display()
 
 
 func _on_music_finished():
 	$music.play()
+
+func _process(delta):
+	var remSeqsColor = $Resources/RemSeas.get("theme_override_colors/default_color")
+	if remSeqsColor.r < 1.0:
+		var newColor = Color(min(remSeqsColor.r + delta * .5, 1.0), 1.0, min(remSeqsColor.b + delta * .5, 1.0), 1.0)
+		$Resources/RemSeas.set("theme_override_colors/default_color", newColor)

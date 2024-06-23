@@ -291,6 +291,7 @@ offset_top = 9.0
 offset_right = 247.0
 offset_bottom = 37.0
 theme = ExtResource("7_4bmbk")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 20
 text = "Summer, 1824"
 
@@ -318,6 +319,7 @@ offset_top = 53.0
 offset_right = 609.0
 offset_bottom = 94.0
 theme = ExtResource("7_4bmbk")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "$0, 0 veggies, 1 actions"
 
 [node name="ResetTestButton" type="Button" parent="."]
@@ -335,6 +337,7 @@ offset_top = 432.0
 offset_right = 616.0
 offset_bottom = 472.0
 theme = ExtResource("7_4bmbk")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 
 [node name="Resources" type="Control" parent="."]
 layout_mode = 3
@@ -352,6 +355,7 @@ offset_top = -384.0
 offset_right = 99.0
 offset_bottom = -367.0
 theme = ExtResource("7_4bmbk")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
 text = "10000"
 scroll_active = false
@@ -365,6 +369,7 @@ offset_top = -384.0
 offset_right = 200.0
 offset_bottom = -367.0
 theme = ExtResource("7_4bmbk")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
 text = "1000"
 scroll_active = false
@@ -378,6 +383,7 @@ offset_top = -420.0
 offset_right = 331.0
 offset_bottom = -399.0
 theme = ExtResource("7_4bmbk")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 16
 text = "Actions: 1"
 scroll_active = false
@@ -390,6 +396,7 @@ offset_top = -384.0
 offset_right = 312.0
 offset_bottom = -367.0
 theme = ExtResource("7_4bmbk")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
 text = "10000"
 scroll_active = false
@@ -403,6 +410,8 @@ offset_top = -381.0
 offset_right = 602.0
 offset_bottom = -357.0
 theme = ExtResource("7_4bmbk")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Remaining Seasons: 00"
 scroll_active = false
 
