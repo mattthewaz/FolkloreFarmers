@@ -151,6 +151,7 @@ func _ready():
 	tileMenu.popup_hide.connect(_on_tile_menu_close)
 	tileMenu.id_pressed.connect(_on_tile_menu_item_pressed)
 	tileMenu.window_input.connect(_on_tile_menu_item_focused)
+	$Score.new_generation_pressed.connect(_on_new_generation_click)
 	for tile in $FarmTiles.get_children():
 		tile.tileActivated.connect(_tile_activated.bind(tile))
 		tile.tileSelected.connect(_tile_selected.bind(tile))
@@ -320,11 +321,14 @@ func new_life():
 	new_day()
 
 func _on_monologue_monologue_over():
+	$Score.set_score(Global.energy)
+	$Score.show()
+
+func _on_new_generation_click():
+	$Score.hide()
 	new_life()
-	await get_tree().create_timer(1.0).timeout
 	play_monologue('start')
 	update_display()
-
 
 func _on_music_finished():
 	$music.play()

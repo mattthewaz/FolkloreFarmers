@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceklbhygdgbdh"]
+
+[ext_resource type="Texture2D" uid="uid://cmyfarrtaqe8x" path="res://sprites/icon7.png" id="1_ik1yj"]
+[ext_resource type="Script" path="res://Scenes/score.gd" id="1_xlyco"]
+[ext_resource type="Theme" uid="uid://dmn7v863jgw31" path="res://themes/main.tres" id="2_468ci"]
+
+[node name="Score" type="Node2D"]
+script = ExtResource("1_xlyco")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 1)
+
+[node name="Energy" type="Sprite2D" parent="ColorRect"]
+position = Vector2(272, 240)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_ik1yj")
+
+[node name="Energy" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = 248.0
+offset_top = 240.0
+offset_right = 384.0
+offset_bottom = 256.0
+theme = ExtResource("2_468ci")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 18
+text = "10000"
+scroll_active = false
+autowrap_mode = 0
+text_direction = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 240.0
+offset_top = 160.0
+offset_right = 408.0
+offset_bottom = 200.0
+theme = ExtResource("2_468ci")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "Final Score"
+
+[node name="MainMenu" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 328.0
+offset_right = 257.0
+offset_bottom = 384.0
+theme = ExtResource("2_468ci")
+theme_override_font_sizes/font_size = 14
+text = "Back to main menu"
+
+[node name="NewGeneration" type="Button" parent="."]
+offset_left = 384.0
+offset_top = 328.0
+offset_right = 569.0
+offset_bottom = 384.0
+theme = ExtResource("2_468ci")
+theme_override_font_sizes/font_size = 14
+text = "New Generation"
+
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="NewGeneration" to="." method="_on_new_generation_pressed"]
