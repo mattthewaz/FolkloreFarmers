@@ -102,12 +102,12 @@ const farm_action_descriptions = {
 #[ winter_change_to, newgame_change_to ]
 const farmtype_changes = {
 	FarmType.Empty : [null, null],
-	FarmType.Wheat : [FarmType.TilledSoil, FarmType.Empty],
+	FarmType.Wheat : [FarmType.TilledSoil, null],
 	FarmType.Shrine : [null, FarmType.BrokenShrine],
-	FarmType.Vegetable : [FarmType.TilledSoil, FarmType.Empty],
+	FarmType.Vegetable : [FarmType.TilledSoil, null],
 	FarmType.Pasture : [null, FarmType.Empty],
-	FarmType.BrokenShrine : [null, null],
-	FarmType.TilledSoil : [null, FarmType.Empty],
+	FarmType.BrokenShrine : [null, FarmType.Rubble],
+	FarmType.TilledSoil : [null, null],
 	FarmType.Rubble: [null,null]
 	}
 

@@ -293,8 +293,18 @@ func new_life():
 		var newType = Global.newgame_farmtype_changes(oldType)
 		
 		#handle value changes
-		if oldType == Global.FarmType.Pasture: tile.fertility += 1
-			
+		if oldType == Global.FarmType.Pasture: tile.fertility += 2
+		if oldType == Global.FarmType.Wheat: tile.fertility = max(1, tile.fertility - 1)
+		if oldType == Global.FarmType.Vegetable: tile.fertility = 2
+		if oldType == Global.FarmType.BrokenShrine: tile.fertility = 2
+		
+		#25% chance for tilled plots to remain tilled
+		if (oldType == Global.FarmType.Wheat || oldType == Global.FarmType.Vegetable || oldType == Global.FarmType.TilledSoil):
+			if randi() % 4 == 0:
+				tile.farmType = Global.FarmType.TilledSoil
+			else:
+				tile.farmType = Global.FarmType.Empty
+		
 		#change the tile if it needs to
 		if newType != null: tile.farmType = newType
 	
