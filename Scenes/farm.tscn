@@ -421,6 +421,10 @@ z_index = 1000
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_nntdt")
 
+[node name="Score" parent="." instance=ExtResource("16_2h5id")]
+visible = false
+z_index = 1006
+
 [connection signal="pressed" from="EndDayButton" to="." method="new_day"]
 [connection signal="pressed" from="ResetTestButton" to="." method="new_life"]
 [connection signal="monologue_over" from="Monologue" to="." method="_on_monologue_monologue_over"]

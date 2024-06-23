@@ -75,13 +75,14 @@ func play(dialogue):
 	Global.menu_mode = true
 	Global.monologue_mode = true
 	line = 0
+	var generation = min(Global.generation, 1)
 	if dialogue == 'start':
 		Global.current_character = randi_range(1,34)
-		if Global.generation < len(start_text):
-			box.text = start_text[Global.generation][line]
+		if generation < len(start_text):
+			box.text = start_text[generation][line]
 	elif dialogue == 'end':
-		if Global.generation < len(end_text):
-			box.text = end_text[Global.generation][line]
+		if generation < len(end_text):
+			box.text = end_text[generation][line]
 	elif dialogue == 'wheat':
 		box.text = wheat_text[0]
 		story = 'wheat'
@@ -108,18 +109,19 @@ func play(dialogue):
 	portrait.texture = ImageTexture.create_from_image(image)
 
 func _on_continue_pressed():
+	var generation = min(Global.generation, 1)
 	if story == 'start':
-		if line < len(start_text[Global.generation])-1:
+		if line < len(start_text[generation])-1:
 			line += 1
-			box.text = start_text[Global.generation][line]
+			box.text = start_text[generation][line]
 		else:
 			Global.menu_mode = false
 			hide()
 			Global.monologue_mode = false
 	elif story == 'end':
-		if line < len(end_text[Global.generation])-1:
+		if line < len(end_text[generation])-1:
 			line += 1
-			box.text = end_text[Global.generation][line]
+			box.text = end_text[generation][line]
 		else:
 			Global.generation += 1
 			hide()
