@@ -17,7 +17,9 @@ func _on_start_pressed():
 
 func _on_credits_pressed():
 	$Credits.show()
+	$bear.hide()
 
 
 func _on_exit_pressed():
 	$Credits.hide()
+	$bear.show()
