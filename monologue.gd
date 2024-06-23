@@ -7,6 +7,16 @@ var line = 0
 signal monologue_over
 var story
 
+const lifegain_text = [
+	"That shrine really makes the farm feel special. I can't tell what it is, but it sure looks nice.",
+	"Actually, makes me feel stronger too, like my spirit is at peace. 'most like I'm a few months younger.",
+	"If I kept improving the sprititual aspects of this place, I might live forever."
+]
+
+const fertility_text = [
+	"The soil under that rubble looks like a great place to plant wheat. I should till the soil and plant there."
+]
+
 const wheat_text = [
 	"Time to get to work! I'll have to till the land before I plant anything. Probably start with some wheat."
 	]
@@ -87,6 +97,13 @@ func play(dialogue):
 	elif dialogue == 'shrine':
 		box.text = shrine_text[0]
 		story = 'shrine'
+	elif dialogue == 'fertility':
+		box.text = fertility_text[0]
+		story = 'fertility'
+	elif dialogue == 'lifegain':
+		box.text = lifegain_text[0]
+		story = 'lifegain'
+		
 	var image = Image.load_from_file("res://sprites/Portraits/farmer_maybe" + str(Global.current_character) + ".png")
 	portrait.texture = ImageTexture.create_from_image(image)
 
@@ -108,7 +125,7 @@ func _on_continue_pressed():
 			hide()
 			emit_signal("monologue_over")
 			Global.monologue_mode = false
-	elif story == 'wheat' or story == 'veggie':
+	elif story == 'wheat' or story == 'veggie' or story == 'fertility':
 		hide()
 		Global.monologue_mode = false
 		Global.menu_mode = false
@@ -140,5 +157,12 @@ func _on_continue_pressed():
 			hide()
 			Global.monologue_mode = false
 			Global.menu_mode = false
-		
+	elif story == 'lifegain':
+		if line < (len(lifegain_text)-1):
+			line += 1
+			box.text = lifegain_text[line]
+		else:
+			hide()
+			Global.monologue_mode = false
+			Global.menu_mode = false
 		

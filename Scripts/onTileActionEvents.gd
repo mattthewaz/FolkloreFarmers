@@ -37,6 +37,24 @@ class DestroyFirstRock extends OnTileActionEvent:
 		Global.flags.actions[Global.FarmActions.Till] = Global.FeatureMode.Show
 		Global.flags.actions[Global.FarmActions.Wheat] = Global.FeatureMode.Show
 
+class TillAndPlantOnFertileGround extends OnTileActionEvent:
+	func canRun(farm, tile: Tile, action):
+		return (!Global.eventFlags.has("TillAndPlantOnFertileGround") || Global.eventFlags["TillAndPlantOnFertileGround"] == false) && farm.day == 4 && farm.generation == 0
+	
+	func onBeforeTileAction(farm, tile: Tile, action):
+		if tile.fertility != 2:
+			tile.popup.playText("No")
+			return true #cancel action
+	
+	func onAfterTileAction(farm, tile: Tile, action):
+		if action == Global.FarmActions.Wheat:
+			farm.endDayButton.visible = true
+			Global.eventFlags["TillAndPlantOnFertileGround"] = true
+			Global.flags.town = Global.FeatureMode.Show
+			Global.flags.actions[Global.FarmActions.Till] = Global.FeatureMode.Show
+			Global.flags.actions[Global.FarmActions.Wheat] = Global.FeatureMode.Show
+			Global.flags.actions[Global.FarmActions.Demolish] = Global.FeatureMode.Show
+
 class RepairFirstShrine extends OnTileActionEvent:
 	func canRun(farm, tile: Tile, action):
 		return (!Global.eventFlags.has("RepairFirstShrine") || Global.eventFlags["RepairFirstShrine"] == false) && action == Global.FarmActions.RepairShrine
@@ -89,6 +107,7 @@ class PreventNonRockDestruction extends OnTileActionEvent:
 static var OnTileActionEvents: Array[OnTileActionEvent] = [
 	PlantFirstWheat.new(),
 	DestroyFirstRock.new(),
+	TillAndPlantOnFertileGround.new(),
 	RepairFirstShrine.new(),
 	PlantFirstVegetables.new(),
 	BuildFirstBears.new(),

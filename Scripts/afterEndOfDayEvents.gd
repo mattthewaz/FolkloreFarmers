@@ -10,8 +10,8 @@ class AfterEndOfDayEvent:
 		return false
 
 class ExplainWheat extends AfterEndOfDayEvent:
-	func canRun(farm):
-		return farm.day == 2
+	func canRun(farm: Farm):
+		return farm.day == 2 && farm.generation == 0
 	
 	func onFire(farm):
 		farm.play_monologue('wheat')
@@ -24,7 +24,7 @@ class ExplainWheat extends AfterEndOfDayEvent:
 
 class ExplainRubble extends AfterEndOfDayEvent:
 	func canRun(farm):
-		return farm.day == 3
+		return farm.day == 3 && farm.generation == 0
 	
 	func onFire(farm: Farm):
 		farm.play_monologue('rubble')
@@ -35,9 +35,22 @@ class ExplainRubble extends AfterEndOfDayEvent:
 		
 		farm.endDayButton.visible = false
 
+class IntroduceFertility extends AfterEndOfDayEvent:
+	func canRun(farm):
+		return farm.day == 4 && farm.generation == 0
+	
+	func onFire(farm):
+		farm.play_monologue('fertility')
+		Global.flags.actions[Global.FarmActions.Till] = Global.FeatureMode.Show
+		Global.flags.actions[Global.FarmActions.Wheat] = Global.FeatureMode.Show
+		Global.flags.actions[Global.FarmActions.Demolish] = Global.FeatureMode.Hide
+		Global.flags.town = Global.FeatureMode.Hide
+		
+		farm.endDayButton.visible = false
+
 class IntroduceShrine extends AfterEndOfDayEvent:
 	func canRun(farm):
-		return farm.day == 5
+		return farm.day == 5 && farm.generation == 0
 	
 	func onFire(farm):
 		farm.play_monologue('shrine')
@@ -51,7 +64,7 @@ class IntroduceShrine extends AfterEndOfDayEvent:
 
 class IntroduceVegetables extends AfterEndOfDayEvent:
 	func canRun(farm):
-		return farm.day == 6
+		return farm.day == 6 && farm.generation == 0
 	
 	func onFire(farm):
 		farm.play_monologue('veggies')
@@ -67,7 +80,7 @@ class IntroduceVegetables extends AfterEndOfDayEvent:
 
 class IntroduceBears extends AfterEndOfDayEvent:
 	func canRun(farm):
-		return farm.day == 8
+		return farm.day == 8 && farm.generation == 0
 	
 	func onFire(farm):
 		farm.play_monologue('bear')
@@ -81,10 +94,20 @@ class IntroduceBears extends AfterEndOfDayEvent:
 		
 		farm.endDayButton.visible = false
 
+class IntroduceLifeExtension extends AfterEndOfDayEvent:
+	func canRun(farm: Farm):
+		return (!Global.eventFlags.has("IntroduceLifeExtension") || Global.eventFlags["IntroduceLifeExtension"] == false) && farm.endDay > farm.baseEndDay && farm.generation == 0
+	
+	func onFire(farm):
+		farm.play_monologue('lifegain')
+		Global.eventFlags["IntroduceLifeExtension"] = true
+
 static var AfterEndOfDayEvents: Array[AfterEndOfDayEvent] = [
 	ExplainWheat.new(),
 	ExplainRubble.new(),
+	IntroduceFertility.new(),
 	IntroduceShrine.new(),
 	IntroduceVegetables.new(),
-	IntroduceBears.new()
+	IntroduceBears.new(),
+	IntroduceLifeExtension.new()
 ]
