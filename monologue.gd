@@ -148,7 +148,7 @@ func _on_continue_pressed():
 			line += 1
 			box.text = end_text[Global.generation][line]
 		else:
-			Global.generation += 1
+			if Global.generation < 4: Global.generation += 1
 			hide()
 			emit_signal("monologue_over")
 			Global.monologue_mode = false
