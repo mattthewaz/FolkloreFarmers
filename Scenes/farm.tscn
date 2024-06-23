@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bf0tj6dk84si2" path="res://town.tscn" id="10_i2t70"]
 [ext_resource type="PackedScene" uid="uid://coa58a8fdsybh" path="res://Scenes/monologue.tscn" id="14_f1saq"]
 [ext_resource type="AudioStream" uid="uid://dhr74ncdapi8u" path="res://music/Farmusic.wav" id="15_nntdt"]
-[ext_resource type="PackedScene" path="res://Scenes/score.tscn" id="16_n4b3d"]
+[ext_resource type="PackedScene" uid="uid://bcjgk7ka4yofx" path="res://Scenes/score.tscn" id="16_n4b3d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_og66k"]
 animations = [{
@@ -420,7 +420,6 @@ text = "Remaining Seasons: 00"
 scroll_active = false
 
 [node name="Monologue" parent="." instance=ExtResource("14_f1saq")]
-visible = false
 z_index = 1000
 
 [node name="music" type="AudioStreamPlayer" parent="."]

@@ -130,9 +130,7 @@ func play(dialogue):
 	elif dialogue == 'lifegain':
 		box.text = lifegain_text[0]
 		story = 'lifegain'
-		
-	var image = Image.load_from_file("res://sprites/Portraits/farmer_maybe" + str(Global.current_character) + ".png")
-	portrait.texture = ImageTexture.create_from_image(image)
+	portrait.play(str(Global.current_character))
 
 func _on_continue_pressed():
 	if story == 'start':
