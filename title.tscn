@@ -1,30 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://u62jab6viop1"]
+[gd_scene load_steps=5 format=3 uid="uid://u62jab6viop1"]
 
 [ext_resource type="Script" path="res://title.gd" id="1_0um8y"]
-[ext_resource type="Texture2D" uid="uid://dm8wslxuaqki6" path="res://sprites/clifftop.png" id="1_50edc"]
+[ext_resource type="Texture2D" uid="uid://bn3qlma0hklo" path="res://sprites/title.png" id="2_wvaa1"]
+[ext_resource type="Texture2D" uid="uid://821rb6wykxyg" path="res://sprites/clifftop._bear.png" id="4_x162p"]
 [ext_resource type="Theme" uid="uid://dmn7v863jgw31" path="res://themes/main.tres" id="7_4bmbk"]
 
 [node name="Title" type="Node2D"]
 script = ExtResource("1_0um8y")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(321, 224)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("1_50edc")
+position = Vector2(320, 240)
+scale = Vector2(0.334, 0.334)
+texture = ExtResource("2_wvaa1")
 
 [node name="Start" type="Button" parent="."]
-offset_left = 43.0
-offset_top = 412.0
-offset_right = 140.0
-offset_bottom = 452.0
+offset_left = 140.0
+offset_top = 425.0
+offset_right = 237.0
+offset_bottom = 465.0
 theme = ExtResource("7_4bmbk")
 text = "Start"
 
 [node name="CreditsButton" type="Button" parent="."]
-offset_left = 174.0
-offset_top = 412.0
-offset_right = 271.0
-offset_bottom = 452.0
+offset_left = 271.0
+offset_top = 425.0
+offset_right = 368.0
+offset_bottom = 465.0
 theme = ExtResource("7_4bmbk")
 text = "Credits"
 
@@ -68,32 +69,37 @@ offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="Volume"]
 layout_mode = 0
-offset_left = 294.0
-offset_top = 412.0
-offset_right = 391.0
-offset_bottom = 452.0
+offset_left = 391.0
+offset_top = 425.0
+offset_right = 488.0
+offset_bottom = 465.0
 color = Color(0.270588, 0.270588, 0.270588, 1)
 
 [node name="VolumeLabel" type="RichTextLabel" parent="Volume"]
 layout_mode = 0
-offset_left = 311.0
-offset_top = 416.0
-offset_right = 384.0
-offset_bottom = 430.0
+offset_left = 408.0
+offset_top = 429.0
+offset_right = 481.0
+offset_bottom = 443.0
 theme = ExtResource("7_4bmbk")
 text = "Volume"
 scroll_active = false
 
 [node name="VolSlider" type="HSlider" parent="Volume"]
 layout_mode = 0
-offset_left = 300.0
-offset_top = 422.0
-offset_right = 384.0
-offset_bottom = 456.0
+offset_left = 397.0
+offset_top = 435.0
+offset_right = 481.0
+offset_bottom = 469.0
 max_value = 3.0
 step = 0.001
 value = 3.0
 scrollable = false
+
+[node name="bear" type="Sprite2D" parent="."]
+position = Vector2(313, 283)
+scale = Vector2(0.334, 0.334)
+texture = ExtResource("4_x162p")
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_pressed"]

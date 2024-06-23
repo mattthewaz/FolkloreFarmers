@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://bf0tj6dk84si2"]
 
-[ext_resource type="Texture2D" uid="uid://b1m7a5g8wst13" path="res://sprites/icon5.png" id="1_78am1"]
+[ext_resource type="Texture2D" uid="uid://b41yryq46auy8" path="res://sprites/icon5.png" id="1_78am1"]
 [ext_resource type="Script" path="res://town.gd" id="1_hplrn"]
-[ext_resource type="Texture2D" uid="uid://c24wa3rbitja5" path="res://sprites/icon6.png" id="2_yxfqx"]
+[ext_resource type="Texture2D" uid="uid://b3qsjb060gmkk" path="res://sprites/icon6.png" id="2_yxfqx"]
 [ext_resource type="Texture2D" uid="uid://blfpr4m7obqsj" path="res://sprites/town1.png" id="4_hw36e"]
 [ext_resource type="Texture2D" uid="uid://d15drj4hmf88n" path="res://sprites/town2.png" id="5_skee5"]
 [ext_resource type="Texture2D" uid="uid://c6e24moo2574m" path="res://sprites/town3.png" id="6_8ul7w"]
