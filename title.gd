@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$music.play()
 
 
 func _on_volume_change(percent):
@@ -23,3 +23,7 @@ func _on_credits_pressed():
 func _on_exit_pressed():
 	$Credits.hide()
 	$bear.show()
+
+
+func _on_music_finished():
+	$music.play()
