@@ -143,7 +143,7 @@ func find_tiles(type):
 
 func _ready():
 	$music.play()
-	$music.set_volume_db(Global.volume_db)
+	$music.set_volume_db(linear_to_db(Global.volume_percent))
 	_initializeTileMap()
 	update_display()
 	tileMap[Vector2(5,3)].farmType = Global.FarmType.BrokenShrine
