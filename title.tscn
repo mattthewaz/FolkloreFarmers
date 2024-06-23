@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://u62jab6viop1"]
+[gd_scene load_steps=6 format=3 uid="uid://u62jab6viop1"]
 
 [ext_resource type="Script" path="res://title.gd" id="1_0um8y"]
 [ext_resource type="Texture2D" uid="uid://bn3qlma0hklo" path="res://sprites/title.png" id="2_wvaa1"]
 [ext_resource type="Texture2D" uid="uid://821rb6wykxyg" path="res://sprites/clifftop._bear.png" id="4_x162p"]
+[ext_resource type="AudioStream" uid="uid://dqduerilox8mf" path="res://music/Title.wav" id="5_jacws"]
 [ext_resource type="Theme" uid="uid://dmn7v863jgw31" path="res://themes/main.tres" id="7_4bmbk"]
 
 [node name="Title" type="Node2D"]
@@ -82,6 +83,7 @@ offset_top = 166.0
 offset_right = 420.0
 offset_bottom = 254.0
 theme = ExtResource("7_4bmbk")
+theme_override_font_sizes/normal_font_size = 8
 text = "Carefully Crafted By
 
 MatthewCole Waschezyn
@@ -134,7 +136,11 @@ step = 0.001
 value = 2.25
 scrollable = false
 
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jacws")
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Credits/Exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="Volume/VolSlider" to="." method="_on_volume_change"]
+[connection signal="finished" from="music" to="." method="_on_music_finished"]
