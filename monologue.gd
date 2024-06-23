@@ -56,13 +56,36 @@ const start_text = [[
 	"It don't look like that now though. Place is run down. It's spooky… But that stuff she said about a curse can't be real, right?",
 	"She said she loved it here, said it made her feel alive. Her biggest regret was always not coming back to this place my great-great-grandpa built.",
 	"So I'm gonna give it my best shot."
+	],
+	["I always loved visiting the weird old farm. My parents hated it though—the word in the town where I grew up was that the place was haunted.",
+	"The other kids were all too scared to go near, but when I showed up as a dare the old farmer there was real nice to me, and I started visiting regularly.",
+	"Now they're gone, rest in peace, and they left the place to me. This chance is once in a lifetime, so I’d be a fool to not show up because of some weird rumors."
+	],
+	["I’ve never really fit in, catch my drift? The big city life is way too fast-paced for me, and the world’s been modernizing way too quick.",
+	"That’s why I decided to move to this nifty little pad I found not far from town. It’s got this groovy plot of land for farming too, though the rocks everywhere are pretty freaky-deaky.",
+	"But I’ll give you the skinny: the place was extra cheap ‘cause there’s an old local story that there’s some kinda spiritual disturbance on the property.",
+	"Weird stories of spirits and monsters in the form of bears. But honestly I’m down with that stuff. So let’s take this to the max!"
+	],
+	["Found this old farm up for sale, REAL cheap. Internet was chock-full of scary rumors and stuff. Nightmares, curses, and ghosts with glowing eyes!",
+	"That's all bogus, but how cool would that be?"
 	]
 	]
 
 const end_text = [[
 	"I'm gettin’ on in years, but I'm fitter than I ought to be. I can still take care of the farm, but I'm not sure for how long.",
 	"My daughter loves the bears, but her husband's scared of ‘em. They won't take care of the place. Wonder what will happen to the farm and the bears when I'm gone…"
-	]
+	],
+	["Well, I've sure learned a whole lot since comin’ here. Ma’s stories was real all along, but the shrines bring a lot of peace.",
+	 "I sure hope the next person who lives here gives it the care it deserves. I never did have children, but there's a kid from town who's stopped by a few times who I might try’n leave the place to.",
+	"Still pretty young, but I think that kid's got what it takes."
+	],
+	["The town I grew up in has gotten a lot bigger. People still say the place is haunted, and even though I've tried to convince my friends that it’s a nice place, I don’t know if they quite believe it.", 
+	"But now, after being on this farm practically my whole life, I'm going to sell the place.",
+	"It breaks my heart a bit, but with the world seeming on the brink of war these days I know I have to do something out there. Help other people, you know? Anyway, maybe I'll buy it back someday. But for now, goodbye."
+	],
+	["Farming’s been radical, but I’m ready to chill out and put that down. Maybe I’ll move to a big city."
+	],
+	["Time to move on to bigger and better things!"]
 	]
 
 # Called when the node enters the scene tree for the first time.
@@ -78,11 +101,23 @@ func play(dialogue):
 	var generation = min(Global.generation, 1)
 	if dialogue == 'start':
 		Global.current_character = randi_range(1,34)
+<<<<<<< HEAD
+		if Global.generation < len(start_text):
+			box.text = start_text[Global.generation][line]
+		else:
+			box.text = start_text[4][line]
+	elif dialogue == 'end':
+		if Global.generation < len(end_text):
+			box.text = end_text[Global.generation][line]
+		else:
+			box.text = end_text[4][line]
+=======
 		if generation < len(start_text):
 			box.text = start_text[generation][line]
 	elif dialogue == 'end':
 		if generation < len(end_text):
 			box.text = end_text[generation][line]
+>>>>>>> 6e77a54d67bceff3606816feab21d173bf3926a5
 	elif dialogue == 'wheat':
 		box.text = wheat_text[0]
 		story = 'wheat'
