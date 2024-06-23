@@ -336,11 +336,13 @@ text = "New Game"
 [node name="ContextInfo" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 offset_left = 24.0
-offset_top = 432.0
+offset_top = 434.0
 offset_right = 616.0
-offset_bottom = 472.0
+offset_bottom = 478.0
 theme = ExtResource("7_4bmbk")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 6
+scroll_active = false
 
 [node name="Resources" type="Control" parent="."]
 layout_mode = 3

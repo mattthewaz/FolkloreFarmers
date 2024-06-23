@@ -60,7 +60,7 @@ const farm_tile_names = {
 const farm_tile_descriptions = {
 	FarmType.Empty : "Can build new buildings on this land",
 	FarmType.Wheat : "Generates money based on fertility",
-	FarmType.Shrine : "Allows bear habitats to be built nearby",
+	FarmType.Shrine : "Generates spiritual power and buffs adjacent bears",
 	FarmType.Vegetable : "Generates vegetables based on fertility",
 	FarmType.Pasture : "Feed bears vegetables to generate spiritual power",
 	FarmType.BrokenShrine : "Can be repaired; cheaper than building a new shrine",
