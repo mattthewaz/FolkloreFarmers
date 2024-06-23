@@ -287,7 +287,7 @@ func play_monologue(dialogue):
 #resets stats and sets up the game for a replay
 func new_life():
 	#set time data for a new game
-	day = 0
+	day = 1
 	endDay = baseEndDay
 	generation+=1
 	year = starting_year + 50 * generation

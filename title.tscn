@@ -68,6 +68,7 @@ scale = Vector2(0.529, 0.529)
 texture = ExtResource("4_x162p")
 
 [node name="BearCover2" type="ColorRect" parent="Credits"]
+visible = false
 layout_mode = 0
 offset_left = 208.0
 offset_top = 162.0

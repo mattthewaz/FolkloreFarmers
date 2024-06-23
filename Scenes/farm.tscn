@@ -420,7 +420,6 @@ text = "Remaining Seasons: 00"
 scroll_active = false
 
 [node name="Monologue" parent="." instance=ExtResource("14_f1saq")]
-visible = false
 z_index = 1000
 
 [node name="music" type="AudioStreamPlayer" parent="."]
