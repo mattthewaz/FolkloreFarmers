@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dmn7v863jgw31"]
 
-[ext_resource type="FontFile" uid="uid://cg5ltc32ev042" path="res://fonts/dogica.ttf" id="1_w2b1v"]
+[ext_resource type="FontFile" uid="uid://cd3as4rifupaj" path="res://fonts/dogica.ttf" id="1_w2b1v"]
 
 [resource]
 default_font = ExtResource("1_w2b1v")

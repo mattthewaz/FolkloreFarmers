@@ -2,20 +2,20 @@
 
 [ext_resource type="Script" path="res://Scripts/farm.gd" id="1_ovusw"]
 [ext_resource type="PackedScene" uid="uid://d3seiysyma2im" path="res://Scenes/tile.tscn" id="2_fvoba"]
-[ext_resource type="Texture2D" uid="uid://kf3oxgyrofx7" path="res://sprites/farm1.png" id="3_xgd3u"]
-[ext_resource type="Texture2D" uid="uid://cyi45t2yramm0" path="res://sprites/farm3.png" id="4_3jc4k"]
-[ext_resource type="Texture2D" uid="uid://dlhqwaxj8wdpi" path="res://sprites/farm2.png" id="4_ekj4q"]
-[ext_resource type="Texture2D" uid="uid://7idj6cdk7jbb" path="res://sprites/farm4.png" id="5_i02ad"]
-[ext_resource type="Texture2D" uid="uid://dafelqkj2bl3e" path="res://sprites/icon1.png" id="6_c0enb"]
-[ext_resource type="Texture2D" uid="uid://cmyfarrtaqe8x" path="res://sprites/icon7.png" id="6_ft2uk"]
+[ext_resource type="Texture2D" uid="uid://c0iwc6xdrh766" path="res://sprites/farm1.png" id="3_xgd3u"]
+[ext_resource type="Texture2D" uid="uid://umec3uv87vmn" path="res://sprites/farm3.png" id="4_3jc4k"]
+[ext_resource type="Texture2D" uid="uid://c55pw21dwllmv" path="res://sprites/farm2.png" id="4_ekj4q"]
+[ext_resource type="Texture2D" uid="uid://cp87fk3ch7vth" path="res://sprites/farm4.png" id="5_i02ad"]
+[ext_resource type="Texture2D" uid="uid://djygeod1ia1eu" path="res://sprites/icon1.png" id="6_c0enb"]
+[ext_resource type="Texture2D" uid="uid://bto2ysi0ndmle" path="res://sprites/icon7.png" id="6_ft2uk"]
 [ext_resource type="Theme" uid="uid://dmn7v863jgw31" path="res://themes/main.tres" id="7_4bmbk"]
-[ext_resource type="Texture2D" uid="uid://de4qbl00p0mag" path="res://sprites/icon2.png" id="7_8gekr"]
-[ext_resource type="Texture2D" uid="uid://di6p525sfa3q4" path="res://sprites/icon4.png" id="8_4x1bd"]
-[ext_resource type="Texture2D" uid="uid://dkgoxr35ey2mk" path="res://sprites/icon3.png" id="9_43or6"]
-[ext_resource type="PackedScene" path="res://town.tscn" id="10_i2t70"]
+[ext_resource type="Texture2D" uid="uid://bsjpydmjtg7j1" path="res://sprites/icon2.png" id="7_8gekr"]
+[ext_resource type="Texture2D" uid="uid://dn5jxqeuwsqwb" path="res://sprites/icon4.png" id="8_4x1bd"]
+[ext_resource type="Texture2D" uid="uid://ce8noqx23ain" path="res://sprites/icon3.png" id="9_43or6"]
+[ext_resource type="PackedScene" uid="uid://bf0tj6dk84si2" path="res://town.tscn" id="10_i2t70"]
 [ext_resource type="PackedScene" uid="uid://coa58a8fdsybh" path="res://Scenes/monologue.tscn" id="14_f1saq"]
-[ext_resource type="AudioStream" uid="uid://brqwe8hia5mg6" path="res://music/Farmusic.wav" id="15_nntdt"]
-[ext_resource type="PackedScene" uid="uid://ceklbhygdgbdh" path="res://Scenes/score.tscn" id="16_n4b3d"]
+[ext_resource type="AudioStream" uid="uid://dhr74ncdapi8u" path="res://music/Farmusic.wav" id="15_nntdt"]
+[ext_resource type="PackedScene" path="res://Scenes/score.tscn" id="16_n4b3d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_og66k"]
 animations = [{
@@ -96,7 +96,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_8gekr")
 
 [node name="ActionIcon" type="AnimatedSprite2D" parent="."]
-position = Vector2(373, 25)
+position = Vector2(462, 25)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_40jma")
 animation = &"1"
@@ -298,11 +298,12 @@ text = "Summer, 1824"
 
 [node name="EndDayButton" type="Button" parent="."]
 visible = false
-offset_left = 522.0
-offset_top = 16.0
-offset_right = 632.0
-offset_bottom = 47.0
+offset_left = 492.0
+offset_top = 9.0
+offset_right = 625.0
+offset_bottom = 41.0
 theme = ExtResource("7_4bmbk")
+theme_override_font_sizes/font_size = 11
 text = "End Season"
 
 [node name="TileMenu" type="PopupMenu" parent="."]
@@ -353,9 +354,9 @@ offset_bottom = 472.0
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 36.0
-offset_top = -384.0
+offset_top = -380.0
 offset_right = 104.0
-offset_bottom = -367.0
+offset_bottom = -363.0
 theme = ExtResource("7_4bmbk")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 12
@@ -367,9 +368,9 @@ autowrap_mode = 0
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 142.0
-offset_top = -384.0
+offset_top = -380.0
 offset_right = 200.0
-offset_bottom = -367.0
+offset_bottom = -363.0
 theme = ExtResource("7_4bmbk")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 13
@@ -380,9 +381,9 @@ autowrap_mode = 0
 [node name="Actions" type="RichTextLabel" parent="Resources"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 210.0
+offset_left = 294.0
 offset_top = -412.0
-offset_right = 331.0
+offset_right = 415.0
 offset_bottom = -391.0
 theme = ExtResource("7_4bmbk")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -394,9 +395,9 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 249.0
-offset_top = -384.0
+offset_top = -380.0
 offset_right = 390.0
-offset_bottom = -367.0
+offset_bottom = -363.0
 theme = ExtResource("7_4bmbk")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 13
@@ -419,6 +420,7 @@ text = "Remaining Seasons: 00"
 scroll_active = false
 
 [node name="Monologue" parent="." instance=ExtResource("14_f1saq")]
+visible = false
 z_index = 1000
 
 [node name="music" type="AudioStreamPlayer" parent="."]
