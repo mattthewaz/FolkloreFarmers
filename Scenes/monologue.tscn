@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://coa58a8fdsybh"]
 
 [ext_resource type="Script" path="res://monologue.gd" id="1_3t1mj"]
-[ext_resource type="Texture2D" uid="uid://krj8qj3nnpku" path="res://sprites/bear.png" id="2_4irx1"]
-[ext_resource type="Texture2D" uid="uid://gqoa6uc6ngkx" path="res://sprites/Portraits/farmer_maybe22.png" id="2_htw1v"]
-[ext_resource type="Texture2D" uid="uid://qufuy1veakw2" path="res://sprites/textbox.png" id="3_n2l2t"]
+[ext_resource type="Texture2D" uid="uid://b8fn6f65ssk34" path="res://sprites/bear.png" id="2_4irx1"]
+[ext_resource type="Texture2D" uid="uid://chnjyacj6bluw" path="res://sprites/Portraits/farmer_maybe22.png" id="2_htw1v"]
+[ext_resource type="Texture2D" uid="uid://0oyomekoprek" path="res://sprites/textbox.png" id="3_n2l2t"]
 [ext_resource type="Theme" uid="uid://dmn7v863jgw31" path="res://themes/main.tres" id="3_rdojv"]
 [ext_resource type="PackedScene" uid="uid://b7klsenp17yl" path="res://Scenes/cutscene.tscn" id="6_kh0cv"]
 
@@ -32,13 +32,13 @@ offset_right = 573.0
 offset_bottom = 435.0
 theme = ExtResource("3_rdojv")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/normal_font_size = 11
 text = "Bears with glowin’ eyes, he said. Every night. He said it was a curse, but I think it was guilt. I'd feel bad too if I found out some bears accidentally died in the fire I started."
 
 [node name="Continue" type="Button" parent="."]
-offset_left = 488.0
+offset_left = 465.0
 offset_top = 412.0
-offset_right = 580.0
+offset_right = 583.0
 offset_bottom = 437.0
 theme = ExtResource("3_rdojv")
 text = "Continue..."

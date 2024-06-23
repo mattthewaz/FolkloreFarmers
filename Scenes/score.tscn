@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ceklbhygdgbdh"]
 
 [ext_resource type="Texture2D" uid="uid://cmyfarrtaqe8x" path="res://sprites/icon7.png" id="1_ik1yj"]
-[ext_resource type="Script" path="res://Scenes/score.gd" id="1_xlyco"]
+[ext_resource type="Script" path="res://Scripts/score.gd" id="1_xlyco"]
 [ext_resource type="Theme" uid="uid://dmn7v863jgw31" path="res://themes/main.tres" id="2_468ci"]
 
 [node name="Score" type="Node2D"]
@@ -20,12 +20,12 @@ texture = ExtResource("1_ik1yj")
 [node name="Energy" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 offset_left = 248.0
-offset_top = 240.0
+offset_top = 232.0
 offset_right = 384.0
-offset_bottom = 256.0
+offset_bottom = 248.0
 theme = ExtResource("2_468ci")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 14
 text = "10000"
 scroll_active = false
 autowrap_mode = 0
@@ -38,25 +38,25 @@ offset_right = 408.0
 offset_bottom = 200.0
 theme = ExtResource("2_468ci")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 15
 text = "Final Score"
 
 [node name="MainMenu" type="Button" parent="."]
-offset_left = 72.0
+offset_left = 64.0
 offset_top = 328.0
-offset_right = 257.0
+offset_right = 276.0
 offset_bottom = 384.0
 theme = ExtResource("2_468ci")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "Back to main menu"
 
 [node name="NewGeneration" type="Button" parent="."]
-offset_left = 384.0
+offset_left = 392.0
 offset_top = 328.0
-offset_right = 569.0
+offset_right = 577.0
 offset_bottom = 384.0
 theme = ExtResource("2_468ci")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "New Generation"
 
 [connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
