@@ -4,11 +4,12 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$music.play()
+	$music.set_volume_db(linear_to_db(Global.volume_percent))
 
 
 func _on_volume_change(percent):
 	Global.volume_percent = percent
-	#$music.set_volume_db(Global.volume_db)
+	$music.set_volume_db(linear_to_db(percent))
 
 
 func _on_start_pressed():
