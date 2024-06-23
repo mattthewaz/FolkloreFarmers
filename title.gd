@@ -7,7 +7,7 @@ func _ready():
 
 
 func _on_volume_change(percent):
-	Global.volume_db = linear_to_db(percent)
+	Global.volume_percent = percent
 	#$music.set_volume_db(Global.volume_db)
 
 

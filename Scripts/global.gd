@@ -14,7 +14,7 @@ var current_character
 var generation = 0
 var rubble_count = 4
 
-var volume_db = 9.54242515563965
+var volume_percent = 2.25
 var menu_mode = false
 var monologue_mode = false
 
